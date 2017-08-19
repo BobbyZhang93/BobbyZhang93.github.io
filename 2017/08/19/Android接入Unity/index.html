@@ -19,8 +19,7 @@
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png">
-<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png">
-<meta property="og:updated_time" content="2017-08-19T01:45:36.000Z">
+<meta property="og:updated_time" content="2017-08-19T05:19:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android接入Unity">
 <meta name="twitter:description" content="本文共计704字，预计阅读耗时3分54秒 步骤预览（默认已经建好android和unity的项目）： 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解: 拷贝/Applications/Unity/Playba">
@@ -203,10 +202,9 @@
 </li>
 <li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
 </li>
-<li>修改主配置文件:<ul>
-<li>将主题更改为android自带的的主题</li>
+<li>修改主配置文件:<br> 将主题更改为android自带的的主题<ol>
 <li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br>更改后的主配置文件为:<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
-</ul>
+</ol>
 </li>
 <li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
 <ul>
@@ -217,11 +215,15 @@
 </li>
 </ul>
 </li>
-<li>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>  <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""><br>   拷入之后的unity文件目录为<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png" alt=""></li>
-<li><p>在unity中编写脚本，获取从android中传过来的数据<br> 在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
+</ol>
+<ul>
+<li>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""><pre><code>拷入之后的unity文件目录为
+![][image-6]
+</code></pre></li>
+<li><p>在unity中编写脚本，获取从android中传过来的数据<br>  在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//获取Android的Java接口  </div><div class="line">AndroidJavaObject cls = new AndroidJavaObject(&quot;com.bumie.androidforunity.TestActivity&quot;);</div><div class="line">   cls.Call(&quot;Test&quot;);//这个引号内是调用的Android方法，可以补上第二个参数用以匹配Android端方法的参数</div><div class="line"></div><div class="line">//接下来在getText()中通过参数获取数据</div><div class="line">public void getText(string aa)</div><div class="line">    &#123;</div><div class="line">        Debug.Log (&quot;success,unity&quot;+&quot;/:&quot;+aa);</div><div class="line">        ttt[0].text = aa;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 </li>
-</ol>
+</ul>
 <h4 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h4>
       
 
@@ -324,6 +326,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate
+        
+      </div>
+    </a>
   
   
     <a href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/" id="article-nav-older" class="article-nav-link-wrap">
