@@ -159,6 +159,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-unity在打包出的ios项目上实现截图并保存相册功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/">unity在打包出的ios项目上实现截图并保存相册功能</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/" class="archive-article-date">
+  	<time datetime="2017-08-23T14:58:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分为两部分："><a href="#分为两部分：" class="headerlink" title="分为两部分："></a>分为两部分：</h3><ul>
+<li>unity点击按钮调用系统截图和ios中的保存方法</li>
+<li>ios执行保存操作</li>
+</ul>
+<p><strong>1. unity中按钮绑定的代码如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Runtime.InteropServices;</div><div class="line"></div><div class="line">public class SavePhoto : MonoBehaviour</div><div class="line">&#123;</div><div class="line">[DllImport(&quot;__Internal&quot;)]</div><div class="line">private static extern void _SavePhoto(string readAddr); </div><div class="line"></div><div class="line">public void Jietu()</div><div class="line">&#123; </div><div class="line">var cptrAddr = &quot;testpic&quot;; //捕捉地址  </div><div class="line">var readAddr = Application.persistentDataPath + &quot;/&quot; + cptrAddr;//读取地址，这两个地址在iOS里不一样  </div><div class="line"></div><div class="line">Application.CaptureScreenshot(cptrAddr); </div><div class="line">Debug.Log(&quot;截图&quot;);</div><div class="line"></div><div class="line">_SavePhoto(readAddr);</div><div class="line">Debug.Log(&quot;保存&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>2. 导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件：</strong><br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png" alt="image"></p>
+<ul>
+<li><p>PhotoManager.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#endif /* PhotoManager_h */</div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface PhotoManager : NSObject</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo;</div><div class="line">@end</div></pre></td></tr></table></figure>
+</li>
+<li><p>PhotoManager.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#import &quot;PhotoManager.h&quot;</div><div class="line">@implementation PhotoManager</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;保存结束&quot;);</div><div class="line">if (error != nil) &#123;</div><div class="line">NSLog(@&quot;有错误&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">void _SavePhoto(char *readAddr)</div><div class="line">&#123;</div><div class="line">NSString *strReadAddr = [NSString stringWithUTF8String:readAddr];</div><div class="line">UIImage *img = [UIImage imageWithContentsOfFile:strReadAddr];</div><div class="line">NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;w:%f, h:%f&quot;, img.size.width, img.size.height]);</div><div class="line">PhotoManager *instance = [PhotoManager alloc];</div><div class="line">UIImageWriteToSavedPhotosAlbum(img, instance,</div><div class="line">@selector(imageSaved:didFinishSavingWithError:contextInfo:), nil);</div><div class="line">&#125;  </div><div class="line">@end</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p><strong>配置应用权限</strong><br>在上图2处添加ios访问相册的权限</p>
+</li>
+<li><p><strong>运行结果：</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>初次运行请求权限截图<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png" alt="image"></p>
+</li>
+<li><p>保存的截图文件<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/IMG_0009.PNG" alt="image"></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -256,10 +344,8 @@
 </li>
 <li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
 </li>
-<li>修改主配置文件:<br> 将主题更改为android自带的的主题<ol>
-<li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br>更改后的主配置文件为:<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
-</ol>
-</li>
+<li>修改主配置文件:<br> 将主题更改为android自带的的主题</li>
+<li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br> 更改后的主配置文件为:<br> <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
 <li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
 <ul>
 <li>build->build apk   直接去app–>build–>outputs–>aar目录下找到app-debug.aar文件，解压即可获得所需资源</li>
