@@ -1,765 +1,560 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="BobbyZhang" />
-
+    
 
     
+
     
 
 
-<meta property="og:type" content="website">
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>BobbyZhang的技术小站 | 每天半个小时，见证不一样的自己！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="BobbyZhang的技术小站">
 <meta property="og:url" content="http://itbobby.com/index.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BobbyZhang的技术小站">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
-
-
-    <link rel="alternate" href="/atom.xml" title="BobbyZhang的技术小站" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-    <style> .article { opacity: 0;} </style>
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>BobbyZhang的技术小站</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: true,
-        isPost: false,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
+    <!-- custom head -->
+    
 
 </head>
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">BobbyZhang</a></h1>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
         </hgroup>
-
-        
-        <p class="header-subtitle">每天半个小时，见证不一样的自己！</p>
-        
-
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">BobbyZhang</a></h1>
       </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">BobbyZhang的技术小站</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">BobbyZhang</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">每天半个小时，见证不一样的自己！</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
-</nav>
-      <div class="body-wrap">
-  
-    <article id="post-unity在打包出的ios项目上实现截图并保存相册功能" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/" class="article-date">
-      <time datetime="2017-08-23T14:58:11.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/">unity在打包出的ios项目上实现截图并保存相册功能</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="分为两部分："><a href="#分为两部分：" class="headerlink" title="分为两部分："></a>分为两部分：</h3><ul>
-<li>unity点击按钮调用系统截图和ios中的保存方法</li>
-<li>ios执行保存操作</li>
-</ul>
-<p><strong>1. unity中按钮绑定的代码如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Runtime.InteropServices;</div><div class="line"></div><div class="line">public class SavePhoto : MonoBehaviour</div><div class="line">&#123;</div><div class="line">[DllImport(&quot;__Internal&quot;)]</div><div class="line">private static extern void _SavePhoto(string readAddr); </div><div class="line"></div><div class="line">public void Jietu()</div><div class="line">&#123; </div><div class="line">var cptrAddr = &quot;testpic&quot;; //捕捉地址  </div><div class="line">var readAddr = Application.persistentDataPath + &quot;/&quot; + cptrAddr;//读取地址，这两个地址在iOS里不一样  </div><div class="line"></div><div class="line">Application.CaptureScreenshot(cptrAddr); </div><div class="line">Debug.Log(&quot;截图&quot;);</div><div class="line"></div><div class="line">_SavePhoto(readAddr);</div><div class="line">Debug.Log(&quot;保存&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>2. 导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件：</strong><br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png" alt="image"></p>
-<ul>
-<li><p>PhotoManager.h</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#endif /* PhotoManager_h */</div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface PhotoManager : NSObject</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo;</div><div class="line">@end</div></pre></td></tr></table></figure>
-</li>
-<li><p>PhotoManager.m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#import &quot;PhotoManager.h&quot;</div><div class="line">@implementation PhotoManager</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;保存结束&quot;);</div><div class="line">if (error != nil) &#123;</div><div class="line">NSLog(@&quot;有错误&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">void _SavePhoto(char *readAddr)</div><div class="line">&#123;</div><div class="line">NSString *strReadAddr = [NSString stringWithUTF8String:readAddr];</div><div class="line">UIImage *img = [UIImage imageWithContentsOfFile:strReadAddr];</div><div class="line">NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;w:%f, h:%f&quot;, img.size.width, img.size.height]);</div><div class="line">PhotoManager *instance = [PhotoManager alloc];</div><div class="line">UIImageWriteToSavedPhotosAlbum(img, instance,</div><div class="line">@selector(imageSaved:didFinishSavingWithError:contextInfo:), nil);</div><div class="line">&#125;  </div><div class="line">@end</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>3. 配置应用权限</strong><br>在上图2处添加ios访问相册的权限</p>
-<p><strong>4. 运行结果：</strong></p>
-<ul>
-<li><p>初次运行请求权限截图<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png" alt="image"></p>
-</li>
-<li><p>保存的截图文件<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/IMG_0009.PNG" alt="image"></p>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" class="article-date">
-      <time datetime="2017-08-19T15:56:49.000Z" itemprop="datePublished">2017-08-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/">Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android接入Unity" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/19/Android接入Unity/" class="article-date">
-      <time datetime="2017-08-19T01:25:34.000Z" itemprop="datePublished">2017-08-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/19/Android接入Unity/">Android接入Unity</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><code>本文共计704字，预计阅读耗时3分54秒</code></p>
-<h4 id="步骤预览（默认已经建好android和unity的项目）："><a href="#步骤预览（默认已经建好android和unity的项目）：" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）："></a>步骤预览（默认已经建好android和unity的项目）：</h4><ol>
-<li>导入unity中的class.jar在android中为unity写方法并修改代码</li>
-<li>精简安卓代码</li>
-<li>修改主配置文件</li>
-<li>修改gradle配置文件build apk得到aar</li>
-<li>拷贝相关文件到unity项目中</li>
-<li>在unity脚本文件中进行调用</li>
-</ol>
-<h4 id="详解"><a href="#详解" class="headerlink" title="详解:"></a>详解:</h4><ol>
-<li><p>拷贝/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar至安卓项目的libs，并且添加为依赖（win下路径为C:ProgramFilesUnityEditorDataPlaybackEnginesAndroidPlayerVariationsmonoReleaseclasses.jar）<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png" alt=""><br> 在安卓中为unity写方法<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png" alt=""><br> UnitySendMessage中第一个参数为unity中脚本绑定的物体，第二个参数为unity中接受android传参的方法名，第三个参数为需要传递的数据，三个参数均为String类型；<br> 将activity中的方法全都放在这个Test方法中，顺序执行，由于安卓接入unity后unity只调用这个指定的Test方法，所以在安卓中正常应该写在生命周期中（尤其onCreate中）的方法都要改变结构，以确保unity在调用Test后相关的代码都会执行；<br> 修改当前Activity的继承类为UnityPlayerActivity,并且把类中所有使用到context的地方都用UnityPlayer.currentActivity代替，否则会报方法不能找到的bug，例如:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(UnityPlayer.currentActivity,<span class="string">"GNSS服务已绑定"</span>,Toast.LENGTHSHORT).show();</div><div class="line">UnityPlayer.currentActivity.bindService(intent, mConnection, BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
-</li>
-<li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
-</li>
-<li>修改主配置文件:<br> 将主题更改为android自带的的主题</li>
-<li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br> 更改后的主配置文件为:<br> <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
-<li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
-<ul>
-<li>build->build apk   直接去app–>build–>outputs–>aar目录下找到app-debug.aar文件，解压即可获得所需资源</li>
-<li><p>在gradle中继续添加代码：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">task deleteOldJar(<span class="string">type:</span> Delete) &#123;</div><div class="line">   delete <span class="string">'build/outputs/test.jar'</span></div><div class="line">&#125;</div><div class="line">task exportJar(<span class="string">type:</span> Copy) &#123;</div><div class="line">    from(<span class="string">'build/intermediates/bundles/release/'</span>)</div><div class="line">    into(<span class="string">'build/libs/'</span>)</div><div class="line">    include(<span class="string">'classes.jar'</span>)</div><div class="line">    rename (<span class="string">'classes.jar'</span>, <span class="string">'androidforunity.jar'</span>)</div><div class="line">&#125;</div><div class="line">exportJar.dependsOn(deleteOldJar, build)</div></pre></td></tr></table></figure>
-<p>选择右侧gradle中的exportJar进行导出<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png" alt=""><br>在/Users/xun-mac/AndroidStudioProjects/AndroidforUnity/app/build/intermediates/bundles/release/classes.jar中获取所需资源。</p>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""><pre><code>拷入之后的unity文件目录为
-![][image-6]
-</code></pre></li>
-<li><p>在unity中编写脚本，获取从android中传过来的数据<br>  在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//获取Android的Java接口  </div><div class="line">AndroidJavaObject cls = new AndroidJavaObject(&quot;com.bumie.androidforunity.TestActivity&quot;);</div><div class="line">   cls.Call(&quot;Test&quot;);//这个引号内是调用的Android方法，可以补上第二个参数用以匹配Android端方法的参数</div><div class="line"></div><div class="line">//接下来在getText()中通过参数获取数据</div><div class="line">public void getText(string aa)</div><div class="line">    &#123;</div><div class="line">        Debug.Log (&quot;success,unity&quot;+&quot;/:&quot;+aa);</div><div class="line">        ttt[0].text = aa;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-UTC转化为本地时间再转化为Unix时间戳" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/" class="article-date">
-      <time datetime="2017-08-14T15:56:23.000Z" itemprop="datePublished">2017-08-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/">UTC转化为本地时间再转化为Unix时间戳</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="UTC转化为本地时间"><a href="#UTC转化为本地时间" class="headerlink" title="UTC转化为本地时间"></a>UTC转化为本地时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* UTC转化为本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTime   UTC数据|024834.94</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTimePatten    UTC数据格式</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> localTimePatten</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">utc2Local</span><span class="params">(String utcTime, String utcTimePatten,</span></span></div><div class="line"><span class="function"><span class="params">String localTimePatten)</span> </span>&#123;</div><div class="line">SimpleDateFormat utcFormater = <span class="keyword">new</span> SimpleDateFormat(utcTimePatten);</div><div class="line">utcFormater.setTimeZone(TimeZone.getTimeZone(<span class="string">"UTC"</span>));</div><div class="line">Date gpsUTCDate = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">gpsUTCDate = utcFormater.parse(utcTime);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">SimpleDateFormat localFormater = <span class="keyword">new</span> SimpleDateFormat(localTimePatten);</div><div class="line">localFormater.setTimeZone(TimeZone.getDefault());</div><div class="line">String localTime = localFormater.format(gpsUTCDate.getTime());</div><div class="line"><span class="keyword">return</span> localTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="本地时间转时间戳"><a href="#本地时间转时间戳" class="headerlink" title="本地时间转时间戳"></a>本地时间转时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 本地时间转时间戳</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> s  由UTC转化来的本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> dot   原UTC数据的小数位</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s,String dot)</span>  </span>&#123;</div><div class="line">String res;</div><div class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);<span class="comment">//设置日期格式</span></div><div class="line">SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</div><div class="line">Date date = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">date = simpleDateFormat.parse(df.format(<span class="keyword">new</span> Date())+<span class="string">" "</span>+s);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line"><span class="keyword">long</span> ts = date.getTime();</div><div class="line">ts+=Double.valueOf(dot)*<span class="number">10</span>;</div><div class="line">res = String.valueOf(ts);</div><div class="line"><span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s=<span class="string">"024834.94"</span>;</div><div class="line">dateToStamp(utc2Local(s,<span class="string">"hhmmss"</span>,<span class="string">"HH:mm:ss"</span>),s.substring(<span class="number">7</span>,<span class="number">9</span>))</div></pre></td></tr></table></figure>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
-<li><p>时间输出为连续递增，以便做滤波操作</p>
-</li>
-<li><p>UTC-&gt;本地时间-&gt;时间戳 只精确到了s，UTC中的小数位（0-99递增）拼接到了时间戳上满足连续递增</p>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MAC上开启或关闭隐藏文件的显示" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/14/MAC上开启或关闭隐藏文件的显示/" class="article-date">
-      <time datetime="2017-08-14T15:51:29.000Z" itemprop="datePublished">2017-08-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/MAC上开启或关闭隐藏文件的显示/">MAC上开启或关闭隐藏文件的显示</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示："><a href="#早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：" class="headerlink" title="早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示："></a>早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
-<h4 id="当升级到OS-X-10-9-Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令："><a href="#当升级到OS-X-10-9-Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令：" class="headerlink" title="当升级到OS X 10.9 Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令："></a>当升级到OS X 10.9 Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
-<ul>
-<li>区别在于finder首字母的大小写</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/09/第一篇博客/" class="article-date">
-      <time datetime="2017-08-09T15:05:24.000Z" itemprop="datePublished">2017-08-09</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/09/第一篇博客/">第一篇博客</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="欢迎来到BobbyZhang的技术小站！"><a href="#欢迎来到BobbyZhang的技术小站！" class="headerlink" title="欢迎来到BobbyZhang的技术小站！"></a>欢迎来到BobbyZhang的技术小站！</h4><p>在这里我们可以交流</p>
-<ul>
-<li>关于android的一切</li>
-<li>关于unity的一切</li>
-<li>关于AR/VR的一切</li>
-<li>以及其他6到飞起的编程小技巧</li>
-<li>眼前的苟且和充满诗意的远方</li>
-</ul>
-<p>欢迎大家常来指教，常鞭策，常鼓励，期待与你一起进步。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2017 BobbyZhang
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
         </div>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">BobbyZhang的技术小站</h1>
+        <h5 class="subtitle">
+            
+                每天半个小时，见证不一样的自己！
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-unity在打包出的ios项目上实现截图并保存相册功能"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-23 22:58:11" datetime="2017-08-23T14:58:11.000Z"  itemprop="datePublished">2017-08-23</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/">unity在打包出的ios项目上实现截图并保存相册功能</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        分为两部分：
+unity点击按钮调用系统截图和ios中的保存方法
+ios执行保存操作
+
+1. unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : MonoBehaviour&#123;[Dll...
+    
+
+        <a href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-19 23:56:49" datetime="2017-08-19T15:56:49.000Z"  itemprop="datePublished">2017-08-19</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/">Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+    
+
+        <a href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Android接入Unity"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-19 09:25:34" datetime="2017-08-19T01:25:34.000Z"  itemprop="datePublished">2017-08-19</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/19/Android接入Unity/">Android接入Unity</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        本文共计704字，预计阅读耗时3分54秒
+步骤预览（默认已经建好android和unity的项目）：
+导入unity中的class.jar在android中为unity写方法并修改代码
+精简安卓代码
+修改主配置文件
+修改gradle配置文件build apk得到aar
+拷贝相关文件到unity项目中
+在unity脚本文件中进行调用
+
+详解:
+拷贝/Applications/Unity/Pla...
+    
+
+        <a href="/2017/08/19/Android接入Unity/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-UTC转化为本地时间再转化为Unix时间戳"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-14 23:56:23" datetime="2017-08-14T15:56:23.000Z"  itemprop="datePublished">2017-08-14</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/">UTC转化为本地时间再转化为Unix时间戳</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        UTC转化为本地时间12345678910111213141516171819202122/*** UTC转化为本地时间* @param utcTime   UTC数据|024834.94* @param utcTimePatten    UTC数据格式* @param localTimePatten* @return*/public static String utc2Local(Stri...
+    
+
+        <a href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-MAC上开启或关闭隐藏文件的显示"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-14 23:51:29" datetime="2017-08-14T15:51:29.000Z"  itemprop="datePublished">2017-08-14</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/14/MAC上开启或关闭隐藏文件的显示/">MAC上开启或关闭隐藏文件的显示</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：1234//显示隐藏文件defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder //不显示隐藏文件defaults write com.apple.Finder AppleShowAllFiles...
+    
+
+        <a href="/2017/08/14/MAC上开启或关闭隐藏文件的显示/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-第一篇博客"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-09 23:05:24" datetime="2017-08-09T15:05:24.000Z"  itemprop="datePublished">2017-08-09</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/09/第一篇博客/">第一篇博客</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        欢迎来到BobbyZhang的技术小站！在这里我们可以交流
+
+关于android的一切
+关于unity的一切
+关于AR/VR的一切
+以及其他6到飞起的编程小技巧
+眼前的苟且和充满诗意的远方
+
+欢迎大家常来指教，常鞭策，常鼓励，期待与你一起进步。
+
+    
+
+        <a href="/2017/08/09/第一篇博客/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
     </div>
 </footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://itbobby.com/&title=BobbyZhang的技术小站&pic=http://itbobby.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://itbobby.com/&title=BobbyZhang的技术小站&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://itbobby.com/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=BobbyZhang的技术小站&url=http://itbobby.com/&via=http://itbobby.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://itbobby.com/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
 
 
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://itbobby.com/" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
-  </div>
+
+
+
 </body>
 </html>
