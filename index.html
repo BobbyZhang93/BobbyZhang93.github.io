@@ -193,12 +193,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#import &quot;PhotoManager.h&quot;</div><div class="line">@implementation PhotoManager</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;保存结束&quot;);</div><div class="line">if (error != nil) &#123;</div><div class="line">NSLog(@&quot;有错误&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">void _SavePhoto(char *readAddr)</div><div class="line">&#123;</div><div class="line">NSString *strReadAddr = [NSString stringWithUTF8String:readAddr];</div><div class="line">UIImage *img = [UIImage imageWithContentsOfFile:strReadAddr];</div><div class="line">NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;w:%f, h:%f&quot;, img.size.width, img.size.height]);</div><div class="line">PhotoManager *instance = [PhotoManager alloc];</div><div class="line">UIImageWriteToSavedPhotosAlbum(img, instance,</div><div class="line">@selector(imageSaved:didFinishSavingWithError:contextInfo:), nil);</div><div class="line">&#125;  </div><div class="line">@end</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol>
-<li><p><strong>配置应用权限</strong><br>在上图2处添加ios访问相册的权限</p>
-</li>
-<li><p><strong>运行结果：</strong></p>
-</li>
-</ol>
+<p><strong>3. 配置应用权限</strong><br>在上图2处添加ios访问相册的权限</p>
+<p><strong>4. 运行结果：</strong></p>
 <ul>
 <li><p>初次运行请求权限截图<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png" alt="image"></p>
 </li>
