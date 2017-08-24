@@ -31,7 +31,8 @@
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png">
-<meta property="og:updated_time" content="2017-08-24T12:44:00.000Z">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png">
+<meta property="og:updated_time" content="2017-08-24T12:50:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android接入Unity">
 <meta name="twitter:description" content="本文共计704字，预计阅读耗时3分54秒 步骤预览（默认已经建好android和unity的项目）： 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解: 拷贝/Applications/Unity/Playba">
@@ -134,7 +135,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -173,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#步骤预览（默认已经建好android和unity的项目）："><span class="post-toc-number">1.</span> <span class="post-toc-text">步骤预览（默认已经建好android和unity的项目）：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#至此，android接入unity的全部工作都已经搞定了！"><span class="post-toc-number">3.</span> <span class="post-toc-text">至此，android接入unity的全部工作都已经搞定了！</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#步骤预览（默认已经建好android和unity的项目）："><span class="post-toc-number">1.</span> <span class="post-toc-text">步骤预览（默认已经建好android和unity的项目）：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#至此，android接入unity的全部工作都已经搞定了！"><span class="post-toc-number">3.</span> <span class="post-toc-text">至此，android接入unity的全部工作都已经搞定了！</span></a></li></ol>
         </nav>
     </aside>
     
@@ -197,7 +198,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p><code>本文共计704字，预计阅读耗时3分54秒</code></p>
-<h4 id="步骤预览（默认已经建好android和unity的项目）："><a href="#步骤预览（默认已经建好android和unity的项目）：" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）："></a>步骤预览（默认已经建好android和unity的项目）：</h4><ol>
+<h3 id="步骤预览（默认已经建好android和unity的项目）："><a href="#步骤预览（默认已经建好android和unity的项目）：" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）："></a>步骤预览（默认已经建好android和unity的项目）：</h3><ol>
 <li>导入unity中的class.jar在android中为unity写方法并修改代码</li>
 <li>精简安卓代码</li>
 <li>修改主配置文件</li>
@@ -205,7 +206,7 @@
 <li>拷贝相关文件到unity项目中</li>
 <li>在unity脚本文件中进行调用</li>
 </ol>
-<h4 id="详解"><a href="#详解" class="headerlink" title="详解:"></a>详解:</h4><ol>
+<h3 id="详解"><a href="#详解" class="headerlink" title="详解:"></a>详解:</h3><ol>
 <li><p>拷贝/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar至安卓项目的libs，并且添加为依赖（win下路径为C:ProgramFilesUnityEditorDataPlaybackEnginesAndroidPlayerVariationsmonoReleaseclasses.jar）<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png" alt=""><br> 在安卓中为unity写方法<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png" alt=""><br> UnitySendMessage中第一个参数为unity中脚本绑定的物体，第二个参数为unity中接受android传参的方法名，第三个参数为需要传递的数据，三个参数均为String类型；<br> 将activity中的方法全都放在这个Test方法中，顺序执行，由于安卓接入unity后unity只调用这个指定的Test方法，所以在安卓中正常应该写在生命周期中（尤其onCreate中）的方法都要改变结构，以确保unity在调用Test后相关的代码都会执行；<br> 修改当前Activity的继承类为UnityPlayerActivity,并且把类中所有使用到context的地方都用UnityPlayer.currentActivity代替，否则会报方法不能找到的bug，例如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(UnityPlayer.currentActivity,<span class="string">"GNSS服务已绑定"</span>,Toast.LENGTHSHORT).show();</div><div class="line">UnityPlayer.currentActivity.bindService(intent, mConnection, BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
 </li>
@@ -226,21 +227,20 @@
 <ul>
 <li><p>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""></p>
 </li>
-<li><p>拷入之后的unity文件目录为</p>
-<pre><code>![][image-6]
-</code></pre></li>
+<li><p>拷入之后的unity文件目录为<br>  <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png" alt=""></p>
+</li>
 <li><p>在unity中编写脚本，获取从android中传过来的数据<br>  在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//获取Android的Java接口  </div><div class="line">AndroidJavaObject cls = new AndroidJavaObject(&quot;com.bumie.androidforunity.TestActivity&quot;);</div><div class="line">   cls.Call(&quot;Test&quot;);//这个引号内是调用的Android方法，可以补上第二个参数用以匹配Android端方法的参数</div><div class="line"></div><div class="line">//接下来在getText()中通过参数获取数据</div><div class="line">public void getText(string aa)</div><div class="line">    &#123;</div><div class="line">        Debug.Log (&quot;success,unity&quot;+&quot;/:&quot;+aa);</div><div class="line">        ttt[0].text = aa;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h4>
+<h3 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h3>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-24T12:44:00.000Z" itemprop="dateUpdated">2017-08-24 20:44:00</time>
+    Last updated: <time datetime="2017-08-24T12:50:21.000Z" itemprop="dateUpdated">2017-08-24 20:50:21</time>
 </span><br>
 
 
@@ -409,7 +409,7 @@
 
         <p>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
