@@ -20,14 +20,19 @@
     
     
     <meta name="keywords" content="">
-    <meta property="og:type" content="article">
+    <meta name="description" content="本文共计210字，预计阅读耗时1分38秒 12345678void FixedUpdate()&amp;#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &amp;#123;        Application.Quit();    &amp;#125;&amp;#125;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate">
 <meta property="og:url" content="http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/index.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="本文共计210字，预计阅读耗时1分38秒 12345678void FixedUpdate()&amp;#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &amp;#123;        Application.Quit();    &amp;#125;&amp;#125;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-19T15:56:49.000Z">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png">
+<meta property="og:updated_time" content="2017-08-28T14:32:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate">
+<meta name="twitter:description" content="本文共计210字，预计阅读耗时1分38秒 12345678void FixedUpdate()&amp;#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &amp;#123;        Application.Quit();    &amp;#125;&amp;#125;">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png">
     
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -162,6 +167,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#顺便看看Update-和FixedUpdate-的区别"><span class="post-toc-number">1.</span> <span class="post-toc-text">顺便看看Update()和FixedUpdate()的区别</span></a></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -181,14 +193,17 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p><code>本文共计210字，预计阅读耗时1分38秒</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void FixedUpdate()</div><div class="line">&#123;</div><div class="line">    //点击手机返回键关闭应用程序</div><div class="line">    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))</div><div class="line">    &#123;</div><div class="line">        Application.Quit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="顺便看看Update-和FixedUpdate-的区别"><a href="#顺便看看Update-和FixedUpdate-的区别" class="headerlink" title="顺便看看Update()和FixedUpdate()的区别"></a>顺便看看Update()和FixedUpdate()的区别</h4><p>从字面上理解，它们都是在更新时会被调用，并且会循环的调用。<br>但是Update会在每次渲染新的一帧时，被调用。<br>而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时慢，帧率会变化，update被调用的时间间隔就发生变化。<br>但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间隔怎么设置呢？<br>Edit->Project Setting->time下面的Fixed timestep<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png" alt=""></p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-19T15:56:49.000Z" itemprop="dateUpdated">2017-08-19 23:56:49</time>
+    最后更新时间：<time datetime="2017-08-28T14:32:11.000Z" itemprop="dateUpdated">2017-08-28 22:32:11</time>
 </span><br>
 
 
