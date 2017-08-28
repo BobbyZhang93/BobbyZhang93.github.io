@@ -16,6 +16,8 @@
     <title>BobbyZhang的技术小站 | 每天半个小时，见证不一样的自己！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    <meta name="theme-color" content="#3F51B5">
+    
     
     <meta name="keywords" content="">
     <meta property="og:type" content="website">
@@ -26,8 +28,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BobbyZhang的技术小站">
     
-    <link rel="shortcut icon" href="/">
-    <link rel="stylesheet" href="/css/style.css?v=1.6.13">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -43,19 +45,68 @@
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/)">
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/">
+          <img src="/img/headicon.png">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">BobbyZhang</h5>
-          <a href="mailto:undefined" class="mail">
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
         </hgroup>
       </div>
     </div>
     <div class="scroll-wrap flex-col">
       <ul class="nav">
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/Archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/Tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/"  >
+                <i class="icon icon-lg icon-link"></i>
+                稀土掘金
+              </a>
+            </li>
         
       </ul>
     </div>
@@ -70,6 +121,20 @@
         </a>
         <div class="flex-col header-title ellipsis">BobbyZhang的技术小站</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -121,7 +186,10 @@
 
     
         本文共计54字2张配图，预计阅读耗时1分00秒
-进入j...
+进入jks存放文件夹运行终端
+查看sha1keytool -list -keystore xxx.jks
+查看详细信息keytool -list -v -keystore xxx.jks
+
     
 
         <a href="/2017/08/28/通过jks签名文件获取sha1/" class="post-more waves-effect waves-button">
@@ -161,7 +229,16 @@
 
     
         本文共计412字6张配图，预计阅读耗时3分20秒
-步骤...
+步骤总览：
+上传安装包到服务器某文件夹；
+配置MIME类型；
+将安装包链接生成二维码。
+
+注意事项：
+以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可；
+ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。
+
+基础工作：使用ftp...
     
 
         <a href="/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/" class="post-more waves-effect waves-button">
@@ -201,7 +278,11 @@
 
     
         本文共计277字3张配图，预计阅读耗时1分50秒
-分为...
+分为两部分：
+unity点击按钮调用系统截图和ios中的保存方法
+ios执行保存操作
+
+unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : M...
     
 
         <a href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/" class="post-more waves-effect waves-button">
@@ -241,7 +322,7 @@
 
     
         本文共计210字1张配图，预计阅读耗时1分40秒
-12...
+12345678void FixedUpdate()&#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &#123;        Application.Quit();    &#125...
     
 
         <a href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" class="post-more waves-effect waves-button">
@@ -281,7 +362,16 @@
 
     
         本文共计704字6张配图，预计阅读耗时4分30秒
-步骤...
+步骤预览（默认已经建好android和unity的项目）：
+导入unity中的class.jar在android中为unity写方法并修改代码
+精简安卓代码
+修改主配置文件
+修改gradle配置文件build apk得到aar
+拷贝相关文件到unity项目中
+在unity脚本文件中进行调用
+
+详解:
+拷贝/Applications/Unity...
     
 
         <a href="/2017/08/19/Android接入Unity/" class="post-more waves-effect waves-button">
@@ -321,7 +411,7 @@
 
     
         本文共计258字0张配图，预计阅读耗时2分10秒
-UT...
+UTC转化为本地时间12345678910111213141516171819202122/*** UTC转化为本地时间* @param utcTime   UTC数据|024834.94* @param utcTimePatten    UTC数据格式* @param localTimePatten* @return*/public sta...
     
 
         <a href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/" class="post-more waves-effect waves-button">
@@ -361,7 +451,7 @@ UT...
 
     
         本文共计142字0张配图，预计阅读耗时1分00秒
-早期...
+早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：1234//显示隐藏文件defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder //不显示隐藏文件defaults write com.apple...
     
 
         <a href="/2017/08/14/MAC上开启或关闭隐藏文件的显示/" class="post-more waves-effect waves-button">
@@ -400,7 +490,16 @@ UT...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        欢迎来到BobbyZhang的技术小站！在这里我们可以...
+        欢迎来到BobbyZhang的技术小站！在这里我们可以交流
+
+关于android的一切
+关于unity的一切
+关于AR/VR的一切
+以及其他6到飞起的编程小技巧
+眼前的苟且和充满诗意的远方
+
+欢迎大家常来指教，常鞭策，常鼓励，期待与你一起进步。
+
     
 
         <a href="/2017/08/09/第一篇博客/" class="post-more waves-effect waves-button">
@@ -421,6 +520,15 @@ UT...
         <footer class="footer">
     <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
 
         <p>
             
@@ -442,21 +550,108 @@ UT...
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://itbobby.com/&title=BobbyZhang的技术小站&pic=http://itbobby.com/img/headicon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://itbobby.com/&title=BobbyZhang的技术小站&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://itbobby.com/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=BobbyZhang的技术小站&url=http://itbobby.com/&via=http://itbobby.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://itbobby.com/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://itbobby.com/" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
 
 </script>
 
-<script src="/js/main.min.js?v=1.6.13"></script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
 
 
 
 
 
 
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '快回来！快回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
