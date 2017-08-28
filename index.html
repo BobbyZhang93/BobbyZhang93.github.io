@@ -13,7 +13,7 @@
     
     
     
-    <title>BobbyZhang的技术小站 | 每天半个小时，见证不一样的自己！</title>
+    <title>BobbyZhang的技术小站 | Just do IT！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -165,7 +165,7 @@
         <h1 class="title">BobbyZhang的技术小站</h1>
         <h5 class="subtitle">
             
-                每天半个小时，见证不一样的自己！
+                Just do IT！
             
         </h5>
     </div>
@@ -206,10 +206,10 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计54字2张配图，预计阅读耗时1分00秒</code></p>
-<p>进入jks存放文件夹<br>运行终端</p>
-<h3 id="查看sha1"><a href="#查看sha1" class="headerlink" title="查看sha1"></a>查看sha1</h3><p>keytool -list -keystore xxx.jks<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img01.png" alt=""></p>
-<h3 id="查看详细信息"><a href="#查看详细信息" class="headerlink" title="查看详细信息"></a>查看详细信息</h3><p>keytool -list -v -keystore xxx.jks<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img02.png" alt=""></p>
+        本文共计54字2张配图，预计阅读耗时1分00秒
+进入jks存放文件夹运行终端
+查看sha1keytool -list -keystore xxx.jks
+查看详细信息keytool -list -v -keystore xxx.jks
 
     
 
@@ -249,33 +249,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计412字6张配图，预计阅读耗时3分20秒</code></p>
-<h3 id="步骤总览："><a href="#步骤总览：" class="headerlink" title="步骤总览："></a>步骤总览：</h3><ol>
-<li>上传安装包到服务器某文件夹；</li>
-<li>配置MIME类型；</li>
-<li>将安装包链接生成二维码。</li>
-</ol>
-<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ul>
-<li>以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可；</li>
-<li>ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。</li>
-</ul>
-<h3 id="基础工作："><a href="#基础工作：" class="headerlink" title="基础工作："></a>基础工作：</h3><p>使用ftp工具连接虚拟云主机，可以选用Yummy FTP Pro<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img01.png" alt=""><br>配置服务器ip，用户名，密码后登入，然后在根目录下新建一个名为app的文件夹用来存放安装包，结构如图：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img02.png" alt=""></p>
-<h3 id="Android安装包："><a href="#Android安装包：" class="headerlink" title="Android安装包："></a>Android安装包：</h3><ol>
-<li>通过ftp工具上传该安装包到服务器app文件夹中；</li>
-<li>配置MIME类型一项如下:<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img03.png" alt=""></li>
-<li>安装包的下载链接即为<a href="https://你的域名/app/XXX.apk，将该链接在二维码生成网站上生成二维码即可；" target="_blank" rel="external">https://你的域名/app/XXX.apk，将该链接在二维码生成网站上生成二维码即可；</a></li>
-<li>使用浏览器的扫码功能，扫描二维码打开网页即可开启下载（微信扫描后需要跳转到浏览器打开）。</li>
-</ol>
-<h3 id="ios安装包："><a href="#ios安装包：" class="headerlink" title="ios安装包："></a>ios安装包：</h3><ol>
-<li>上传安装包到服务器根目录下的app文件夹；</li>
-<li>将导出安装包时同时导出的.plist文件打开，配置如图:<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img04.png" alt=""><br>在服务器根目录新建名为ios的文件夹，将.plist文件上传到该文件夹下，结构如图：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img05.png" alt=""></li>
-<li>新建一个.html页面，内容如下：<br> <a href="itms-services:///?action=download-manifest&url=https://bumie.org/ios/manifest.plist" target="_blank" rel="external">Click to Download</a><br> 上传该.html文件到服务器根目录；</li>
-<li>配置MIME类型两项如下：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img06.png" alt=""></li>
-<li>将3步骤中.html页面的访问链接生成二维码；</li>
-<li>扫描后将先打开包含“Click to Download”字样超链的网页，点击文字开始下载。</li>
-</ol>
-<p><em>注意：</em>步骤2/3中出现的url必须是安全的<em>https</em>形式，如果网站未配置ssl证书将不能实现ios安装包的下载。</p>
-<h3 id="完结。"><a href="#完结。" class="headerlink" title="完结。"></a>完结。</h3>
+        本文共计412字6张配图，预计阅读耗时3分20秒
+步骤总览：
+上传安装包到服务器某文件夹；
+配置MIME类型；
+将安装包链接生成二维码。
+
+注意事项：
+以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可；
+ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。
+
+基础工作：使用ftp...
     
 
         <a href="/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/" class="post-more waves-effect waves-button">
@@ -314,29 +298,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计277字3张配图，预计阅读耗时1分50秒</code></p>
-<h3 id="分为两部分："><a href="#分为两部分：" class="headerlink" title="分为两部分："></a>分为两部分：</h3><ul>
-<li>unity点击按钮调用系统截图和ios中的保存方法</li>
-<li>ios执行保存操作</li>
-</ul>
-<h3 id="unity中按钮绑定的代码如下："><a href="#unity中按钮绑定的代码如下：" class="headerlink" title="unity中按钮绑定的代码如下："></a>unity中按钮绑定的代码如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Runtime.InteropServices;</div><div class="line"></div><div class="line">public class SavePhoto : MonoBehaviour</div><div class="line">&#123;</div><div class="line">[DllImport(&quot;__Internal&quot;)]</div><div class="line">private static extern void _SavePhoto(string readAddr); </div><div class="line"></div><div class="line">public void Jietu()</div><div class="line">&#123; </div><div class="line">var cptrAddr = &quot;testpic&quot;; //捕捉地址  </div><div class="line">var readAddr = Application.persistentDataPath + &quot;/&quot; + cptrAddr;//读取地址，这两个地址在iOS里不一样  </div><div class="line"></div><div class="line">Application.CaptureScreenshot(cptrAddr); </div><div class="line">Debug.Log(&quot;截图&quot;);</div><div class="line"></div><div class="line">_SavePhoto(readAddr);</div><div class="line">Debug.Log(&quot;保存&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件："><a href="#导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件：" class="headerlink" title="导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件："></a>导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件：</h3><p><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png" alt="image"></p>
-<ul>
-<li><p>PhotoManager.h</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#endif /* PhotoManager_h */</div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface PhotoManager : NSObject</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo;</div><div class="line">@end</div></pre></td></tr></table></figure>
-</li>
-<li><p>PhotoManager.m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#import &quot;PhotoManager.h&quot;</div><div class="line">@implementation PhotoManager</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;保存结束&quot;);</div><div class="line">if (error != nil) &#123;</div><div class="line">NSLog(@&quot;有错误&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">void _SavePhoto(char *readAddr)</div><div class="line">&#123;</div><div class="line">NSString *strReadAddr = [NSString stringWithUTF8String:readAddr];</div><div class="line">UIImage *img = [UIImage imageWithContentsOfFile:strReadAddr];</div><div class="line">NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;w:%f, h:%f&quot;, img.size.width, img.size.height]);</div><div class="line">PhotoManager *instance = [PhotoManager alloc];</div><div class="line">UIImageWriteToSavedPhotosAlbum(img, instance,</div><div class="line">@selector(imageSaved:didFinishSavingWithError:contextInfo:), nil);</div><div class="line">&#125;  </div><div class="line">@end</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="配置应用权限"><a href="#配置应用权限" class="headerlink" title="配置应用权限"></a>配置应用权限</h3><p>在上图2处添加ios访问相册的权限</p>
-<h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><ul>
-<li><p>初次运行请求权限截图<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png" alt="image"></p>
-</li>
-<li><p>保存的截图文件<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/IMG_0009.PNG" alt="image"></p>
-</li>
-</ul>
+        本文共计277字3张配图，预计阅读耗时1分50秒
+分为两部分：
+unity点击按钮调用系统截图和ios中的保存方法
+ios执行保存操作
 
+unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : M...
     
 
         <a href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/" class="post-more waves-effect waves-button">
@@ -375,10 +342,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计210字1张配图，预计阅读耗时1分40秒</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void FixedUpdate()</div><div class="line">&#123;</div><div class="line">    //点击手机返回键关闭应用程序</div><div class="line">    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))</div><div class="line">    &#123;</div><div class="line">        Application.Quit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="顺便看看Update-和FixedUpdate-的区别"><a href="#顺便看看Update-和FixedUpdate-的区别" class="headerlink" title="顺便看看Update()和FixedUpdate()的区别"></a>顺便看看Update()和FixedUpdate()的区别</h3><p>从字面上理解，它们都是在更新时会被调用，并且会循环的调用。<br>但是Update会在每次渲染新的一帧时，被调用。<br>而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时慢，帧率会变化，update被调用的时间间隔就发生变化。<br>但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间隔怎么设置呢？<br>Edit->Project Setting->time下面的Fixed timestep<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png" alt=""></p>
-
+        本文共计210字1张配图，预计阅读耗时1分40秒
+12345678void FixedUpdate()&#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &#123;        Application.Quit();    &#125...
     
 
         <a href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" class="post-more waves-effect waves-button">
@@ -417,43 +382,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计704字6张配图，预计阅读耗时4分30秒</code></p>
-<h3 id="步骤预览（默认已经建好android和unity的项目）："><a href="#步骤预览（默认已经建好android和unity的项目）：" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）："></a>步骤预览（默认已经建好android和unity的项目）：</h3><ol>
-<li>导入unity中的class.jar在android中为unity写方法并修改代码</li>
-<li>精简安卓代码</li>
-<li>修改主配置文件</li>
-<li>修改gradle配置文件build apk得到aar</li>
-<li>拷贝相关文件到unity项目中</li>
-<li>在unity脚本文件中进行调用</li>
-</ol>
-<h3 id="详解"><a href="#详解" class="headerlink" title="详解:"></a>详解:</h3><ol>
-<li><p>拷贝/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar至安卓项目的libs，并且添加为依赖（win下路径为C:ProgramFilesUnityEditorDataPlaybackEnginesAndroidPlayerVariationsmonoReleaseclasses.jar）<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png" alt=""><br> 在安卓中为unity写方法<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png" alt=""><br> UnitySendMessage中第一个参数为unity中脚本绑定的物体，第二个参数为unity中接受android传参的方法名，第三个参数为需要传递的数据，三个参数均为String类型；<br> 将activity中的方法全都放在这个Test方法中，顺序执行，由于安卓接入unity后unity只调用这个指定的Test方法，所以在安卓中正常应该写在生命周期中（尤其onCreate中）的方法都要改变结构，以确保unity在调用Test后相关的代码都会执行；<br> 修改当前Activity的继承类为UnityPlayerActivity,并且把类中所有使用到context的地方都用UnityPlayer.currentActivity代替，否则会报方法不能找到的bug，例如:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(UnityPlayer.currentActivity,<span class="string">"GNSS服务已绑定"</span>,Toast.LENGTHSHORT).show();</div><div class="line">UnityPlayer.currentActivity.bindService(intent, mConnection, BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
-</li>
-<li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
-</li>
-<li>修改主配置文件:<br> 将主题更改为android自带的的主题</li>
-<li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br> 更改后的主配置文件为:<br> <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
-<li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
-<ul>
-<li>build->build apk   直接去app–>build–>outputs–>aar目录下找到app-debug.aar文件，解压即可获得所需资源</li>
-<li><p>在gradle中继续添加代码：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">task deleteOldJar(<span class="string">type:</span> Delete) &#123;</div><div class="line">   delete <span class="string">'build/outputs/test.jar'</span></div><div class="line">&#125;</div><div class="line">task exportJar(<span class="string">type:</span> Copy) &#123;</div><div class="line">    from(<span class="string">'build/intermediates/bundles/release/'</span>)</div><div class="line">    into(<span class="string">'build/libs/'</span>)</div><div class="line">    include(<span class="string">'classes.jar'</span>)</div><div class="line">    rename (<span class="string">'classes.jar'</span>, <span class="string">'androidforunity.jar'</span>)</div><div class="line">&#125;</div><div class="line">exportJar.dependsOn(deleteOldJar, build)</div></pre></td></tr></table></figure>
-<p>选择右侧gradle中的exportJar进行导出<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png" alt=""><br>在/Users/xun-mac/AndroidStudioProjects/AndroidforUnity/app/build/intermediates/bundles/release/classes.jar中获取所需资源。</p>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""></p>
-</li>
-<li><p>拷入之后的unity文件目录为<br>  <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png" alt=""></p>
-</li>
-<li><p>在unity中编写脚本，获取从android中传过来的数据<br>  在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//获取Android的Java接口  </div><div class="line">AndroidJavaObject cls = new AndroidJavaObject(&quot;com.bumie.androidforunity.TestActivity&quot;);</div><div class="line">   cls.Call(&quot;Test&quot;);//这个引号内是调用的Android方法，可以补上第二个参数用以匹配Android端方法的参数</div><div class="line"></div><div class="line">//接下来在getText()中通过参数获取数据</div><div class="line">public void getText(string aa)</div><div class="line">    &#123;</div><div class="line">        Debug.Log (&quot;success,unity&quot;+&quot;/:&quot;+aa);</div><div class="line">        ttt[0].text = aa;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h3>
+        本文共计704字6张配图，预计阅读耗时4分30秒
+步骤预览（默认已经建好android和unity的项目）：
+导入unity中的class.jar在android中为unity写方法并修改代码
+精简安卓代码
+修改主配置文件
+修改gradle配置文件build apk得到aar
+拷贝相关文件到unity项目中
+在unity脚本文件中进行调用
+
+详解:
+拷贝/Applications/Unity...
     
 
         <a href="/2017/08/19/Android接入Unity/" class="post-more waves-effect waves-button">
@@ -492,17 +431,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计258字0张配图，预计阅读耗时2分10秒</code></p>
-<h3 id="UTC转化为本地时间"><a href="#UTC转化为本地时间" class="headerlink" title="UTC转化为本地时间"></a>UTC转化为本地时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* UTC转化为本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTime   UTC数据|024834.94</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTimePatten    UTC数据格式</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> localTimePatten</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">utc2Local</span><span class="params">(String utcTime, String utcTimePatten,</span></span></div><div class="line"><span class="function"><span class="params">String localTimePatten)</span> </span>&#123;</div><div class="line">SimpleDateFormat utcFormater = <span class="keyword">new</span> SimpleDateFormat(utcTimePatten);</div><div class="line">utcFormater.setTimeZone(TimeZone.getTimeZone(<span class="string">"UTC"</span>));</div><div class="line">Date gpsUTCDate = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">gpsUTCDate = utcFormater.parse(utcTime);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">SimpleDateFormat localFormater = <span class="keyword">new</span> SimpleDateFormat(localTimePatten);</div><div class="line">localFormater.setTimeZone(TimeZone.getDefault());</div><div class="line">String localTime = localFormater.format(gpsUTCDate.getTime());</div><div class="line"><span class="keyword">return</span> localTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="本地时间转时间戳"><a href="#本地时间转时间戳" class="headerlink" title="本地时间转时间戳"></a>本地时间转时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 本地时间转时间戳</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> s  由UTC转化来的本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> dot   原UTC数据的小数位</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s,String dot)</span>  </span>&#123;</div><div class="line">String res;</div><div class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);<span class="comment">//设置日期格式</span></div><div class="line">SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</div><div class="line">Date date = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">date = simpleDateFormat.parse(df.format(<span class="keyword">new</span> Date())+<span class="string">" "</span>+s);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line"><span class="keyword">long</span> ts = date.getTime();</div><div class="line">ts+=Double.valueOf(dot)*<span class="number">10</span>;</div><div class="line">res = String.valueOf(ts);</div><div class="line"><span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s=<span class="string">"024834.94"</span>;</div><div class="line">dateToStamp(utc2Local(s,<span class="string">"hhmmss"</span>,<span class="string">"HH:mm:ss"</span>),s.substring(<span class="number">7</span>,<span class="number">9</span>))</div></pre></td></tr></table></figure>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
-<li><p>时间输出为连续递增，以便做滤波操作</p>
-</li>
-<li><p>UTC->本地时间->时间戳 只精确到了s，UTC中的小数位（0-99递增）拼接到了时间戳上满足连续递增</p>
-</li>
-</ul>
-
+        本文共计258字0张配图，预计阅读耗时2分10秒
+UTC转化为本地时间12345678910111213141516171819202122/*** UTC转化为本地时间* @param utcTime   UTC数据|024834.94* @param utcTimePatten    UTC数据格式* @param localTimePatten* @return*/public sta...
     
 
         <a href="/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/" class="post-more waves-effect waves-button">
@@ -541,13 +471,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <p><code>本文共计142字0张配图，预计阅读耗时1分00秒</code></p>
-<h4 id="早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示："><a href="#早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：" class="headerlink" title="早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示："></a>早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
-<h4 id="当升级到OS-X-10-9-Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令："><a href="#当升级到OS-X-10-9-Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令：" class="headerlink" title="当升级到OS X 10.9 Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令："></a>当升级到OS X 10.9 Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
-<ul>
-<li>区别在于finder首字母的大小写</li>
-</ul>
-
+        本文共计142字0张配图，预计阅读耗时1分00秒
+早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示：1234//显示隐藏文件defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder //不显示隐藏文件defaults write com.apple...
     
 
         <a href="/2017/08/14/MAC上开启或关闭隐藏文件的显示/" class="post-more waves-effect waves-button">
@@ -586,15 +511,15 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <h4 id="欢迎来到BobbyZhang的技术小站！"><a href="#欢迎来到BobbyZhang的技术小站！" class="headerlink" title="欢迎来到BobbyZhang的技术小站！"></a>欢迎来到BobbyZhang的技术小站！</h4><p>在这里我们可以交流</p>
-<ul>
-<li>关于android的一切</li>
-<li>关于unity的一切</li>
-<li>关于AR/VR的一切</li>
-<li>以及其他6到飞起的编程小技巧</li>
-<li>眼前的苟且和充满诗意的远方</li>
-</ul>
-<p>欢迎大家常来指教，常鞭策，常鼓励，期待与你一起进步。</p>
+        欢迎来到BobbyZhang的技术小站！在这里我们可以交流
+
+关于android的一切
+关于unity的一切
+关于AR/VR的一切
+以及其他6到飞起的编程小技巧
+眼前的苟且和充满诗意的远方
+
+欢迎大家常来指教，常鞭策，常鼓励，期待与你一起进步。
 
     
 
