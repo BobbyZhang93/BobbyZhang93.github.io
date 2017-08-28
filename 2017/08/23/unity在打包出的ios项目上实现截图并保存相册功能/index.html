@@ -20,20 +20,20 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="本文共计277字，预计阅读耗时1分32秒 分为两部分： unity点击按钮调用系统截图和ios中的保存方法 ios执行保存操作  unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : MonoBeha">
+    <meta name="description" content="本文共计277字3张配图，预计阅读耗时1分50秒 分为两部分： unity点击按钮调用系统截图和ios中的保存方法 ios执行保存操作  unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : Mono">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unity在打包出的ios项目上实现截图并保存相册功能">
 <meta property="og:url" content="http://itbobby.com/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/index.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="本文共计277字，预计阅读耗时1分32秒 分为两部分： unity点击按钮调用系统截图和ios中的保存方法 ios执行保存操作  unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : MonoBeha">
+<meta property="og:description" content="本文共计277字3张配图，预计阅读耗时1分50秒 分为两部分： unity点击按钮调用系统截图和ios中的保存方法 ios执行保存操作  unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : Mono">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/IMG_0009.PNG">
-<meta property="og:updated_time" content="2017-08-24T12:50:02.000Z">
+<meta property="og:updated_time" content="2017-08-28T14:43:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unity在打包出的ios项目上实现截图并保存相册功能">
-<meta name="twitter:description" content="本文共计277字，预计阅读耗时1分32秒 分为两部分： unity点击按钮调用系统截图和ios中的保存方法 ios执行保存操作  unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : MonoBeha">
+<meta name="twitter:description" content="本文共计277字3张配图，预计阅读耗时1分50秒 分为两部分： unity点击按钮调用系统截图和ios中的保存方法 ios执行保存操作  unity中按钮绑定的代码如下：1234567891011121314151617181920using UnityEngine;using System.Runtime.InteropServices;public class SavePhoto : Mono">
 <meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png">
     
     <link rel="shortcut icon" href="/img/favicon.png">
@@ -195,7 +195,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><code>本文共计277字，预计阅读耗时1分32秒</code></p>
+            <p><code>本文共计277字3张配图，预计阅读耗时1分50秒</code></p>
 <h3 id="分为两部分："><a href="#分为两部分：" class="headerlink" title="分为两部分："></a>分为两部分：</h3><ul>
 <li>unity点击按钮调用系统截图和ios中的保存方法</li>
 <li>ios执行保存操作</li>
@@ -224,7 +224,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-24T12:50:02.000Z" itemprop="dateUpdated">2017-08-24 20:50:02</time>
+    最后更新时间：<time datetime="2017-08-28T14:43:38.000Z" itemprop="dateUpdated">2017-08-28 22:43:38</time>
 </span><br>
 
 

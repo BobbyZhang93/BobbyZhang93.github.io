@@ -20,12 +20,12 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="本文共计412字，预计阅读耗时2分17秒 步骤总览： 上传安装包到服务器某文件夹； 配置MIME类型； 将安装包链接生成二维码。  注意事项： 以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可； ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。  基础工作：使用ftp工具连接虚拟云">
+    <meta name="description" content="本文共计412字6张配图，预计阅读耗时3分20秒 步骤总览： 上传安装包到服务器某文件夹； 配置MIME类型； 将安装包链接生成二维码。  注意事项： 以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可； ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。  基础工作：使用ftp工具连">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现扫码从服务器下载Android和ios安装包的简明教程">
 <meta property="og:url" content="http://itbobby.com/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/index.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="本文共计412字，预计阅读耗时2分17秒 步骤总览： 上传安装包到服务器某文件夹； 配置MIME类型； 将安装包链接生成二维码。  注意事项： 以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可； ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。  基础工作：使用ftp工具连接虚拟云">
+<meta property="og:description" content="本文共计412字6张配图，预计阅读耗时3分20秒 步骤总览： 上传安装包到服务器某文件夹； 配置MIME类型； 将安装包链接生成二维码。  注意事项： 以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可； ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。  基础工作：使用ftp工具连">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img01.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img02.png">
@@ -33,10 +33,10 @@
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img04.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img05.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img06.png">
-<meta property="og:updated_time" content="2017-08-24T13:17:35.000Z">
+<meta property="og:updated_time" content="2017-08-28T14:43:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现扫码从服务器下载Android和ios安装包的简明教程">
-<meta name="twitter:description" content="本文共计412字，预计阅读耗时2分17秒 步骤总览： 上传安装包到服务器某文件夹； 配置MIME类型； 将安装包链接生成二维码。  注意事项： 以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可； ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。  基础工作：使用ftp工具连接虚拟云">
+<meta name="twitter:description" content="本文共计412字6张配图，预计阅读耗时3分20秒 步骤总览： 上传安装包到服务器某文件夹； 配置MIME类型； 将安装包链接生成二维码。  注意事项： 以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可； ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。  基础工作：使用ftp工具连">
 <meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img01.png">
     
     <link rel="shortcut icon" href="/img/favicon.png">
@@ -198,7 +198,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><code>本文共计412字，预计阅读耗时2分17秒</code></p>
+            <p><code>本文共计412字6张配图，预计阅读耗时3分20秒</code></p>
 <h3 id="步骤总览："><a href="#步骤总览：" class="headerlink" title="步骤总览："></a>步骤总览：</h3><ol>
 <li>上传安装包到服务器某文件夹；</li>
 <li>配置MIME类型；</li>
@@ -231,7 +231,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-24T13:17:35.000Z" itemprop="dateUpdated">2017-08-24 21:17:35</time>
+    最后更新时间：<time datetime="2017-08-28T14:43:02.000Z" itemprop="dateUpdated">2017-08-28 22:43:02</time>
 </span><br>
 
 
@@ -309,7 +309,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/28/通过jks签名文件获取sha1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">通过jks签名文件获取sha1</h4>
+      </a>
+    </div>
   
 
   

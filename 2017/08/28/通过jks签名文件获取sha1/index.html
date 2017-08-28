@@ -13,26 +13,27 @@
     
     
     
-    <title>Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate | BobbyZhang的技术小站 | 每天半个小时，见证不一样的自己！</title>
+    <title>通过jks签名文件获取sha1 | BobbyZhang的技术小站 | 每天半个小时，见证不一样的自己！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="本文共计210字1张配图，预计阅读耗时1分40秒 12345678void FixedUpdate()&amp;#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &amp;#123;        Application.Quit();    &amp;#125;&amp;#">
+    <meta name="description" content="本文共计54字2张配图，预计阅读耗时1分00秒 进入jks存放文件夹运行终端 查看sha1keytool -list -keystore xxx.jks 查看详细信息keytool -list -v -keystore xxx.jks">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate">
-<meta property="og:url" content="http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/index.html">
+<meta property="og:title" content="通过jks签名文件获取sha1">
+<meta property="og:url" content="http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/index.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="本文共计210字1张配图，预计阅读耗时1分40秒 12345678void FixedUpdate()&amp;#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &amp;#123;        Application.Quit();    &amp;#125;&amp;#">
+<meta property="og:description" content="本文共计54字2张配图，预计阅读耗时1分00秒 进入jks存放文件夹运行终端 查看sha1keytool -list -keystore xxx.jks 查看详细信息keytool -list -v -keystore xxx.jks">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png">
-<meta property="og:updated_time" content="2017-08-28T14:47:31.000Z">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img01.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img02.png">
+<meta property="og:updated_time" content="2017-08-28T14:47:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate">
-<meta name="twitter:description" content="本文共计210字1张配图，预计阅读耗时1分40秒 12345678void FixedUpdate()&amp;#123;    //点击手机返回键关闭应用程序    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))    &amp;#123;        Application.Quit();    &amp;#125;&amp;#">
-<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png">
+<meta name="twitter:title" content="通过jks签名文件获取sha1">
+<meta name="twitter:description" content="本文共计54字2张配图，预计阅读耗时1分00秒 进入jks存放文件夹运行终端 查看sha1keytool -list -keystore xxx.jks 查看详细信息keytool -list -v -keystore xxx.jks">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img01.png">
     
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -125,7 +126,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</div>
+        <div class="flex-col header-title ellipsis">通过jks签名文件获取sha1</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -147,11 +148,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</h1>
+        <h1 class="title">通过jks签名文件获取sha1</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-08-19T15:56:49.000Z" itemprop="datePublished" class="page-time">
-  2017-08-19
+                <time datetime="2017-08-28T14:36:30.000Z" itemprop="datePublished" class="page-time">
+  2017-08-28
 </time>
 
 
@@ -170,17 +171,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#顺便看看Update-和FixedUpdate-的区别"><span class="post-toc-number">1.</span> <span class="post-toc-text">顺便看看Update()和FixedUpdate()的区别</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看sha1"><span class="post-toc-number">1.</span> <span class="post-toc-text">查看sha1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看详细信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看详细信息</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate"
+<article id="post-通过jks签名文件获取sha1"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</h1>
+        <h1 class="post-card-title">通过jks签名文件获取sha1</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-08-19 23:56:49" datetime="2017-08-19T15:56:49.000Z"  itemprop="datePublished">2017-08-19</time>
+            <time class="post-time" title="2017-08-28 22:36:30" datetime="2017-08-28T14:36:30.000Z"  itemprop="datePublished">2017-08-28</time>
 
             
 
@@ -193,9 +194,10 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><code>本文共计210字1张配图，预计阅读耗时1分40秒</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void FixedUpdate()</div><div class="line">&#123;</div><div class="line">    //点击手机返回键关闭应用程序</div><div class="line">    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))</div><div class="line">    &#123;</div><div class="line">        Application.Quit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="顺便看看Update-和FixedUpdate-的区别"><a href="#顺便看看Update-和FixedUpdate-的区别" class="headerlink" title="顺便看看Update()和FixedUpdate()的区别"></a>顺便看看Update()和FixedUpdate()的区别</h3><p>从字面上理解，它们都是在更新时会被调用，并且会循环的调用。<br>但是Update会在每次渲染新的一帧时，被调用。<br>而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时慢，帧率会变化，update被调用的时间间隔就发生变化。<br>但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间隔怎么设置呢？<br>Edit->Project Setting->time下面的Fixed timestep<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png" alt=""></p>
+            <p><code>本文共计54字2张配图，预计阅读耗时1分00秒</code></p>
+<p>进入jks存放文件夹<br>运行终端</p>
+<h3 id="查看sha1"><a href="#查看sha1" class="headerlink" title="查看sha1"></a>查看sha1</h3><p>keytool -list -keystore xxx.jks<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img01.png" alt=""></p>
+<h3 id="查看详细信息"><a href="#查看详细信息" class="headerlink" title="查看详细信息"></a>查看详细信息</h3><p>keytool -list -v -keystore xxx.jks<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img02.png" alt=""></p>
 
         </div>
 
@@ -203,12 +205,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-28T14:47:31.000Z" itemprop="dateUpdated">2017-08-28 22:47:31</time>
+    最后更新时间：<time datetime="2017-08-28T14:47:27.000Z" itemprop="dateUpdated">2017-08-28 22:47:27</time>
 </span><br>
 
 
         
-        <a href="/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" target="_blank" rel="external">http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/</a>
+        <a href="/2017/08/28/通过jks签名文件获取sha1/" target="_blank" rel="external">http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/</a>
         
     </div>
     <footer>
@@ -236,7 +238,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/&title=《Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate》 — BobbyZhang的技术小站&pic=http://itbobby.com/img/headicon.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/&title=《通过jks签名文件获取sha1》 — BobbyZhang的技术小站&pic=http://itbobby.com/img/headicon.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -246,22 +248,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/&title=《Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate》 — BobbyZhang的技术小站&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/&title=《通过jks签名文件获取sha1》 — BobbyZhang的技术小站&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate》 — BobbyZhang的技术小站&url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/&via=http://itbobby.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《通过jks签名文件获取sha1》 — BobbyZhang的技术小站&url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/&via=http://itbobby.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -281,21 +283,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">unity在打包出的ios项目上实现截图并保存相册功能</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/08/19/Android接入Unity/" id="post-next" class="post-nav-link">
+      <a href="/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Android接入Unity</h4>
+        <h4 class="title">实现扫码从服务器下载Android和ios安装包的简明教程</h4>
       </a>
     </div>
   
@@ -394,7 +389,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/&title=《Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate》 — BobbyZhang的技术小站&pic=http://itbobby.com/img/headicon.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/&title=《通过jks签名文件获取sha1》 — BobbyZhang的技术小站&pic=http://itbobby.com/img/headicon.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -404,22 +399,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/&title=《Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate》 — BobbyZhang的技术小站&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/&title=《通过jks签名文件获取sha1》 — BobbyZhang的技术小站&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate》 — BobbyZhang的技术小站&url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/&via=http://itbobby.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《通过jks签名文件获取sha1》 — BobbyZhang的技术小站&url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/&via=http://itbobby.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -430,7 +425,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/" alt="微信分享二维码">
 </div>
 
 
