@@ -20,12 +20,12 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目）： 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解: 拷贝/Applications/Unity/Pl">
+    <meta name="description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目） 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解 拷贝/Applications/Unity/Play">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android接入Unity">
 <meta property="og:url" content="http://itbobby.com/2017/08/19/Android接入Unity/index.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目）： 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解: 拷贝/Applications/Unity/Pl">
+<meta property="og:description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目） 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解 拷贝/Applications/Unity/Play">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png">
@@ -33,10 +33,10 @@
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png">
-<meta property="og:updated_time" content="2017-08-28T14:44:31.000Z">
+<meta property="og:updated_time" content="2017-08-29T15:29:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android接入Unity">
-<meta name="twitter:description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目）： 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解: 拷贝/Applications/Unity/Pl">
+<meta name="twitter:description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目） 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解 拷贝/Applications/Unity/Play">
 <meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png">
     
     <link rel="shortcut icon" href="/img/favicon.png">
@@ -196,7 +196,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#步骤预览（默认已经建好android和unity的项目）："><span class="post-toc-number">1.</span> <span class="post-toc-text">步骤预览（默认已经建好android和unity的项目）：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#至此，android接入unity的全部工作都已经搞定了！"><span class="post-toc-number">3.</span> <span class="post-toc-text">至此，android接入unity的全部工作都已经搞定了！</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#步骤预览（默认已经建好android和unity的项目）"><span class="post-toc-number">1.</span> <span class="post-toc-text">步骤预览（默认已经建好android和unity的项目）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#至此，android接入unity的全部工作都已经搞定了！"><span class="post-toc-number">3.</span> <span class="post-toc-text">至此，android接入unity的全部工作都已经搞定了！</span></a></li></ol>
         </nav>
     </aside>
     
@@ -220,7 +220,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p><code>本文共计704字6张配图，预计阅读耗时4分30秒</code></p>
-<h3 id="步骤预览（默认已经建好android和unity的项目）："><a href="#步骤预览（默认已经建好android和unity的项目）：" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）："></a>步骤预览（默认已经建好android和unity的项目）：</h3><ol>
+<h3 id="步骤预览（默认已经建好android和unity的项目）"><a href="#步骤预览（默认已经建好android和unity的项目）" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）"></a>步骤预览（默认已经建好android和unity的项目）</h3><ol>
 <li>导入unity中的class.jar在android中为unity写方法并修改代码</li>
 <li>精简安卓代码</li>
 <li>修改主配置文件</li>
@@ -228,13 +228,13 @@
 <li>拷贝相关文件到unity项目中</li>
 <li>在unity脚本文件中进行调用</li>
 </ol>
-<h3 id="详解"><a href="#详解" class="headerlink" title="详解:"></a>详解:</h3><ol>
+<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><ol>
 <li><p>拷贝/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar至安卓项目的libs，并且添加为依赖（win下路径为C:ProgramFilesUnityEditorDataPlaybackEnginesAndroidPlayerVariationsmonoReleaseclasses.jar）<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png" alt=""><br> 在安卓中为unity写方法<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png" alt=""><br> UnitySendMessage中第一个参数为unity中脚本绑定的物体，第二个参数为unity中接受android传参的方法名，第三个参数为需要传递的数据，三个参数均为String类型；<br> 将activity中的方法全都放在这个Test方法中，顺序执行，由于安卓接入unity后unity只调用这个指定的Test方法，所以在安卓中正常应该写在生命周期中（尤其onCreate中）的方法都要改变结构，以确保unity在调用Test后相关的代码都会执行；<br> 修改当前Activity的继承类为UnityPlayerActivity,并且把类中所有使用到context的地方都用UnityPlayer.currentActivity代替，否则会报方法不能找到的bug，例如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(UnityPlayer.currentActivity,<span class="string">"GNSS服务已绑定"</span>,Toast.LENGTHSHORT).show();</div><div class="line">UnityPlayer.currentActivity.bindService(intent, mConnection, BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
 </li>
 <li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
 </li>
-<li>修改主配置文件:<br> 将主题更改为android自带的的主题</li>
+<li>修改主配置文件<br> 将主题更改为android自带的的主题</li>
 <li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br> 更改后的主配置文件为:<br> <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
 <li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
 <ul>
@@ -262,7 +262,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-28T14:44:31.000Z" itemprop="dateUpdated">2017-08-28 22:44:31</time>
+    最后更新时间：<time datetime="2017-08-29T15:29:50.000Z" itemprop="dateUpdated">2017-08-29 23:29:50</time>
 </span><br>
 
 
