@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://itbobby.com/"/>
-  <updated>2017-08-31T15:46:09.000Z</updated>
+  <updated>2017-08-31T16:49:24.000Z</updated>
   <id>http://itbobby.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://itbobby.com/2017/08/28/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/"/>
     <id>http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/</id>
     <published>2017-08-28T14:36:30.000Z</published>
-    <updated>2017-08-31T15:46:09.000Z</updated>
+    <updated>2017-08-31T16:49:24.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计54字2张配图，预计阅读耗时1分00秒</code></p>
 <p>进入jks存放文件夹<br>运行终端</p>
@@ -36,6 +36,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
     
@@ -46,7 +48,7 @@
     <link href="http://itbobby.com/2017/08/24/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>http://itbobby.com/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/</id>
     <published>2017-08-24T13:11:18.000Z</published>
-    <updated>2017-08-31T15:45:55.000Z</updated>
+    <updated>2017-08-31T16:49:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计412字6张配图，预计阅读耗时3分20秒</code></p>
 <h3 id="步骤总览"><a href="#步骤总览" class="headerlink" title="步骤总览"></a>步骤总览</h3><ol>
@@ -84,6 +86,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="服务器" scheme="http://itbobby.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
@@ -94,7 +98,7 @@
     <link href="http://itbobby.com/2017/08/23/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/"/>
     <id>http://itbobby.com/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/</id>
     <published>2017-08-23T14:58:11.000Z</published>
-    <updated>2017-08-31T15:45:30.000Z</updated>
+    <updated>2017-08-31T16:49:03.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计277字3张配图，预计阅读耗时1分50秒</code></p>
 <h3 id="分为两部分"><a href="#分为两部分" class="headerlink" title="分为两部分"></a>分为两部分</h3><ul>
@@ -128,6 +132,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="Unity" scheme="http://itbobby.com/tags/Unity/"/>
     
@@ -142,7 +148,7 @@
     <link href="http://itbobby.com/2017/08/19/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%EF%BC%8C%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/"/>
     <id>http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/</id>
     <published>2017-08-19T15:56:49.000Z</published>
-    <updated>2017-08-31T15:45:03.000Z</updated>
+    <updated>2017-08-31T16:48:53.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计210字1张配图，预计阅读耗时1分40秒</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void FixedUpdate()</div><div class="line">&#123;</div><div class="line">    //点击手机返回键关闭应用程序</div><div class="line">    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))</div><div class="line">    &#123;</div><div class="line">        Application.Quit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -156,6 +162,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="Unity" scheme="http://itbobby.com/tags/Unity/"/>
     
@@ -166,7 +174,7 @@
     <link href="http://itbobby.com/2017/08/19/Android%E6%8E%A5%E5%85%A5Unity/"/>
     <id>http://itbobby.com/2017/08/19/Android接入Unity/</id>
     <published>2017-08-19T01:25:34.000Z</published>
-    <updated>2017-08-31T15:45:41.000Z</updated>
+    <updated>2017-08-31T16:48:40.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计704字6张配图，预计阅读耗时4分30秒</code></p>
 <h3 id="步骤预览（默认已经建好android和unity的项目）"><a href="#步骤预览（默认已经建好android和unity的项目）" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）"></a>步骤预览（默认已经建好android和unity的项目）</h3><ol>
@@ -213,6 +221,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
     
@@ -227,7 +237,7 @@
     <link href="http://itbobby.com/2017/08/14/UTC%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4%E5%86%8D%E8%BD%AC%E5%8C%96%E4%B8%BAUnix%E6%97%B6%E9%97%B4%E6%88%B3/"/>
     <id>http://itbobby.com/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/</id>
     <published>2017-08-14T15:56:23.000Z</published>
-    <updated>2017-08-31T15:44:20.000Z</updated>
+    <updated>2017-08-31T16:48:28.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计258字0张配图，预计阅读耗时2分10秒</code></p>
 <h3 id="UTC转化为本地时间"><a href="#UTC转化为本地时间" class="headerlink" title="UTC转化为本地时间"></a>UTC转化为本地时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* UTC转化为本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTime   UTC数据|024834.94</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTimePatten    UTC数据格式</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> localTimePatten</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">utc2Local</span><span class="params">(String utcTime, String utcTimePatten,</span></span></div><div class="line"><span class="function"><span class="params">String localTimePatten)</span> </span>&#123;</div><div class="line">SimpleDateFormat utcFormater = <span class="keyword">new</span> SimpleDateFormat(utcTimePatten);</div><div class="line">utcFormater.setTimeZone(TimeZone.getTimeZone(<span class="string">"UTC"</span>));</div><div class="line">Date gpsUTCDate = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">gpsUTCDate = utcFormater.parse(utcTime);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">SimpleDateFormat localFormater = <span class="keyword">new</span> SimpleDateFormat(localTimePatten);</div><div class="line">localFormater.setTimeZone(TimeZone.getDefault());</div><div class="line">String localTime = localFormater.format(gpsUTCDate.getTime());</div><div class="line"><span class="keyword">return</span> localTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -248,6 +258,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="Java" scheme="http://itbobby.com/tags/Java/"/>
     
@@ -260,7 +272,7 @@
     <link href="http://itbobby.com/2017/08/14/MAC%E4%B8%8A%E5%BC%80%E5%90%AF%E6%88%96%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%9A%84%E6%98%BE%E7%A4%BA/"/>
     <id>http://itbobby.com/2017/08/14/MAC上开启或关闭隐藏文件的显示/</id>
     <published>2017-08-14T15:51:29.000Z</published>
-    <updated>2017-08-31T15:39:51.000Z</updated>
+    <updated>2017-08-31T16:47:50.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计142字0张配图，预计阅读耗时1分00秒</code></p>
 <h4 id="早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示"><a href="#早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示" class="headerlink" title="早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示"></a>早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
@@ -277,6 +289,8 @@
     
     </summary>
     
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
     
       <category term="开发工具" scheme="http://itbobby.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
@@ -287,7 +301,7 @@
     <link href="http://itbobby.com/2017/08/09/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
     <id>http://itbobby.com/2017/08/09/第一篇博客/</id>
     <published>2017-08-09T15:05:24.000Z</published>
-    <updated>2017-08-31T16:44:39.000Z</updated>
+    <updated>2017-08-31T16:48:07.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="欢迎来到BobbyZhang的技术小站！"><a href="#欢迎来到BobbyZhang的技术小站！" class="headerlink" title="欢迎来到BobbyZhang的技术小站！"></a>欢迎来到BobbyZhang的技术小站！</h4><p>在这里我们可以交流</p>
 <ul>
@@ -306,7 +320,7 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://itbobby.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
       <category term="随笔" scheme="http://itbobby.com/tags/%E9%9A%8F%E7%AC%94/"/>
