@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://itbobby.com/"/>
-  <updated>2017-08-31T16:49:24.000Z</updated>
+  <updated>2017-09-02T15:58:48.000Z</updated>
   <id>http://itbobby.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于WebSettings.CacheMode的一些理解</title>
+    <link href="http://itbobby.com/2017/09/02/%E5%85%B3%E4%BA%8EWebSettings-CacheMode%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
+    <id>http://itbobby.com/2017/09/02/关于WebSettings-CacheMode的一些理解/</id>
+    <published>2017-09-02T15:54:09.000Z</published>
+    <updated>2017-09-02T15:58:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>本文共计260字0张配图，预计阅读耗时2分30秒</code></p>
+<p>原文链接：<a href="http://lijunjie.iteye.com/blog/1181923" target="_blank" rel="external">http://lijunjie.iteye.com/blog/1181923</a></p>
+<p><strong>WebSettings.CacheMode共有5个选项</strong> </p>
+<h3 id="LOAD-DEFAULT"><a href="#LOAD-DEFAULT" class="headerlink" title="LOAD_DEFAULT"></a>LOAD_DEFAULT</h3><p>默认加载方式，使用这种方式，会实现快速前进后退，在同一个标签打开几个网页后，关闭网络时，可以通过前进后退来切换已经访问过的数据，同时新建网页需要网络 </p>
+<h3 id="LOAD-NO-CACHE-LOAD-NORMAL"><a href="#LOAD-NO-CACHE-LOAD-NORMAL" class="headerlink" title="LOAD_NO_CACHE/LOAD_NORMAL"></a>LOAD_NO_CACHE/LOAD_NORMAL</h3><p>这两种方式相同，不使用缓存，如果没有网络，即使以前打开过此网页也不会使用以前的网页。 </p>
+<h3 id="LOAD-CACHE-ELSE-NETWORK"><a href="#LOAD-CACHE-ELSE-NETWORK" class="headerlink" title="LOAD_CACHE_ELSE_NETWORK"></a>LOAD_CACHE_ELSE_NETWORK</h3><p>这个方式不论如何都会从缓存中加载，除非缓存中的网页过期，出现的问题就是打开动态网页时，不能时时更新，会出现上次打开过的状态，除非清除缓存。 </p>
+<h3 id="LOAD-CACHE-ONLY"><a href="#LOAD-CACHE-ONLY" class="headerlink" title="LOAD_CACHE_ONLY"></a>LOAD_CACHE_ONLY</h3><p>这个方式只是会使用缓存中的数据，不会使用网络。 </p>
+<p><strong>tips</strong>：影响缓存模式的两个http头是If-None-Match和If-Modified-Since，遇到这两个http头，浏览器会把缓存模式改为LOAD_NO_CACHE方式。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;本文共计260字0张配图，预计阅读耗时2分30秒&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;http://lijunjie.iteye.com/blog/1181923&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://
+    
+    </summary>
+    
+      <category term="转载" scheme="http://itbobby.com/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+      <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>通过jks签名文件获取sha1</title>
@@ -224,9 +255,9 @@
       <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
-    
       <category term="Unity" scheme="http://itbobby.com/tags/Unity/"/>
+    
+      <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
     
       <category term="混合开发" scheme="http://itbobby.com/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
     
