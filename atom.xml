@@ -4,9 +4,9 @@
   <subtitle>Just do IT！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://itbobby.com/"/>
+  <link href="http://itbobby.top/"/>
   <updated>2017-09-02T15:58:48.000Z</updated>
-  <id>http://itbobby.com/</id>
+  <id>http://itbobby.top/</id>
   
   <author>
     <name>BobbyZhang</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>关于WebSettings.CacheMode的一些理解</title>
-    <link href="http://itbobby.com/2017/09/02/%E5%85%B3%E4%BA%8EWebSettings-CacheMode%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
-    <id>http://itbobby.com/2017/09/02/关于WebSettings-CacheMode的一些理解/</id>
+    <link href="http://itbobby.top/2017/09/02/%E5%85%B3%E4%BA%8EWebSettings-CacheMode%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
+    <id>http://itbobby.top/2017/09/02/关于WebSettings-CacheMode的一些理解/</id>
     <published>2017-09-02T15:54:09.000Z</published>
     <updated>2017-09-02T15:58:48.000Z</updated>
     
@@ -39,17 +39,17 @@
     
     </summary>
     
-      <category term="转载" scheme="http://itbobby.com/categories/%E8%BD%AC%E8%BD%BD/"/>
+      <category term="转载" scheme="http://itbobby.top/categories/%E8%BD%AC%E8%BD%BD/"/>
     
     
-      <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
+      <category term="Android" scheme="http://itbobby.top/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>通过jks签名文件获取sha1</title>
-    <link href="http://itbobby.com/2017/08/28/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/"/>
-    <id>http://itbobby.com/2017/08/28/通过jks签名文件获取sha1/</id>
+    <link href="http://itbobby.top/2017/08/28/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/"/>
+    <id>http://itbobby.top/2017/08/28/通过jks签名文件获取sha1/</id>
     <published>2017-08-28T14:36:30.000Z</published>
     <updated>2017-08-31T16:49:24.000Z</updated>
     
@@ -67,17 +67,17 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
+      <category term="Android" scheme="http://itbobby.top/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>实现扫码从服务器下载Android和ios安装包的简明教程</title>
-    <link href="http://itbobby.com/2017/08/24/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
-    <id>http://itbobby.com/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/</id>
+    <link href="http://itbobby.top/2017/08/24/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
+    <id>http://itbobby.top/2017/08/24/实现扫码从服务器下载Android和ios安装包的简明教程/</id>
     <published>2017-08-24T13:11:18.000Z</published>
     <updated>2017-08-31T16:49:15.000Z</updated>
     
@@ -117,17 +117,17 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="服务器" scheme="http://itbobby.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="服务器" scheme="http://itbobby.top/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
   <entry>
     <title>unity在打包出的ios项目上实现截图并保存相册功能</title>
-    <link href="http://itbobby.com/2017/08/23/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/"/>
-    <id>http://itbobby.com/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/</id>
+    <link href="http://itbobby.top/2017/08/23/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/"/>
+    <id>http://itbobby.top/2017/08/23/unity在打包出的ios项目上实现截图并保存相册功能/</id>
     <published>2017-08-23T14:58:11.000Z</published>
     <updated>2017-08-31T16:49:03.000Z</updated>
     
@@ -163,21 +163,21 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Unity" scheme="http://itbobby.com/tags/Unity/"/>
+      <category term="Unity" scheme="http://itbobby.top/tags/Unity/"/>
     
-      <category term="混合开发" scheme="http://itbobby.com/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
+      <category term="混合开发" scheme="http://itbobby.top/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
     
-      <category term="ios" scheme="http://itbobby.com/tags/ios/"/>
+      <category term="ios" scheme="http://itbobby.top/tags/ios/"/>
     
   </entry>
   
   <entry>
     <title>Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</title>
-    <link href="http://itbobby.com/2017/08/19/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%EF%BC%8C%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/"/>
-    <id>http://itbobby.com/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/</id>
+    <link href="http://itbobby.top/2017/08/19/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%EF%BC%8C%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/"/>
+    <id>http://itbobby.top/2017/08/19/Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate/</id>
     <published>2017-08-19T15:56:49.000Z</published>
     <updated>2017-08-31T16:48:53.000Z</updated>
     
@@ -193,17 +193,17 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Unity" scheme="http://itbobby.com/tags/Unity/"/>
+      <category term="Unity" scheme="http://itbobby.top/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Android接入Unity</title>
-    <link href="http://itbobby.com/2017/08/19/Android%E6%8E%A5%E5%85%A5Unity/"/>
-    <id>http://itbobby.com/2017/08/19/Android接入Unity/</id>
+    <link href="http://itbobby.top/2017/08/19/Android%E6%8E%A5%E5%85%A5Unity/"/>
+    <id>http://itbobby.top/2017/08/19/Android接入Unity/</id>
     <published>2017-08-19T01:25:34.000Z</published>
     <updated>2017-08-31T16:48:40.000Z</updated>
     
@@ -252,21 +252,21 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Android" scheme="http://itbobby.com/tags/Android/"/>
+      <category term="Android" scheme="http://itbobby.top/tags/Android/"/>
     
-      <category term="Unity" scheme="http://itbobby.com/tags/Unity/"/>
+      <category term="Unity" scheme="http://itbobby.top/tags/Unity/"/>
     
-      <category term="混合开发" scheme="http://itbobby.com/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
+      <category term="混合开发" scheme="http://itbobby.top/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>UTC转化为本地时间再转化为Unix时间戳</title>
-    <link href="http://itbobby.com/2017/08/14/UTC%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4%E5%86%8D%E8%BD%AC%E5%8C%96%E4%B8%BAUnix%E6%97%B6%E9%97%B4%E6%88%B3/"/>
-    <id>http://itbobby.com/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/</id>
+    <link href="http://itbobby.top/2017/08/14/UTC%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4%E5%86%8D%E8%BD%AC%E5%8C%96%E4%B8%BAUnix%E6%97%B6%E9%97%B4%E6%88%B3/"/>
+    <id>http://itbobby.top/2017/08/14/UTC转化为本地时间再转化为Unix时间戳/</id>
     <published>2017-08-14T15:56:23.000Z</published>
     <updated>2017-08-31T16:48:28.000Z</updated>
     
@@ -289,19 +289,19 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Java" scheme="http://itbobby.com/tags/Java/"/>
+      <category term="Java" scheme="http://itbobby.top/tags/Java/"/>
     
-      <category term="外设开发" scheme="http://itbobby.com/tags/%E5%A4%96%E8%AE%BE%E5%BC%80%E5%8F%91/"/>
+      <category term="外设开发" scheme="http://itbobby.top/tags/%E5%A4%96%E8%AE%BE%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>MAC上开启或关闭隐藏文件的显示</title>
-    <link href="http://itbobby.com/2017/08/14/MAC%E4%B8%8A%E5%BC%80%E5%90%AF%E6%88%96%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%9A%84%E6%98%BE%E7%A4%BA/"/>
-    <id>http://itbobby.com/2017/08/14/MAC上开启或关闭隐藏文件的显示/</id>
+    <link href="http://itbobby.top/2017/08/14/MAC%E4%B8%8A%E5%BC%80%E5%90%AF%E6%88%96%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%9A%84%E6%98%BE%E7%A4%BA/"/>
+    <id>http://itbobby.top/2017/08/14/MAC上开启或关闭隐藏文件的显示/</id>
     <published>2017-08-14T15:51:29.000Z</published>
     <updated>2017-08-31T16:47:50.000Z</updated>
     
@@ -320,17 +320,17 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="开发工具" scheme="http://itbobby.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+      <category term="开发工具" scheme="http://itbobby.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>第一篇博客</title>
-    <link href="http://itbobby.com/2017/08/09/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://itbobby.com/2017/08/09/第一篇博客/</id>
+    <link href="http://itbobby.top/2017/08/09/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://itbobby.top/2017/08/09/第一篇博客/</id>
     <published>2017-08-09T15:05:24.000Z</published>
     <updated>2017-08-31T16:48:07.000Z</updated>
     
@@ -351,10 +351,10 @@
     
     </summary>
     
-      <category term="原创" scheme="http://itbobby.com/categories/%E5%8E%9F%E5%88%9B/"/>
+      <category term="原创" scheme="http://itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="随笔" scheme="http://itbobby.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://itbobby.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
