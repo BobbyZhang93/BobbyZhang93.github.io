@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android接入Unity | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,Unity,混合开发">
+    <meta name="description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目） 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解 拷贝/Applications/Unity/Play">
+<meta name="keywords" content="Android,Unity,混合开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android接入Unity">
+<meta property="og:url" content="http://itbobby.top/2017-08-19-Android接入Unity.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目） 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解 拷贝/Applications/Unity/Play">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png">
+<meta property="og:updated_time" content="2017-08-31T16:48:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android接入Unity">
+<meta name="twitter:description" content="本文共计704字6张配图，预计阅读耗时4分30秒 步骤预览（默认已经建好android和unity的项目） 导入unity中的class.jar在android中为unity写方法并修改代码 精简安卓代码 修改主配置文件 修改gradle配置文件build apk得到aar 拷贝相关文件到unity项目中 在unity脚本文件中进行调用  详解 拷贝/Applications/Unity/Play">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                稀土掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android接入Unity</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android接入Unity</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-19T01:25:34.000Z" itemprop="datePublished" class="page-time">
+  2017-08-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#步骤预览（默认已经建好android和unity的项目）"><span class="post-toc-number">1.</span> <span class="post-toc-text">步骤预览（默认已经建好android和unity的项目）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#至此，android接入unity的全部工作都已经搞定了！"><span class="post-toc-number">3.</span> <span class="post-toc-text">至此，android接入unity的全部工作都已经搞定了！</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android接入Unity"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android接入Unity</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-19 09:25:34" datetime="2017-08-19T01:25:34.000Z"  itemprop="datePublished">2017-08-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><code>本文共计704字6张配图，预计阅读耗时4分30秒</code></p>
+<h3 id="步骤预览（默认已经建好android和unity的项目）"><a href="#步骤预览（默认已经建好android和unity的项目）" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）"></a>步骤预览（默认已经建好android和unity的项目）</h3><ol>
+<li>导入unity中的class.jar在android中为unity写方法并修改代码</li>
+<li>精简安卓代码</li>
+<li>修改主配置文件</li>
+<li>修改gradle配置文件build apk得到aar</li>
+<li>拷贝相关文件到unity项目中</li>
+<li>在unity脚本文件中进行调用</li>
+</ol>
+<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><ol>
+<li><p>拷贝/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar至安卓项目的libs，并且添加为依赖（win下路径为C:ProgramFilesUnityEditorDataPlaybackEnginesAndroidPlayerVariationsmonoReleaseclasses.jar）<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png" alt=""><br> 在安卓中为unity写方法<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png" alt=""><br> UnitySendMessage中第一个参数为unity中脚本绑定的物体，第二个参数为unity中接受android传参的方法名，第三个参数为需要传递的数据，三个参数均为String类型；<br> 将activity中的方法全都放在这个Test方法中，顺序执行，由于安卓接入unity后unity只调用这个指定的Test方法，所以在安卓中正常应该写在生命周期中（尤其onCreate中）的方法都要改变结构，以确保unity在调用Test后相关的代码都会执行；<br> 修改当前Activity的继承类为UnityPlayerActivity,并且把类中所有使用到context的地方都用UnityPlayer.currentActivity代替，否则会报方法不能找到的bug，例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(UnityPlayer.currentActivity,<span class="string">"GNSS服务已绑定"</span>,Toast.LENGTHSHORT).show();</div><div class="line">UnityPlayer.currentActivity.bindService(intent, mConnection, BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
+</li>
+<li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
+</li>
+<li>修改主配置文件<br> 将主题更改为android自带的的主题</li>
+<li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br> 更改后的主配置文件为:<br> <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
+<li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
+<ul>
+<li>build->build apk   直接去app–>build–>outputs–>aar目录下找到app-debug.aar文件，解压即可获得所需资源</li>
+<li><p>在gradle中继续添加代码：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">task deleteOldJar(<span class="string">type:</span> Delete) &#123;</div><div class="line">   delete <span class="string">'build/outputs/test.jar'</span></div><div class="line">&#125;</div><div class="line">task exportJar(<span class="string">type:</span> Copy) &#123;</div><div class="line">    from(<span class="string">'build/intermediates/bundles/release/'</span>)</div><div class="line">    into(<span class="string">'build/libs/'</span>)</div><div class="line">    include(<span class="string">'classes.jar'</span>)</div><div class="line">    rename (<span class="string">'classes.jar'</span>, <span class="string">'androidforunity.jar'</span>)</div><div class="line">&#125;</div><div class="line">exportJar.dependsOn(deleteOldJar, build)</div></pre></td></tr></table></figure>
+<p>选择右侧gradle中的exportJar进行导出<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png" alt=""><br>在/Users/xun-mac/AndroidStudioProjects/AndroidforUnity/app/build/intermediates/bundles/release/classes.jar中获取所需资源。</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""></p>
+</li>
+<li><p>拷入之后的unity文件目录为<br>  <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png" alt=""></p>
+</li>
+<li><p>在unity中编写脚本，获取从android中传过来的数据<br>  在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//获取Android的Java接口  </div><div class="line">AndroidJavaObject cls = new AndroidJavaObject(&quot;com.bumie.androidforunity.TestActivity&quot;);</div><div class="line">   cls.Call(&quot;Test&quot;);//这个引号内是调用的Android方法，可以补上第二个参数用以匹配Android端方法的参数</div><div class="line"></div><div class="line">//接下来在getText()中通过参数获取数据</div><div class="line">public void getText(string aa)</div><div class="line">    &#123;</div><div class="line">        Debug.Log (&quot;success,unity&quot;+&quot;/:&quot;+aa);</div><div class="line">        ttt[0].text = aa;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h3>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-31T16:48:40.000Z" itemprop="dateUpdated">2017-09-01 00:48:40</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2017-08-19-Android接入Unity.html"target="_blank" rel="external">http://itbobby.top/2017-08-19-Android接入Unity.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/混合开发/">混合开发</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017-08-19-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-08-14-UTC转化为本地时间再转化为Unix时间戳.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">UTC转化为本地时间再转化为Unix时间戳</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '快回来！快回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
