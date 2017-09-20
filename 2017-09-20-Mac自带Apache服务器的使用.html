@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Mac自带Apache服务器的使用 | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="工具">
+    <meta name="description" content="打开终端，开启Apache123456//开启apache:  sudo apachectl start//重启apache:  sudo apachectl restart//关闭apache:  sudo apachectl stop 回车会提示输入密码，也就是你电脑的密码。打开浏览器输入http://127.0.0.1/测试一下，成功如下图： 前往Apache服务器的文件路径 点击Finde">
+<meta name="keywords" content="工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac自带Apache服务器的使用">
+<meta property="og:url" content="http://blog.itbobby.top/2017-09-20-Mac自带Apache服务器的使用.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="打开终端，开启Apache123456//开启apache:  sudo apachectl start//重启apache:  sudo apachectl restart//关闭apache:  sudo apachectl stop 回车会提示输入密码，也就是你电脑的密码。打开浏览器输入http://127.0.0.1/测试一下，成功如下图： 前往Apache服务器的文件路径 点击Finde">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img01.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img02.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img03.png">
+<meta property="og:updated_time" content="2017-09-20T14:39:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac自带Apache服务器的使用">
+<meta name="twitter:description" content="打开终端，开启Apache123456//开启apache:  sudo apachectl start//重启apache:  sudo apachectl restart//关闭apache:  sudo apachectl stop 回车会提示输入密码，也就是你电脑的密码。打开浏览器输入http://127.0.0.1/测试一下，成功如下图： 前往Apache服务器的文件路径 点击Finde">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img01.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Mac自带Apache服务器的使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Mac自带Apache服务器的使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-20T14:15:50.000Z" itemprop="datePublished" class="page-time">
+  2017-09-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打开终端，开启Apache"><span class="post-toc-number">1.</span> <span class="post-toc-text">打开终端，开启Apache</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前往Apache服务器的文件路径"><span class="post-toc-number">2.</span> <span class="post-toc-text">前往Apache服务器的文件路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-number">3.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">4.</span> <span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无权限访问页面的问题"><span class="post-toc-number">5.</span> <span class="post-toc-text">无权限访问页面的问题</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Mac自带Apache服务器的使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Mac自带Apache服务器的使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-20 22:15:50" datetime="2017-09-20T14:15:50.000Z"  itemprop="datePublished">2017-09-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="打开终端，开启Apache"><a href="#打开终端，开启Apache" class="headerlink" title="打开终端，开启Apache"></a>打开终端，开启Apache</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//开启</div><div class="line">apache:  sudo apachectl start</div><div class="line">//重启</div><div class="line">apache:  sudo apachectl restart</div><div class="line">//关闭</div><div class="line">apache:  sudo apachectl stop</div></pre></td></tr></table></figure>
+<p>回车会提示输入密码，也就是你电脑的密码。<br>打开浏览器输入<a href="http://127.0.0.1/测试一下，成功如下图：" target="_blank" rel="external">http://127.0.0.1/测试一下，成功如下图：</a><br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img01.png" alt=""></p>
+<h3 id="前往Apache服务器的文件路径"><a href="#前往Apache服务器的文件路径" class="headerlink" title="前往Apache服务器的文件路径"></a>前往Apache服务器的文件路径</h3><p> 点击Finder,然后Command+Shift+G，输入[/Library/WebServer/Documents]即可进入：<br> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br> 在步骤1中只输入一个[<a href="http://127.0.0.1]默认打开的是index.html.en" target="_blank" rel="external">http://127.0.0.1]默认打开的是index.html.en</a> </p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul>
+<li>创建一个文件，如test.html</li>
+<li>接下来用浏览器访问 <a href="http://127.0.0.1/test.html" target="_blank" rel="external">http://127.0.0.1/test.html</a></li>
+<li>IP(127.0.0.1)也可以换成你电脑的IP地址，这样在同一局域网的设备也可以访问服务器的内容</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>使用过后，记得关闭服务器，要不然会一直消耗电脑内存</p>
+<h3 id="无权限访问页面的问题"><a href="#无权限访问页面的问题" class="headerlink" title="无权限访问页面的问题"></a>无权限访问页面的问题</h3><p><strong>错误信息：</strong>  </p>
+<blockquote>
+<p>apache You don’t have permission to access XXX on this server</p>
+</blockquote>
+<p>网上关于该问题基本都是修改Apache配置文件的做法，不排除可能是因为配置文件造成的错误，但是本条也可以作为解决问题的一种尝试办法.</p>
+<p><strong>背景：</strong><br>为方便测试，将krpano项目部署到了macos上的Apache上，该项目中除了krpano生成的主页面还有后来添加的首页，当我启动apache服务并且打开首页时没有问题，但是当跳转到krpano页面时出现了无权限访问问题</p>
+<p>通过更改apache配置文件尝试无效后，我查看了服务器中文件的权限<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img03.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>1 处页面是刚刚提到的可以打开的首页，可以看到权限没有问题，但是 2 处krpano的主页面就没有可读权限了<br>回退到上级文件夹使用[sudo chmod -R 775]将整个文件夹设置为任何人可读权限，再次查看文件夹下权限都已开放。</p>
+<p>题外话:  <strong>775权限含义</strong><br>7 拥有者有 读取，写入，执行权限<br>7 组用户有 读取，写入，执行权限<br>5 其他用户有 读取，执行权限(4+1 = 5) </p>
+<p>重启apache，再次跳转到krpano页面时顺利打开!</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-20T14:39:23.000Z" itemprop="dateUpdated">2017-09-20 22:39:23</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2017-09-20-Mac自带Apache服务器的使用.html"target="_blank" rel="external">http://blog.itbobby.top/2017-09-20-Mac自带Apache服务器的使用.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-09-09-安卓实现登陆页logo随键盘收放动态伸缩（完美解决键盘弹出遮挡控件的问题）.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">安卓实现登陆页logo随键盘收放动态伸缩（完美解决键盘弹出遮挡控件的问题）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
