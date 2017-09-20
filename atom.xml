@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-09-20T14:39:23.000Z</updated>
+  <updated>2017-09-20T14:42:08.000Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.itbobby.top/2017-09-20-Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8.html"/>
     <id>http://blog.itbobby.top/2017-09-20-Mac自带Apache服务器的使用.html</id>
     <published>2017-09-20T14:15:50.000Z</published>
-    <updated>2017-09-20T14:39:23.000Z</updated>
+    <updated>2017-09-20T14:42:08.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="打开终端，开启Apache"><a href="#打开终端，开启Apache" class="headerlink" title="打开终端，开启Apache"></a>打开终端，开启Apache</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//开启</div><div class="line">apache:  sudo apachectl start</div><div class="line">//重启</div><div class="line">apache:  sudo apachectl restart</div><div class="line">//关闭</div><div class="line">apache:  sudo apachectl stop</div></pre></td></tr></table></figure>
 <p>回车会提示输入密码，也就是你电脑的密码。<br>打开浏览器输入<a href="http://127.0.0.1/测试一下，成功如下图：" target="_blank" rel="external">http://127.0.0.1/测试一下，成功如下图：</a><br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img01.png" alt=""></p>
@@ -63,7 +63,7 @@
       <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="工具" scheme="http://blog.itbobby.top/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="开发工具" scheme="http://blog.itbobby.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
