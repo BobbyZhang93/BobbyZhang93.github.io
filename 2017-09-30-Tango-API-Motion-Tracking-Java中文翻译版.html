@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Tango API Motion Tracking Java中文翻译版 | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="AR,Tango">
+    <meta name="description" content="Java API Motion Tracking TutorialThis page describes how the Java API handles motion tracking.本文演示如何通过 Java 来使用运动追踪技术。 LifecycleThe normal motion tracking system lifecycle consists of three states: Ta">
+<meta name="keywords" content="AR,Tango">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tango API Motion Tracking Java中文翻译版">
+<meta property="og:url" content="http://blog.itbobby.top/2017-09-30-Tango-API-Motion-Tracking-Java中文翻译版.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="Java API Motion Tracking TutorialThis page describes how the Java API handles motion tracking.本文演示如何通过 Java 来使用运动追踪技术。 LifecycleThe normal motion tracking system lifecycle consists of three states: Ta">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-30T14:18:38.147Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tango API Motion Tracking Java中文翻译版">
+<meta name="twitter:description" content="Java API Motion Tracking TutorialThis page describes how the Java API handles motion tracking.本文演示如何通过 Java 来使用运动追踪技术。 LifecycleThe normal motion tracking system lifecycle consists of three states: Ta">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Tango API Motion Tracking Java中文翻译版</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Tango API Motion Tracking Java中文翻译版</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-30T14:16:50.000Z" itemprop="datePublished" class="page-time">
+  2017-09-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/翻译/">翻译</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java-API-Motion-Tracking-Tutorial"><span class="post-toc-number">1.</span> <span class="post-toc-text">Java API Motion Tracking Tutorial</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Lifecycle"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Lifecycle</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Configuration"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Configuration</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Getting-pose-data"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Getting pose data</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Callback-based"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Callback-based</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Tango-API-Motion-Tracking-Java中文翻译版"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Tango API Motion Tracking Java中文翻译版</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-30 22:16:50" datetime="2017-09-30T14:16:50.000Z"  itemprop="datePublished">2017-09-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/翻译/">翻译</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="Java-API-Motion-Tracking-Tutorial"><a href="#Java-API-Motion-Tracking-Tutorial" class="headerlink" title="Java API Motion Tracking Tutorial"></a>Java API Motion Tracking Tutorial</h3><p><em>This page describes how the Java API handles motion tracking.</em><br><strong>本文演示如何通过 Java 来使用运动追踪技术。</strong></p>
+<h4 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h4><p><em>The normal motion tracking system lifecycle consists of three states: TangoPoseData.POSE_INITIALIZING, TangoPoseData.POSE_VALID, and TangoPoseData.POSE_INVALID. In the POSE_INITIALIZING state, the system is not yet ready and pose data is not available. In the POSE_VALID state, the system is functioning normally. In the POSE_INVALID state, the system believes its estimate was invalid and needs to be reinitialized. A fourth state, POSE_UNKNOWN, is used for all other cases.</em><br><strong>运动追踪系统一般情况下包含三个状态：TangoPoseData.POSE_INITIALIZING, TangoPoseData.POSE_VALID 以及 TangoPoseData.POSE_INVALID。POSE_INITIALIZING 表示系统还未就绪，无 pose 数据可用。POSE_VALID 表示系统运转正常。POSE_INVALID 表示系统异常，需要重新初始化。还有一个状态，POSE_UNKNOWN，表示出上述状态之外的其他状态。</strong></p>
+<p><em>Should the pose data become POSE_INVALID, the motion tracking system can be reinitialized in two ways. If config_enable_auto_recovery was set to true, the system will immediately enter the POSE_INITIALIZING state. It will use the last valid pose as the starting point after recovery. If TangoConfig.KEY_BOOLEAN_AUTORECOVERY was set to false, the system will essentially pause and always return poses as POSE_INVALID until Tango.resetMotionTracking() is called. Unlike auto recovery, this will also reset the starting point after recovery back to the origin.</em><br><strong>如果 pose 数据变成 POSE_INVALID 状态，运动追踪系统可以通过两种方法来重新初始化。如果系统配置项 config_enable_auto_recovery = true，系统将立即进入 POSE_INITIALIZING 状态。恢复之后，系统使用最近一次 POSE_VALID 状态的 pose 作为追踪的起始点。如果 TangoConfig.KEY_BOOLEAN_AUTORECOVERY = false，系统将停止工作，并始终返回 POSE_INVALID 状态的 pose 数据，直到 Tango.resetMotionTracking() 方法被调用。与自动恢复不同的是，系统恢复后该方法将重置起始点为故障前的原始点。</strong></p>
+<p><em>The lifecycle state is recorded in the TangoPoseData object’s statusCode.<br>For more information, although the page is based around the C API, please see our Device Pose concepts page.</em><br><strong>生命周期的状态记录在TangoPoseData对象的状态代码中，更多信息请参考设备 Pose 原理页面。</strong></p>
+<h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><p>In order to use motion tracking, your TangoConfig must have KEY_BOOLEAN_MOTIONTRACKING set to true. If you are using the default TangoConfig as your starting point, it is already set to true.</p>
+<p>You also have the option to set KEY_BOOLEAN_AUTORECOVERY. In the default TangoConfig, this is set to true. See the Lifecycle section for the behavior of this parameter.</p>
+<h4 id="Getting-pose-data"><a href="#Getting-pose-data" class="headerlink" title="Getting pose data"></a>Getting pose data</h4><p>There are two coordinate frame pair options for basic motion tracking: device with respect to start of service, and device with respect to the previous device pose. With start of service, the device’s pose is relative to the position where the motion tracking system initialized. You can receive pose data in both the callback and polling forms. With previous device pose, the device’s pose is relative to its last position. Pose data is only available as a callback.</p>
+<h4 id="Callback-based"><a href="#Callback-based" class="headerlink" title="Callback-based"></a>Callback-based</h4><p>If you are using the callback-based approach, you must define the coordinate frame pairs you are interested in and construct your onPoseAvailable() callback.</p>
+<p>You also have to implement onXyzIjAvailable and onTangoEvent, because the Tango.OnTangoUpdateListener interface requires an implementation for all three of those methods.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">private void setTangoListeners() &#123;</div><div class="line">    final ArrayList&lt;TangoCoordinateFramePair&gt; framePairs = new ArrayList&lt;TangoCoordinateFramePair&gt;();</div><div class="line">    framePairs.add(new TangoCoordinateFramePair(</div><div class="line">        TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE,</div><div class="line">        TangoPoseData.COORDINATE_FRAME_DEVICE));</div><div class="line"></div><div class="line">    // Listen for new Tango data</div><div class="line">    mTango.connectListener(framePairs, new OnTangoUpdateListener() &#123;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onPoseAvailable(final TangoPoseData pose) &#123;</div><div class="line">            // Process pose data from device with respect to start of service</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onXyzIjAvailable(TangoXyzIjData arg0) &#123;</div><div class="line">            // We need this callback even if we don&apos;t use it</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onTangoEvent(final TangoEvent event) &#123;</div><div class="line">            // This callback also has to be here</div><div class="line">        &#125;</div><div class="line">    &#125;);&#125;  </div><div class="line"></div><div class="line">#### Polling-based</div><div class="line"></div><div class="line">In the polling-based approach, you must first specify the coordinate frame pair you are interested in. For simple motion tracking, this will always be TangoPoseData.COORDINATE_FRAME_DEVICE with respect to TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE.</div><div class="line"></div><div class="line">// Define what motion is requested.</div><div class="line">TangoCoordinateFramePair frames_of_reference;</div><div class="line">frames_of_reference.baseFrame = TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE;</div><div class="line">frames_of_reference.targetFrame = TangoPoseData.COORDINATE_FRAME_DEVICE;</div><div class="line">Then call `Tango.getPoseAtTime() as desired. In the example below, the timestamp is set to 0.0 to get the latest pose. If you specify a specific timestamp, the system will return an interpolated pose at that exact time. Timestamps are relative to the device boot.</div></pre></td></tr></table></figure></p>
+<p>new Thread(new Runnable() {<br>    final int pollingUpdatePeriodMilliseconds = 66;</p>
+<pre><code>@Override
+public void run() {
+    while (true) {
+        try {
+             Thread.sleep(pollingUpdatePeriodMilliseconds);
+        } catch (InterruptedException e) {
+             e.printStackTrace();
+        }
+        try {
+            final TangoPoseData queryPoseStartDevice =
+                mTango.getPoseAtTime(0.0, frames_of_reference);
+        } catch (TangoErrorException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p>}).start();<br>```</p>
+<p>未完待续…</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-30T14:18:38.147Z" itemprop="dateUpdated">2017-09-30 22:18:38</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2017-09-30-Tango-API-Motion-Tracking-Java中文翻译版.html"target="_blank" rel="external">http://blog.itbobby.top/2017-09-30-Tango-API-Motion-Tracking-Java中文翻译版.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AR/">AR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tango/">Tango</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-09-30-使用m-console在PC端web页面console上打印移动端log结果.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用m-console在PC端web页面console上打印移动端log结果</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
