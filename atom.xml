@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-09-30T15:01:14.267Z</updated>
+  <updated>2017-10-17T13:10:19.446Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安卓设备中传感器的几个采样属性</title>
+    <link href="http://blog.itbobby.top/2017-10-17-%E5%AE%89%E5%8D%93%E8%AE%BE%E5%A4%87%E4%B8%AD%E4%BC%A0%E6%84%9F%E5%99%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%87%E6%A0%B7%E5%B1%9E%E6%80%A7.html"/>
+    <id>http://blog.itbobby.top/2017-10-17-安卓设备中传感器的几个采样属性.html</id>
+    <published>2017-10-17T13:08:27.000Z</published>
+    <updated>2017-10-17T13:10:19.446Z</updated>
+    
+    <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th>传感器</th>
+<th>采样率</th>
+<th>适用场景 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SENSOR_DELAY_UI</td>
+<td>60000微秒</td>
+<td>若使用传感器更新UI, 建议使用该值。</td>
+</tr>
+<tr>
+<td>SENSOR_DELAY_NORMAL</td>
+<td>200000微秒</td>
+<td>默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。</td>
+</tr>
+<tr>
+<td>SENSOR_DELAY_GAME</td>
+<td>20000微秒</td>
+<td>如果利用传感器开发游戏，建议使用该值。 一般大多数实时行较高的游戏使用该级别。</td>
+</tr>
+<tr>
+<td>SENSOR_DELAY_FASTEST</td>
+<td>0微秒</td>
+<td>最低延迟，一般不是特别灵敏的处理不推荐使用，该模式可能造成手机电力大量消耗，而且由于传递的为大量的原始数据，算法处理不好将会影响游戏逻辑和UI的性能。</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;传感器&lt;/th&gt;
+&lt;th&gt;采样率&lt;/th&gt;
+&lt;th&gt;适用场景 &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SENSOR_DELAY_UI&lt;/td&gt;
+&lt;td&gt;60000微秒&lt;/td&gt;
+&lt;td&gt;若使用传
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="Android" scheme="http://blog.itbobby.top/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Tango API Motion Tracking Java中文翻译版</title>

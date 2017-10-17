@@ -13,23 +13,25 @@
     
     
     
-    <title>标签: 混合开发 | BobbyZhang的技术小站 | Just do IT！</title>
+    <title>安卓设备中传感器的几个采样属性 | BobbyZhang的技术小站 | Just do IT！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="BobbyZhang的技术小站是移动开发工程师Bobby的技术博客，专注于安卓，同时也热衷于探讨前端、后台、unity及AR相关技术！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BobbyZhang的技术小站">
-<meta property="og:url" content="http://blog.itbobby.top/tags/混合开发/index.html">
+    <meta name="keywords" content="Android">
+    <meta name="description" content="传感器 采样率 适用场景      SENSOR_DELAY_UI 60000微秒 若使用传感器更新UI, 建议使用该值。   SENSOR_DELAY_NORMAL 200000微秒 默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。   SENSOR_DELAY_GAME 20000微秒 如果利用传感">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓设备中传感器的几个采样属性">
+<meta property="og:url" content="http://blog.itbobby.top/2017-10-17-安卓设备中传感器的几个采样属性.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="BobbyZhang的技术小站是移动开发工程师Bobby的技术博客，专注于安卓，同时也热衷于探讨前端、后台、unity及AR相关技术！">
+<meta property="og:description" content="传感器 采样率 适用场景      SENSOR_DELAY_UI 60000微秒 若使用传感器更新UI, 建议使用该值。   SENSOR_DELAY_NORMAL 200000微秒 默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。   SENSOR_DELAY_GAME 20000微秒 如果利用传感">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-17T13:10:19.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BobbyZhang的技术小站">
-<meta name="twitter:description" content="BobbyZhang的技术小站是移动开发工程师Bobby的技术博客，专注于安卓，同时也热衷于探讨前端、后台、unity及AR相关技术！">
+<meta name="twitter:title" content="安卓设备中传感器的几个采样属性">
+<meta name="twitter:description" content="传感器 采样率 适用场景      SENSOR_DELAY_UI 60000微秒 若使用传感器更新UI, 建议使用该值。   SENSOR_DELAY_NORMAL 200000微秒 默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。   SENSOR_DELAY_GAME 20000微秒 如果利用传感">
     
         <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
     
@@ -45,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -78,7 +80,7 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect active">
+            <li class="waves-block waves-effect">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
@@ -138,7 +140,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">标签: 混合开发</div>
+        <div class="flex-col header-title ellipsis">安卓设备中传感器的几个采样属性</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -153,153 +155,193 @@
         
     </div>
 </header>
-<header class="content-header tags-header">
+<header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">标签: 混合开发</h1>
+        <h1 class="title">安卓设备中传感器的几个采样属性</h1>
         <h5 class="subtitle">
+            
+                <time datetime="2017-10-17T13:08:27.000Z" itemprop="datePublished" class="page-time">
+  2017-10-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
             
         </h5>
     </div>
 
     
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">全部</a>
-        
-
-            <a href="/tags/Android/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">Android</a>
-
-        
-
-            <a href="/tags/Unity/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">Unity</a>
-
-        
-
-            <a href="/tags/混合开发/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">混合开发</a>
-
-        
-
-            <a href="/tags/开发工具/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">开发工具</a>
-
-        
-
-            <a href="/tags/AR/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">AR</a>
-
-        
-
-            <a href="/tags/Tango/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Tango</a>
-
-        
-
-            <a href="/tags/Java/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Java</a>
-
-        
-
-            <a href="/tags/外设开发/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">外设开发</a>
-
-        
-
-            <a href="/tags/ios/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">ios</a>
-
-        
-
-            <a href="/tags/随笔/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">随笔</a>
-
-        
-
-            <a href="/tags/服务器/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">服务器</a>
-
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" onclick="BLOG.tabBar(this)" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
 
 
 </header>
 
-<div class="container body-wrap fade">
+
+<div class="container body-wrap">
     
-            <div class="waterfall">
-          
+<article id="post-安卓设备中传感器的几个采样属性"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-08-23 22:58:11" datetime="2017-08-23T14:58:11.000Z"  itemprop="datePublished">2017-08-23</time>
+    <div class="post-card">
+        <h1 class="post-card-title">安卓设备中传感器的几个采样属性</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-17 21:08:27" datetime="2017-10-17T13:08:27.000Z"  itemprop="datePublished">2017-10-17</time>
 
-      
+            
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
 
 
 
-    </div>
-    
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017-08-23-unity在打包出的ios项目上实现截图并保存相册功能.html">unity在打包出的ios项目上实现截图并保存相册功能</a>
-    </h3>
-  
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <table>
+<thead>
+<tr>
+<th>传感器</th>
+<th>采样率</th>
+<th>适用场景 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SENSOR_DELAY_UI</td>
+<td>60000微秒</td>
+<td>若使用传感器更新UI, 建议使用该值。</td>
+</tr>
+<tr>
+<td>SENSOR_DELAY_NORMAL</td>
+<td>200000微秒</td>
+<td>默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。</td>
+</tr>
+<tr>
+<td>SENSOR_DELAY_GAME</td>
+<td>20000微秒</td>
+<td>如果利用传感器开发游戏，建议使用该值。 一般大多数实时行较高的游戏使用该级别。</td>
+</tr>
+<tr>
+<td>SENSOR_DELAY_FASTEST</td>
+<td>0微秒</td>
+<td>最低延迟，一般不是特别灵敏的处理不推荐使用，该模式可能造成手机电力大量消耗，而且由于传递的为大量的原始数据，算法处理不好将会影响游戏逻辑和UI的性能。</td>
+</tr>
+</tbody>
+</table>
 
+        </div>
 
-
-    
-    <div class="post-footer">
+        <blockquote class="post-copyright">
+    <div class="content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/混合开发/">混合开发</a></li></ul>
+<span class="post-time">
+    最后更新时间：<time datetime="2017-10-17T13:10:19.446Z" itemprop="dateUpdated">2017-10-17 21:10:19</time>
+</span><br>
 
+
+        
+        转载请保留原文链接：<a href="/2017-10-17-安卓设备中传感器的几个采样属性.html"target="_blank" rel="external">http://blog.itbobby.top/2017-10-17-安卓设备中传感器的几个采样属性.html</a>
+        
     </div>
-    
-  </article>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
 </div>
 
-        
-
-            <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-08-19 09:25:34" datetime="2017-08-19T01:25:34.000Z"  itemprop="datePublished">2017-08-19</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
 
 
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
 
+
+            
+
+
+        </div>
     </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-09-30-Tango-API-Motion-Tracking-Java中文翻译版.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Tango API Motion Tracking Java中文翻译版</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
     
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017-08-19-Android接入Unity.html">Android接入Unity</a>
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
     </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+    <div class="reward-content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/混合开发/">混合开发</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
         
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
             </div>
+        </label>
         
-    
+    </div>
 </div>
 
+
+
+</div>
 
         <footer class="footer">
     <div class="top">
@@ -338,7 +380,7 @@
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
 
 
 lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
