@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-10-17T13:10:19.446Z</updated>
+  <updated>2017-10-17T13:26:08.333Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.itbobby.top/2017-10-17-%E5%AE%89%E5%8D%93%E8%AE%BE%E5%A4%87%E4%B8%AD%E4%BC%A0%E6%84%9F%E5%99%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%87%E6%A0%B7%E5%B1%9E%E6%80%A7.html"/>
     <id>http://blog.itbobby.top/2017-10-17-安卓设备中传感器的几个采样属性.html</id>
     <published>2017-10-17T13:08:27.000Z</published>
-    <updated>2017-10-17T13:10:19.446Z</updated>
+    <updated>2017-10-17T13:26:08.333Z</updated>
     
     <content type="html"><![CDATA[<table>
 <thead>
@@ -53,6 +53,11 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li>在实际应用中应该根据功能的需求选择对应的模式；   </li>
+<li>当与传感器相关功能出现卡顿或者跳帧严重时应该优先考虑到是因为采样率不足导致的，从而调整模式进行问题排查；</li>
+<li>在保证传感器采样率的前提下也可以采用常用的滤波方式，比如卡尔曼或者低通滤波对数据进行平滑处理。</li>
+</ul>
 ]]></content>
     
     <summary type="html">
