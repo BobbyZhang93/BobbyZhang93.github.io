@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-10-17T13:26:08.333Z</updated>
+  <updated>2017-10-17T13:53:37.599Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新项目——一个简单的博客集成阅读客户端</title>
+    <link href="http://blog.itbobby.top/2017-10-17-%E6%96%B0%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%8D%9A%E5%AE%A2%E9%9B%86%E6%88%90%E9%98%85%E8%AF%BB%E5%AE%A2%E6%88%B7%E7%AB%AF.html"/>
+    <id>http://blog.itbobby.top/2017-10-17-新项目——一个简单的博客集成阅读客户端.html</id>
+    <published>2017-10-17T13:30:58.000Z</published>
+    <updated>2017-10-17T13:53:37.599Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="项目名"><a href="#项目名" class="headerlink" title="项目名"></a>项目名</h3><pre><code>榜样博文
+</code></pre><h3 id="整体风格"><a href="#整体风格" class="headerlink" title="整体风格"></a>整体风格</h3><pre><code>轻阅读风
+</code></pre><h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><pre><code>https://github.com/BobbyZhang93/BestBlog
+</code></pre><h3 id="1-0版本："><a href="#1-0版本：" class="headerlink" title="1.0版本："></a>1.0版本：</h3><p>本地工具软件，没有后台；<br>首页为列表，默认设置两三个博客；<br>列表单击进入博客，长按弹出菜单（独首页版设置右滑删除）；<br>菜单除删除还有编辑功能，即添加页面；<br>点击加号，跳转到添加页面，填写链接（有测试按钮，点击测试网页连通性并获取网页title），填写博客名字，是否标新星，点击完成返回列表；<br>博客列表支持导出和导入，导出为.json格式。<br><strong>目标：</strong> 满足日常查看博客所需，上线工具</p>
+<h3 id="2-0版本：（后端云实现）"><a href="#2-0版本：（后端云实现）" class="headerlink" title="2.0版本：（后端云实现）"></a>2.0版本：（后端云实现）</h3><p>改版：增加左侧边栏；<br>增加用户登录（微信）；<br>增加个人信息，分享到微信QQ等轻度社交化功能，以及同步博客列表。</p>
+<h3 id="3-0版本："><a href="#3-0版本：" class="headerlink" title="3.0版本："></a>3.0版本：</h3><p>大改版：去侧边栏，增加tab分栏；<br>集成im聊天工具和社区，达到可以站内联络分享的氛围；<br>分享可以是分享专栏或者文章；<br>增加排行榜，根据收藏专栏排名。</p>
+<h3 id="4-0版本："><a href="#4-0版本：" class="headerlink" title="4.0版本："></a>4.0版本：</h3><p>添加站内提交文章功能，提供网页端编写工具；<br>提供服务器后台，类似于简书。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;项目名&quot;&gt;&lt;a href=&quot;#项目名&quot; class=&quot;headerlink&quot; title=&quot;项目名&quot;&gt;&lt;/a&gt;项目名&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;榜样博文
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;整体风格&quot;&gt;&lt;a href=&quot;#整体风格&quot; class=&quot;hea
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="Android" scheme="http://blog.itbobby.top/tags/Android/"/>
+    
+      <category term="产品" scheme="http://blog.itbobby.top/tags/%E4%BA%A7%E5%93%81/"/>
+    
+  </entry>
   
   <entry>
     <title>安卓设备中传感器的几个采样属性</title>
