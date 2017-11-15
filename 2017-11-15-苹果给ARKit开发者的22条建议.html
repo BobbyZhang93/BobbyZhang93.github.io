@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>苹果给ARKit开发者的22条建议 | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="AR,ARKit">
+    <meta name="description" content="原文链接：传送门  近日，苹果在其开发者网页为开发者提供了3种关键资源，帮助开发者开发和推广AR应用。这些资源包括AR界面设计，如何友好地让用户知道自己已经进入AR模式；如何录制放置在App Store中的AR应用介绍视频；以及如何利用人脸识别创建动态表情Animoji。关于AR的界面设计、操作等，苹果给出了22条注意事项，帮助开发者打造用户体验更好的AR应用。目前国内已经有不少团队利用ARKi">
+<meta name="keywords" content="AR,ARKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="苹果给ARKit开发者的22条建议">
+<meta property="og:url" content="http://blog.itbobby.top/2017-11-15-苹果给ARKit开发者的22条建议.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="原文链接：传送门  近日，苹果在其开发者网页为开发者提供了3种关键资源，帮助开发者开发和推广AR应用。这些资源包括AR界面设计，如何友好地让用户知道自己已经进入AR模式；如何录制放置在App Store中的AR应用介绍视频；以及如何利用人脸识别创建动态表情Animoji。关于AR的界面设计、操作等，苹果给出了22条注意事项，帮助开发者打造用户体验更好的AR应用。目前国内已经有不少团队利用ARKi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img01.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img02.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img03.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img04.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img05.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img06.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img07.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img08.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img09.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img10.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img11.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img12.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img13.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img14.gif">
+<meta property="og:updated_time" content="2017-11-15T14:21:25.333Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="苹果给ARKit开发者的22条建议">
+<meta name="twitter:description" content="原文链接：传送门  近日，苹果在其开发者网页为开发者提供了3种关键资源，帮助开发者开发和推广AR应用。这些资源包括AR界面设计，如何友好地让用户知道自己已经进入AR模式；如何录制放置在App Store中的AR应用介绍视频；以及如何利用人脸识别创建动态表情Animoji。关于AR的界面设计、操作等，苹果给出了22条注意事项，帮助开发者打造用户体验更好的AR应用。目前国内已经有不少团队利用ARKi">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img01.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">苹果给ARKit开发者的22条建议</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">苹果给ARKit开发者的22条建议</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-15T13:52:03.000Z" itemprop="datePublished" class="page-time">
+  2017-11-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打造吸引人的体验"><span class="post-toc-number">1.</span> <span class="post-toc-text">打造吸引人的体验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#全屏显示AR效果"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">全屏显示AR效果</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#让虚拟物体尽可能逼真"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">让虚拟物体尽可能逼真</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#考虑物理世界的限制"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">考虑物理世界的限制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#考虑用户体验舒适度"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">考虑用户体验舒适度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#渐进引导用户的移动"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">渐进引导用户的移动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#留心用户的安全"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">留心用户的安全</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用声音或触觉反馈来提升沉浸感"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">使用声音或触觉反馈来提升沉浸感</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将提示融入情境"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">将提示融入情境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#避免AR体验过程中的中断"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">避免AR体验过程中的中断</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进入AR体验"><span class="post-toc-number">2.</span> <span class="post-toc-text">进入AR体验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提示初始化进程并且带动用户参与"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">提示初始化进程并且带动用户参与</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#帮助用户理解何时定位平面并且安放物体"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">帮助用户理解何时定位平面并且安放物体</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#快速回应安置物体请求"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">快速回应安置物体请求</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用户与虚拟物体的交互"><span class="post-toc-number">3.</span> <span class="post-toc-text">用户与虚拟物体的交互</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#支持直接操作而不是分离的屏幕操作"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">支持直接操作而不是分离的屏幕操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#允许用户使用标准的、熟悉的手势来与虚拟物体互动"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">允许用户使用标准的、熟悉的手势来与虚拟物体互动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#交互应尽量简单"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">交互应尽量简单</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回应近似范围内的交互"><span class="post-toc-number">3.0.4.</span> <span class="post-toc-text">回应近似范围内的交互</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#考虑是否采用以用户出发的缩放比例"><span class="post-toc-number">3.0.5.</span> <span class="post-toc-text">考虑是否采用以用户出发的缩放比例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#确保虚拟物体的运动是连贯的"><span class="post-toc-number">3.0.6.</span> <span class="post-toc-text">确保虚拟物体的运动是连贯的</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#探索更多吸引人的交互方式"><span class="post-toc-number">3.0.7.</span> <span class="post-toc-text">探索更多吸引人的交互方式</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">操作问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#允许用户重置"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">允许用户重置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如果出现问题，提供合适的解决方案"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">如果出现问题，提供合适的解决方案</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#仅为合适的设备提供AR功能"><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">仅为合适的设备提供AR功能</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#AR图标"><span class="post-toc-number">4.0.4.</span> <span class="post-toc-text">AR图标</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#录制介绍视频"><span class="post-toc-number">4.0.5.</span> <span class="post-toc-text">录制介绍视频</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#人脸识别动态表情"><span class="post-toc-number">4.0.6.</span> <span class="post-toc-text">人脸识别动态表情</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-苹果给ARKit开发者的22条建议"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">苹果给ARKit开发者的22条建议</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-15 21:52:03" datetime="2017-11-15T13:52:03.000Z"  itemprop="datePublished">2017-11-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>原文链接：<a href="http://vr.99.com/news/10112017/203934054.shtml" target="_blank" rel="external">传送门</a></p>
+</blockquote>
+<p>近日，苹果在其开发者网页为开发者提供了3种关键资源，帮助开发者开发和推广AR应用。这些资源包括AR界面设计，如何友好地让用户知道自己已经进入AR模式；如何录制放置在App Store中的AR应用介绍视频；以及如何利用人脸识别创建动态表情Animoji。<br>关于AR的界面设计、操作等，苹果给出了22条注意事项，帮助开发者打造用户体验更好的AR应用。目前国内已经有不少团队利用ARKit开发出了应用，这些注意事项你家app做到了吗？</p>
+<h2 id="打造吸引人的体验"><a href="#打造吸引人的体验" class="headerlink" title="打造吸引人的体验"></a>打造吸引人的体验</h2><h4 id="全屏显示AR效果"><a href="#全屏显示AR效果" class="headerlink" title="全屏显示AR效果"></a>全屏显示AR效果</h4><p>让真实世界的画面和AR物体尽量占据整个屏幕，避免让操作按键和其他信息切割屏幕，破坏沉浸感。</p>
+<h4 id="让虚拟物体尽可能逼真"><a href="#让虚拟物体尽可能逼真" class="headerlink" title="让虚拟物体尽可能逼真"></a>让虚拟物体尽可能逼真</h4><p>大部分的AR效果采用的是虚拟的卡通角色，但是如果采用现实中存在的物体应该让它们做到与环境融为一体。为此，设计者应该设计有栩栩如生的质地的3D形象、在光照下能产生合理的阴影并且移动相机物体能发生改变。</p>
+<h4 id="考虑物理世界的限制"><a href="#考虑物理世界的限制" class="headerlink" title="考虑物理世界的限制"></a>考虑物理世界的限制</h4><p>用户很可能在一个并不适合AR体验的环境下操作你的AR应用，例如他们可能在一个狭窄的、没有平面的区域。因此，设计者应该考虑不同场景下设计不同的使用方式和功能，并且提前告知用户使用方法。</p>
+<h4 id="考虑用户体验舒适度"><a href="#考虑用户体验舒适度" class="headerlink" title="考虑用户体验舒适度"></a>考虑用户体验舒适度</h4><p>长时间以一个角度或者距离拿住手机是一件并不愉快的事，所以要考虑到用户使用你的手机的方式和时长是否会带来不适。你可以通过减少游戏的级数或者在其中穿插休息时间来缓解用户疲劳。</p>
+<h4 id="渐进引导用户的移动"><a href="#渐进引导用户的移动" class="headerlink" title="渐进引导用户的移动"></a>渐进引导用户的移动</h4><p>如果你的应用是需要用户移动的，不要在一开始就扔个炸弹让用户跳开，应该先让用户适应AR体验，然后再鼓励他们运动。</p>
+<h4 id="留心用户的安全"><a href="#留心用户的安全" class="headerlink" title="留心用户的安全"></a>留心用户的安全</h4><p>在有人或者物体的环境里大幅度的移动有可能造成危险，注意让应用能安全地操作，避免大范围或者突然地移动。</p>
+<h4 id="使用声音或触觉反馈来提升沉浸感"><a href="#使用声音或触觉反馈来提升沉浸感" class="headerlink" title="使用声音或触觉反馈来提升沉浸感"></a>使用声音或触觉反馈来提升沉浸感</h4><p>音效或者震动反馈可以创造一种虚拟物体与真实物体接触或者碰撞的感觉。在沉浸式的游戏中，音效可以让人进入虚拟世界。请参见Audio和Haptic Feedback。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="将提示融入情境"><a href="#将提示融入情境" class="headerlink" title="将提示融入情境"></a>将提示融入情境</h4><p>例如要在一个物体旁边提供一个三维旋转的标志比提供文字要直观。然而，如果用户对情境提示没有反应，可以再显示文字。避免使用一些技术性术语， 例如：ARKit、环境侦测、追踪等。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img02.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="避免AR体验过程中的中断"><a href="#避免AR体验过程中的中断" class="headerlink" title="避免AR体验过程中的中断"></a>避免AR体验过程中的中断</h4><p>用户每次进入AR时用户都会重新分析环境、检测平面，另外手机和相机的位置可能已经改变了。那么，先前放置的物体会被重新安置——它们或许无法再被放置在现实世界的平面上。避免中断的方法是让人们在不离开AR的情况下去改变物体和放置情况，例如在使用宜家的家装AR放置一把沙发时，可以让用户能选择不同的材质。  </p>
+<h2 id="进入AR体验"><a href="#进入AR体验" class="headerlink" title="进入AR体验"></a>进入AR体验</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img03.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="提示初始化进程并且带动用户参与"><a href="#提示初始化进程并且带动用户参与" class="headerlink" title="提示初始化进程并且带动用户参与"></a>提示初始化进程并且带动用户参与</h4><p>每次用户进入AR，都会有初始化评估环境的过程，这会花费数秒的时间。为了减少用户的困惑以及加速进程，应该明确指示出这一过程并且鼓励用户探索他们的环境，积极寻找一个平面。</p>
+<p>放置虚拟物体</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img04.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img05.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img06.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="帮助用户理解何时定位平面并且安放物体"><a href="#帮助用户理解何时定位平面并且安放物体" class="headerlink" title="帮助用户理解何时定位平面并且安放物体"></a>帮助用户理解何时定位平面并且安放物体</h4><p>虚拟标识是告知用户平面定位模式正在进行的好办法。屏幕中间的梯形标线可以提示用户他们应该寻找一个垂直的宽阔的平面。一旦这个平面被定位了，应该更换标识外形告诉用户现在可以安置物体。设计虚拟标识应该被视为App体验的一部分。</p>
+<h4 id="快速回应安置物体请求"><a href="#快速回应安置物体请求" class="headerlink" title="快速回应安置物体请求"></a>快速回应安置物体请求</h4><p>平面侦测过程中精确度是逐渐提高的，当用户放置物体时应该使用当前已获得的信息立刻回应，然后再优化物体的位置。如果物体超出了侦测到的平面范围，直接将其拉拽回来。不要将其无限靠近侦测到的平面的边缘，因为这个边缘并不是稳定的。</p>
+<h2 id="用户与虚拟物体的交互"><a href="#用户与虚拟物体的交互" class="headerlink" title="用户与虚拟物体的交互"></a>用户与虚拟物体的交互</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img07.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="支持直接操作而不是分离的屏幕操作"><a href="#支持直接操作而不是分离的屏幕操作" class="headerlink" title="支持直接操作而不是分离的屏幕操作"></a>支持直接操作而不是分离的屏幕操作</h4><p>最为直观的方式是让用户直接触碰屏幕上的物体与之互动，而不是让用户去操作一个与与物体分离的控制按钮。但是也要注意，当用户在移动的时候这种直接的操作方式也可能混乱。</p>
+<h4 id="允许用户使用标准的、熟悉的手势来与虚拟物体互动"><a href="#允许用户使用标准的、熟悉的手势来与虚拟物体互动" class="headerlink" title="允许用户使用标准的、熟悉的手势来与虚拟物体互动"></a>允许用户使用标准的、熟悉的手势来与虚拟物体互动</h4><p>例如，考虑以单只手指来拖拽物体、两只手指来旋转物体。两只手指按压和两只手指旋转很容易混淆，应该对软件进行识别度的测试。更多参考资料，见Gestures。</p>
+<h4 id="交互应尽量简单"><a href="#交互应尽量简单" class="headerlink" title="交互应尽量简单"></a>交互应尽量简单</h4><p>目前的触碰手势都是二维的，但是AR体验是建立在三维的真实世界之上的。考虑以下的方式来简化用户与虚拟物体的交互。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img08.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="回应近似范围内的交互"><a href="#回应近似范围内的交互" class="headerlink" title="回应近似范围内的交互"></a>回应近似范围内的交互</h4><p>要让用户准确触碰一个小的虚拟物体会很难，因此可以设计成只要在可交互物体的附近监测到用户的行为那么就预设用户想要移动这个物体。</p>
+<h4 id="考虑是否采用以用户出发的缩放比例"><a href="#考虑是否采用以用户出发的缩放比例" class="headerlink" title="考虑是否采用以用户出发的缩放比例"></a>考虑是否采用以用户出发的缩放比例</h4><p>如果虚拟物体是不具有固定的尺寸大小的玩具或者游戏角色，用户想要看到其放大缩小的效果，那么缩放就是很合适的。但是对于拥有与真实世界对应的尺寸的物体来说，例如家居，缩放就没有意义了。例如，当你放大这个家具时，他并不会看起来离你更近。</p>
+<h4 id="确保虚拟物体的运动是连贯的"><a href="#确保虚拟物体的运动是连贯的" class="headerlink" title="确保虚拟物体的运动是连贯的"></a>确保虚拟物体的运动是连贯的</h4><p>当用户缩放、旋转或者移动物体到新位置时物体不应该突然跳出来。</p>
+<h4 id="探索更多吸引人的交互方式"><a href="#探索更多吸引人的交互方式" class="headerlink" title="探索更多吸引人的交互方式"></a>探索更多吸引人的交互方式</h4><p>手势不应该是与虚拟物体交互的唯一方式。你的应用可以采用其他因素，例如运动或者逼近来让内容有生命力。当用户靠近一个游戏角色时，它可以回头看用户。</p>
+<h2 id="操作问题"><a href="#操作问题" class="headerlink" title="操作问题"></a>操作问题</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img09.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img10.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="允许用户重置"><a href="#允许用户重置" class="headerlink" title="允许用户重置"></a>允许用户重置</h4><p>如果用户对虚拟物体的安放不满意，不要强制用户在当前状况下改进，允许他们重新开始寻找更好的方案。</p>
+<h4 id="如果出现问题，提供合适的解决方案"><a href="#如果出现问题，提供合适的解决方案" class="headerlink" title="如果出现问题，提供合适的解决方案"></a>如果出现问题，提供合适的解决方案</h4><p>许多情况可能导致侦测用户环境失败：亮度不够、平面反光过高、平面没有足够的细节或者相机运动过多。如果应用检测到了这些问题，应该给出解决问题的建议。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img11.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="仅为合适的设备提供AR功能"><a href="#仅为合适的设备提供AR功能" class="headerlink" title="仅为合适的设备提供AR功能"></a>仅为合适的设备提供AR功能</h4><p>如果你的app的主要功能是AR，那么让你的app只能在支持ARKit的设备上安装。如果你的app的AR功能只是附属的——例如家居类的app提供AR的展示——则不要在不能支持ARKit的手机上显示AR功能，避免让用户在进入AR功能时出现错误，开发者可以在UIRequiredDeviceCapabilities部分获得相应指导。</p>
+<h4 id="AR图标"><a href="#AR图标" class="headerlink" title="AR图标"></a>AR图标</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img12.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>苹果提供了AR图标和AR标志，用以区分以ARKit为基础的应用<br>在Resources中可下载。</p>
+<h4 id="录制介绍视频"><a href="#录制介绍视频" class="headerlink" title="录制介绍视频"></a>录制介绍视频</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img13.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>iOS 11上线了录屏功能，支持将AR应用效果录制成视频，可以放在App  Store的App预览中，方便用户在下载前获取应用的关键信息，吸引用户下载。当然录制时需要安排好应用演示的环境，不要有干扰信息。</p>
+<h4 id="人脸识别动态表情"><a href="#人脸识别动态表情" class="headerlink" title="人脸识别动态表情"></a>人脸识别动态表情</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img14.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>iPhone X的原深度摄像头系统可以算是ARKit的一大新武器，这套摄像头系统中的传感器可以投射人眼看不见的光，并读取用户的脸部3D结构，通过苹果神经引擎（A11 Bionic Neural Engine），可以即时处理识别数据，建立人脸数学模型。这一人脸识别功能用在AR上可以支持AR自拍，也可以支持苹果发布会演示的Animoji。</p>
+<p>苹果在现场只演示了最为简单人脸驱动emoji，目前苹果将这套方案开放给开发者，开发者通过原深感摄像头可以利用人脸动作来驱动AR角色，是最简单直接的面部捕捉和实时动画制作。通过PGC相信可以创造很多有趣的内容。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-15T14:21:25.333Z" itemprop="dateUpdated">2017-11-15 22:21:25</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2017-11-15-苹果给ARKit开发者的22条建议.html"target="_blank" rel="external">http://blog.itbobby.top/2017-11-15-苹果给ARKit开发者的22条建议.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AR/">AR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARKit/">ARKit</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-10-17-榜样博文——轻量级博客集成阅读客户端.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">榜样博文——轻量级博客集成阅读客户端</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
