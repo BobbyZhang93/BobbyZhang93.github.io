@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ARKitRemote工具使用 | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="AR,ARKit">
+    <meta name="description" content="在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。ARKit发布已经有一段时间了，在unity的开发插件中为开发者人性化的提供了ARKitRemote这一工具，开发者只需将iphone连接上电脑，即可使用unity调用iphone硬件调试">
+<meta name="keywords" content="AR,ARKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARKitRemote工具使用">
+<meta property="og:url" content="http://blog.itbobby.top/2017-11-26-ARKitRemote工具使用.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。ARKit发布已经有一段时间了，在unity的开发插件中为开发者人性化的提供了ARKitRemote这一工具，开发者只需将iphone连接上电脑，即可使用unity调用iphone硬件调试">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img01.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img02.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img03.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img04.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img05.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img06.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img07.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img08.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img09.png">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img10.png">
+<meta property="og:updated_time" content="2017-11-26T15:53:33.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARKitRemote工具使用">
+<meta name="twitter:description" content="在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。ARKit发布已经有一段时间了，在unity的开发插件中为开发者人性化的提供了ARKitRemote这一工具，开发者只需将iphone连接上电脑，即可使用unity调用iphone硬件调试">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img01.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ARKitRemote工具使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ARKitRemote工具使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-26T15:52:04.000Z" itemprop="datePublished" class="page-time">
+  2017-11-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载Unity-ARKit-Plugin"><span class="post-toc-number">1.</span> <span class="post-toc-text">下载Unity ARKit Plugin</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给iPhone安装ARKitRemote工具"><span class="post-toc-number">2.</span> <span class="post-toc-text">给iPhone安装ARKitRemote工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过unity进行连接"><span class="post-toc-number">3.</span> <span class="post-toc-text">通过unity进行连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意："><span class="post-toc-number">4.</span> <span class="post-toc-text">注意：</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ARKitRemote工具使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ARKitRemote工具使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-26 23:52:04" datetime="2017-11-26T15:52:04.000Z"  itemprop="datePublished">2017-11-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。<br>ARKit发布已经有一段时间了，在unity的开发插件中为开发者人性化的提供了ARKitRemote这一工具，开发者只需将iphone连接上电脑，即可使用unity调用iphone硬件调试程序并且在Game中预览效果。</p>
+</blockquote>
+<h3 id="下载Unity-ARKit-Plugin"><a href="#下载Unity-ARKit-Plugin" class="headerlink" title="下载Unity ARKit Plugin"></a>下载Unity ARKit Plugin</h3><p>如果不知道自己Asset Store的快捷键也可以在window选项卡中调出面板<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img01.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>搜索Unity ARKit Plugin下载并导入<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img02.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<h3 id="给iPhone安装ARKitRemote工具"><a href="#给iPhone安装ARKitRemote工具" class="headerlink" title="给iPhone安装ARKitRemote工具"></a>给iPhone安装ARKitRemote工具</h3><p>在Assets中找到ARKitRemote这个文件夹，打开场景<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img03.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>导出场景为ios项目，注意需要将模式切换为Debug，同时勾选Development Build<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img04.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>导出的项目使用Xcode打开，配置签名<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img05.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>设置Bitcode为NO<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img06.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>然后build项目到手机上，启动后界面如下，手机已经在等待unity端的链接了<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img07.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<h3 id="通过unity进行连接"><a href="#通过unity进行连接" class="headerlink" title="通过unity进行连接"></a>通过unity进行连接</h3><p>从导入的ARKit包中找到ARKitRemoteConnection，并且拖入到场景中，这个对象上挂载的类是进行Remote调试的关键<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img08.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>Run项目，然后在Console中选择你连接的设备，在绿色背景的手机预览界面上会出现一个让你确认连接的button（这里没有截出这个视图），点击即可完成连接<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img09.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>连接成功后，手机端应该呈现的视图成功预览到Game窗口，并且基本没有卡顿<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img10.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li>调试所用的设备必须是A9芯片以上（6s/SE及以后），并且系统已升级至ios11；</li>
+<li>连接过程中可能会出现连接超时，stop程序，退出remote软件重新尝试即可；</li>
+<li>远程调试已知的问题有检测平面不灵敏，如果有朋友能提供解决办法请留言补充，谢谢。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-26T15:53:33.419Z" itemprop="dateUpdated">2017-11-26 23:53:33</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2017-11-26-ARKitRemote工具使用.html"target="_blank" rel="external">http://blog.itbobby.top/2017-11-26-ARKitRemote工具使用.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AR/">AR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARKit/">ARKit</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-11-15-苹果给ARKit开发者的22条建议.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">苹果给ARKit开发者的22条建议</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
