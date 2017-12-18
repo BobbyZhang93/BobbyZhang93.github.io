@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>室外定位的数据获取与优化 | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="AR,外设开发">
+    <meta name="description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原">
+<meta name="keywords" content="AR,外设开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="室外定位的数据获取与优化">
+<meta property="og:url" content="http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
+<meta property="og:updated_time" content="2017-12-18T15:18:57.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="室外定位的数据获取与优化">
+<meta name="twitter:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原">
+<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">室外定位的数据获取与优化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">室外定位的数据获取与优化</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-12T12:22:56.000Z" itemprop="datePublished" class="page-time">
+  2017-12-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-室外定位的数据获取与优化"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">室外定位的数据获取与优化</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-12 20:22:56" datetime="2017-12-12T12:22:56.000Z"  itemprop="datePublished">2017-12-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，所以对P3进行二次开发的任务自然落在了我的身上。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
+</blockquote>
+<p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>本阶段涉及到的技术点：</strong>  </p>
+<ul>
+<li>Android蓝牙开发  </li>
+<li>Android串口开发  </li>
+<li>高频GNSS数据解析  </li>
+<li>EventBus学习与应用  </li>
+<li>针对定位数据的卡尔曼滤波实现  </li>
+<li>Android制作Unity插件</li>
+</ul>
+<p>接下来我将选取其中几个重要的技术点单独成文进行详尽的介绍。<br>敬请期待…</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-12-18T15:18:57.524Z" itemprop="dateUpdated">2017-12-18 23:18:57</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2017-12-12-室外定位的数据获取与优化.html"target="_blank" rel="external">http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AR/">AR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/外设开发/">外设开发</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017-12-18-Tango技术探究.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Tango技术探究</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017-11-26-ARKitRemote工具使用.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ARKitRemote工具使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

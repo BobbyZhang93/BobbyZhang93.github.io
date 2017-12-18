@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-11-26T15:57:39.668Z</updated>
+  <updated>2017-12-18T15:14:36.241Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tango技术探究</title>
+    <link href="http://blog.itbobby.top/2017-12-18-Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6.html"/>
+    <id>http://blog.itbobby.top/2017-12-18-Tango技术探究.html</id>
+    <published>2017-12-18T15:14:06.000Z</published>
+    <updated>2017-12-18T15:14:36.241Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在定制移动终端上发力，但是“定制”这个属性也成为了Tango发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，走定制化硬件的Tango注定要成为蜡烛。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/imgs/img01.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>相关新闻：<a href="http://news.91.com/it/s5a35e7109531.html" target="_blank" rel="external">谷歌宣布明年三月关闭Tango</a></p>
+<p>在过去的半年的时间里由于工作际遇和个人兴趣，我进行了不少针对Tango的技术探究和应用设计，主要包含了以下几个方面：  </p>
+<ul>
+<li>Tango区域学习探究  </li>
+<li>Tango运动追踪探究  </li>
+<li>Tango深度感知探究  </li>
+<li>AR展示助手工具制作（已申请软著）   </li>
+<li>AR施工助手管道助手V1.0   </li>
+<li>Unity相机检测插件制作  </li>
+<li>Unity本地ADF加载模块插件制作</li>
+</ul>
+<p>针对于前三点我将主要以翻译Tango API的方式进行讲解，当然同时会加上自己实践中的理解；由于AR展示助手和施工助手涉及公司利益故不过多讲解；两个Unity的插件将会给出详尽的讲解。<br>敬请期待…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="AR" scheme="http://blog.itbobby.top/tags/AR/"/>
+    
+      <category term="Tango" scheme="http://blog.itbobby.top/tags/Tango/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>室外定位的数据获取与优化</title>
+    <link href="http://blog.itbobby.top/2017-12-12-%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96.html"/>
+    <id>http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</id>
+    <published>2017-12-12T12:22:56.000Z</published>
+    <updated>2017-12-18T15:18:57.524Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，所以对P3进行二次开发的任务自然落在了我的身上。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
+</blockquote>
+<p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>本阶段涉及到的技术点：</strong>  </p>
+<ul>
+<li>Android蓝牙开发  </li>
+<li>Android串口开发  </li>
+<li>高频GNSS数据解析  </li>
+<li>EventBus学习与应用  </li>
+<li>针对定位数据的卡尔曼滤波实现  </li>
+<li>Android制作Unity插件</li>
+</ul>
+<p>接下来我将选取其中几个重要的技术点单独成文进行详尽的介绍。<br>敬请期待…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="AR" scheme="http://blog.itbobby.top/tags/AR/"/>
+    
+      <category term="外设开发" scheme="http://blog.itbobby.top/tags/%E5%A4%96%E8%AE%BE%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>ARKitRemote工具使用</title>
@@ -992,37 +1085,6 @@
     
     
       <category term="开发工具" scheme="http://blog.itbobby.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一篇博客</title>
-    <link href="http://blog.itbobby.top/2017-08-09-%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2.html"/>
-    <id>http://blog.itbobby.top/2017-08-09-第一篇博客.html</id>
-    <published>2017-08-09T15:05:24.000Z</published>
-    <updated>2017-08-31T16:48:07.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="欢迎来到BobbyZhang的技术小站！"><a href="#欢迎来到BobbyZhang的技术小站！" class="headerlink" title="欢迎来到BobbyZhang的技术小站！"></a>欢迎来到BobbyZhang的技术小站！</h4><p>在这里我们可以交流</p>
-<ul>
-<li>关于android的一切</li>
-<li>关于unity的一切</li>
-<li>关于AR/VR的一切</li>
-<li>以及其他6到飞起的编程小技巧</li>
-<li>眼前的苟且和充满诗意的远方</li>
-</ul>
-<p>欢迎大家常来指教，常鞭策，常鼓励，期待与你一起进步。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;欢迎来到BobbyZhang的技术小站！&quot;&gt;&lt;a href=&quot;#欢迎来到BobbyZhang的技术小站！&quot; class=&quot;headerlink&quot; title=&quot;欢迎来到BobbyZhang的技术小站！&quot;&gt;&lt;/a&gt;欢迎来到BobbyZhang的技术小站！&lt;/h4&gt;&lt;
-    
-    </summary>
-    
-      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="随笔" scheme="http://blog.itbobby.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
