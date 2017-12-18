@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-12-18T15:14:36.241Z</updated>
+  <updated>2017-12-18T15:37:34.522Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://blog.itbobby.top/2017-12-18-Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6.html"/>
     <id>http://blog.itbobby.top/2017-12-18-Tango技术探究.html</id>
     <published>2017-12-18T15:14:06.000Z</published>
-    <updated>2017-12-18T15:14:36.241Z</updated>
+    <updated>2017-12-18T15:37:34.522Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在定制移动终端上发力，但是“定制”这个属性也成为了Tango发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，走定制化硬件的Tango注定要成为蜡烛。</p>
+<p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，已经存在了将近三年的Tango注定要成为牺牲品。</p>
 </blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -38,8 +38,8 @@
 <li>Tango区域学习探究  </li>
 <li>Tango运动追踪探究  </li>
 <li>Tango深度感知探究  </li>
-<li>AR展示助手工具制作（已申请软著）   </li>
-<li>AR施工助手管道助手V1.0   </li>
+<li>AR展示助手工具制作（已申请<a href="http://www.publics.com.cn/software/2017SR517278/" target="_blank" rel="external">软著</a>）   </li>
+<li>AR施工助手V1.1（V1.0已申请<a href="http://www.publics.com.cn/software/2017SR079968/" target="_blank" rel="external">软著</a>）   </li>
 <li>Unity相机检测插件制作  </li>
 <li>Unity本地ADF加载模块插件制作</li>
 </ul>
@@ -49,7 +49,7 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在
+&lt;p&gt;在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运
     
     </summary>
     
@@ -67,10 +67,10 @@
     <link href="http://blog.itbobby.top/2017-12-12-%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96.html"/>
     <id>http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</id>
     <published>2017-12-12T12:22:56.000Z</published>
-    <updated>2017-12-18T15:18:57.524Z</updated>
+    <updated>2017-12-18T15:31:05.320Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，所以对P3进行二次开发的任务自然落在了我的身上。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
+<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，因此我便快速地投入进了针对P3的二次开发工作中。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
 </blockquote>
 <p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
 <figure class="image-bubble">

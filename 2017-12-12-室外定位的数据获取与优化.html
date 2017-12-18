@@ -20,19 +20,19 @@
     
     
     <meta name="keywords" content="AR,外设开发">
-    <meta name="description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原">
+    <meta name="description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
 <meta name="keywords" content="AR,外设开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="室外定位的数据获取与优化">
 <meta property="og:url" content="http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原">
+<meta property="og:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
-<meta property="og:updated_time" content="2017-12-18T15:18:57.524Z">
+<meta property="og:updated_time" content="2017-12-18T15:31:05.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="室外定位的数据获取与优化">
-<meta name="twitter:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原">
+<meta name="twitter:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
 <meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
@@ -204,7 +204,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而开始对官方称量产版频率能达到50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，所以对P3进行二次开发的任务自然落在了我的身上。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
+<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，因此我便快速地投入进了针对P3的二次开发工作中。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
 </blockquote>
 <p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
 <figure class="image-bubble">
@@ -231,7 +231,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-12-18T15:18:57.524Z" itemprop="dateUpdated">2017-12-18 23:18:57</time>
+    最后更新时间：<time datetime="2017-12-18T15:31:05.320Z" itemprop="dateUpdated">2017-12-18 23:31:05</time>
 </span><br>
 
 

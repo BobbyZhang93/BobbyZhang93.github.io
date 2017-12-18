@@ -20,19 +20,19 @@
     
     
     <meta name="keywords" content="AR,Tango">
-    <meta name="description" content="在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在定制移动终端上发力，但是“定制”这个属性也成为了Tango发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎">
+    <meta name="description" content="在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自">
 <meta name="keywords" content="AR,Tango">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tango技术探究">
 <meta property="og:url" content="http://blog.itbobby.top/2017-12-18-Tango技术探究.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在定制移动终端上发力，但是“定制”这个属性也成为了Tango发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎">
+<meta property="og:description" content="在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/imgs/img01.jpeg">
-<meta property="og:updated_time" content="2017-12-18T15:14:36.241Z">
+<meta property="og:updated_time" content="2017-12-18T15:37:34.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tango技术探究">
-<meta name="twitter:description" content="在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在定制移动终端上发力，但是“定制”这个属性也成为了Tango发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎">
+<meta name="twitter:description" content="在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自">
 <meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/imgs/img01.jpeg">
     
         <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
@@ -204,7 +204,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是在定制移动终端上发力，但是“定制”这个属性也成为了Tango发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，走定制化硬件的Tango注定要成为蜡烛。</p>
+<p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，已经存在了将近三年的Tango注定要成为牺牲品。</p>
 </blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -219,8 +219,8 @@
 <li>Tango区域学习探究  </li>
 <li>Tango运动追踪探究  </li>
 <li>Tango深度感知探究  </li>
-<li>AR展示助手工具制作（已申请软著）   </li>
-<li>AR施工助手管道助手V1.0   </li>
+<li>AR展示助手工具制作（已申请<a href="http://www.publics.com.cn/software/2017SR517278/" target="_blank" rel="external">软著</a>）   </li>
+<li>AR施工助手V1.1（V1.0已申请<a href="http://www.publics.com.cn/software/2017SR079968/" target="_blank" rel="external">软著</a>）   </li>
 <li>Unity相机检测插件制作  </li>
 <li>Unity本地ADF加载模块插件制作</li>
 </ul>
@@ -232,7 +232,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-12-18T15:14:36.241Z" itemprop="dateUpdated">2017-12-18 23:14:36</time>
+    最后更新时间：<time datetime="2017-12-18T15:37:34.522Z" itemprop="dateUpdated">2017-12-18 23:37:34</time>
 </span><br>
 
 
