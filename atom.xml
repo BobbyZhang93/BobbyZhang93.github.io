@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2017-12-18T15:37:34.522Z</updated>
+  <updated>2018-01-31T02:49:59.571Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>查看静态链接库.a文件是否支持arm64</title>
+    <link href="http://blog.itbobby.top/2018-01-31-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-a%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81arm64.html"/>
+    <id>http://blog.itbobby.top/2018-01-31-查看静态链接库-a文件是否支持arm64.html</id>
+    <published>2018-01-31T02:46:59.000Z</published>
+    <updated>2018-01-31T02:49:59.571Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>.a文件是LINUX系统中的静态链接库文件。</p>
+</blockquote>
+<h3 id="进入-a文件所在的路径"><a href="#进入-a文件所在的路径" class="headerlink" title="进入.a文件所在的路径"></a>进入.a文件所在的路径</h3><p><code>bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS</code></p>
+<h3 id="列出文件夹下所有文件，查看-a文件名"><a href="#列出文件夹下所有文件，查看-a文件名" class="headerlink" title="列出文件夹下所有文件，查看.a文件名"></a>列出文件夹下所有文件，查看.a文件名</h3><p><code>bumiemac001deMac:iOS bumiemac001$ ls  
+AVProVideoUnityRegisterRenderingPluginV5.c
+libAVProVideoiOS.a</code></p>
+<h3 id="查看-a文件所支持的架构"><a href="#查看-a文件所支持的架构" class="headerlink" title="查看.a文件所支持的架构"></a>查看.a文件所支持的架构</h3><p><code>bumiemac001deMac:iOS bumiemac001$ sudo lipo -info libAVProVideoiOS.a
+Password:[输入密码]
+Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</code></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>该包支持armv7 i386 x86_64 arm64</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;.a文件是LINUX系统中的静态链接库文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;进入-a文件所在的路径&quot;&gt;&lt;a href=&quot;#进入-a文件所在的路径&quot; class=&quot;headerlink&quot; title=&quot;进入.a文件所在的路径&quot;&gt;
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="ios" scheme="http://blog.itbobby.top/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>Tango技术探究</title>
@@ -1056,35 +1092,6 @@
       <category term="Java" scheme="http://blog.itbobby.top/tags/Java/"/>
     
       <category term="外设开发" scheme="http://blog.itbobby.top/tags/%E5%A4%96%E8%AE%BE%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MAC上开启或关闭隐藏文件的显示</title>
-    <link href="http://blog.itbobby.top/2017-08-14-MAC%E4%B8%8A%E5%BC%80%E5%90%AF%E6%88%96%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%9A%84%E6%98%BE%E7%A4%BA.html"/>
-    <id>http://blog.itbobby.top/2017-08-14-MAC上开启或关闭隐藏文件的显示.html</id>
-    <published>2017-08-14T15:51:29.000Z</published>
-    <updated>2017-08-31T16:47:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>本文共计142字0张配图，预计阅读耗时1分00秒</code></p>
-<h4 id="早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示"><a href="#早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示" class="headerlink" title="早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示"></a>早期的OS X（10.6~10.8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.Finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
-<h4 id="当升级到OS-X-10-9-Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令"><a href="#当升级到OS-X-10-9-Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令" class="headerlink" title="当升级到OS X 10.9 Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令"></a>当升级到OS X 10.9 Mavericks版本之后，这两条命令需要做一些修改，变成了如下命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles Yes &amp;&amp; killall Finder </div><div class="line">//不显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles No &amp;&amp; killall Finder</div></pre></td></tr></table></figure>
-<ul>
-<li>区别在于finder首字母的大小写</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;本文共计142字0张配图，预计阅读耗时1分00秒&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&quot;早期的OS-X（10-6-10-8）系统可以使用如下两条命令来开始或者关闭系统隐藏文件的显示&quot;&gt;&lt;a href=&quot;#早期的OS-X（10-6-10-8）系统可以使用如下两条命
-    
-    </summary>
-    
-      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="开发工具" scheme="http://blog.itbobby.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   

@@ -13,27 +13,25 @@
     
     
     
-    <title>室外定位的数据获取与优化 | BobbyZhang的技术小站 | Just do IT！</title>
+    <title>查看静态链接库.a文件是否支持arm64 | BobbyZhang的技术小站 | Just do IT！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="AR,外设开发">
-    <meta name="description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
-<meta name="keywords" content="AR,外设开发">
+    <meta name="keywords" content="ios">
+    <meta name="description" content=".a文件是LINUX系统中的静态链接库文件。  进入.a文件所在的路径bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS 列出文件夹下所有文件，查看.a文件名bumiemac001deMac:iOS bu">
+<meta name="keywords" content="ios">
 <meta property="og:type" content="article">
-<meta property="og:title" content="室外定位的数据获取与优化">
-<meta property="og:url" content="http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html">
+<meta property="og:title" content="查看静态链接库.a文件是否支持arm64">
+<meta property="og:url" content="http://blog.itbobby.top/2018-01-31-查看静态链接库-a文件是否支持arm64.html">
 <meta property="og:site_name" content="BobbyZhang的技术小站">
-<meta property="og:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
+<meta property="og:description" content=".a文件是LINUX系统中的静态链接库文件。  进入.a文件所在的路径bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS 列出文件夹下所有文件，查看.a文件名bumiemac001deMac:iOS bu">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
-<meta property="og:updated_time" content="2017-12-18T15:31:05.320Z">
+<meta property="og:updated_time" content="2018-01-31T02:49:59.571Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="室外定位的数据获取与优化">
-<meta name="twitter:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
-<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
+<meta name="twitter:title" content="查看静态链接库.a文件是否支持arm64">
+<meta name="twitter:description" content=".a文件是LINUX系统中的静态链接库文件。  进入.a文件所在的路径bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS 列出文件夹下所有文件，查看.a文件名bumiemac001deMac:iOS bu">
     
         <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
     
@@ -142,7 +140,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">室外定位的数据获取与优化</div>
+        <div class="flex-col header-title ellipsis">查看静态链接库.a文件是否支持arm64</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -160,11 +158,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">室外定位的数据获取与优化</h1>
+        <h1 class="title">查看静态链接库.a文件是否支持arm64</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-12-12T12:22:56.000Z" itemprop="datePublished" class="page-time">
-  2017-12-12
+                <time datetime="2018-01-31T02:46:59.000Z" itemprop="datePublished" class="page-time">
+  2018-01-31
 </time>
 
 
@@ -182,13 +180,20 @@
 
 <div class="container body-wrap">
     
-<article id="post-室外定位的数据获取与优化"
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入-a文件所在的路径"><span class="post-toc-number">1.</span> <span class="post-toc-text">进入.a文件所在的路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列出文件夹下所有文件，查看-a文件名"><span class="post-toc-number">2.</span> <span class="post-toc-text">列出文件夹下所有文件，查看.a文件名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看-a文件所支持的架构"><span class="post-toc-number">3.</span> <span class="post-toc-text">查看.a文件所支持的架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结论"><span class="post-toc-number">4.</span> <span class="post-toc-text">结论</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-查看静态链接库-a文件是否支持arm64"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">室外定位的数据获取与优化</h1>
+        <h1 class="post-card-title">查看静态链接库.a文件是否支持arm64</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-12-12 20:22:56" datetime="2017-12-12T12:22:56.000Z"  itemprop="datePublished">2017-12-12</time>
+            <time class="post-time" title="2018-01-31 10:46:59" datetime="2018-01-31T02:46:59.000Z"  itemprop="datePublished">2018-01-31</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
@@ -204,26 +209,16 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，因此我便快速地投入进了针对P3的二次开发工作中。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
+<p>.a文件是LINUX系统中的静态链接库文件。</p>
 </blockquote>
-<p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p><strong>本阶段涉及到的技术点：</strong>  </p>
-<ul>
-<li>Android蓝牙开发  </li>
-<li>Android串口开发  </li>
-<li>高频GNSS数据解析  </li>
-<li>EventBus学习与应用  </li>
-<li>针对定位数据的卡尔曼滤波实现  </li>
-<li>Android制作Unity插件</li>
-</ul>
-<p>接下来我将选取其中几个重要的技术点单独成文进行详尽的介绍。<br>敬请期待…</p>
+<h3 id="进入-a文件所在的路径"><a href="#进入-a文件所在的路径" class="headerlink" title="进入.a文件所在的路径"></a>进入.a文件所在的路径</h3><p><code>bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS</code></p>
+<h3 id="列出文件夹下所有文件，查看-a文件名"><a href="#列出文件夹下所有文件，查看-a文件名" class="headerlink" title="列出文件夹下所有文件，查看.a文件名"></a>列出文件夹下所有文件，查看.a文件名</h3><p><code>bumiemac001deMac:iOS bumiemac001$ ls  
+AVProVideoUnityRegisterRenderingPluginV5.c
+libAVProVideoiOS.a</code></p>
+<h3 id="查看-a文件所支持的架构"><a href="#查看-a文件所支持的架构" class="headerlink" title="查看.a文件所支持的架构"></a>查看.a文件所支持的架构</h3><p><code>bumiemac001deMac:iOS bumiemac001$ sudo lipo -info libAVProVideoiOS.a
+Password:[输入密码]
+Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</code></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>该包支持armv7 i386 x86_64 arm64</p>
 
         </div>
 
@@ -231,12 +226,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-12-18T15:31:05.320Z" itemprop="dateUpdated">2017-12-18 23:31:05</time>
+    最后更新时间：<time datetime="2018-01-31T02:49:59.571Z" itemprop="dateUpdated">2018-01-31 10:49:59</time>
 </span><br>
 
 
         
-        转载请保留原文链接：<a href="/2017-12-12-室外定位的数据获取与优化.html"target="_blank" rel="external">http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</a>
+        转载请保留原文链接：<a href="/2018-01-31-查看静态链接库-a文件是否支持arm64.html"target="_blank" rel="external">http://blog.itbobby.top/2018-01-31-查看静态链接库-a文件是否支持arm64.html</a>
         
     </div>
     <footer>
@@ -256,7 +251,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AR/">AR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/外设开发/">外设开发</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
 
 
             
@@ -266,21 +261,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017-12-18-Tango技术探究.html" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Tango技术探究</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017-11-26-ARKitRemote工具使用.html" id="post-next" class="post-nav-link">
+      <a href="/2017-12-18-Tango技术探究.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">ARKitRemote工具使用</h4>
+        <h4 class="title">Tango技术探究</h4>
       </a>
     </div>
   
