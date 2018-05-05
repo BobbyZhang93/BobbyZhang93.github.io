@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>iOS&amp;Unity混编解决OC中self关键字不可用的方法 | BobbyZhang的技术小站 | Just do IT！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Unity,混合开发,iOS">
+    <meta name="description" content="Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：  .m ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。.mm ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使">
+<meta name="keywords" content="Unity,混合开发,iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS&amp;Unity混编解决OC中self关键字不可用的方法">
+<meta property="og:url" content="http://blog.itbobby.top/2018-05-04-iOS&Unity混编解决OC中self关键字不可用的方法.html">
+<meta property="og:site_name" content="BobbyZhang的技术小站">
+<meta property="og:description" content="Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：  .m ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。.mm ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-05T13:53:20.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS&amp;Unity混编解决OC中self关键字不可用的方法">
+<meta name="twitter:description" content="Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：  .m ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。.mm ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使">
+    
+        <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headicon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BobbyZhang</h5>
+          <a href="mailto:itBobby@foxmail.com" title="itBobby@foxmail.com" class="mail">itBobby@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/BobbyZhang93" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2982094023" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-up"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-right"></i>
+                简书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.zhihu.com/explore" target="_blank" >
+                <i class="icon icon-lg icon-hand-o-down"></i>
+                知乎
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">iOS&amp;Unity混编解决OC中self关键字不可用的方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">iOS&amp;Unity混编解决OC中self关键字不可用的方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-04T15:32:06.000Z" itemprop="datePublished" class="page-time">
+  2018-05-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-iOS&amp;Unity混编解决OC中self关键字不可用的方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">iOS&Unity混编解决OC中self关键字不可用的方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-04 23:32:06" datetime="2018-05-04T15:32:06.000Z"  itemprop="datePublished">2018-05-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：</p>
+<blockquote>
+<p><strong>.m</strong> ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。<br><strong>.mm</strong> ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使用C++类或者特性的时候才用这种扩展名。<br><em>题外科普Xcode项目中其他后缀的文件类型：</em><br><strong>.c</strong>：C语言源文件；<br><strong>.cc/.cpp</strong>：C++源文件；<br><strong>.h</strong>：头文件；<br><strong>.pl</strong>：Perl源文件；<br><strong>.o</strong>：Object文件，即编译后的文件。</p>
+</blockquote>
+<p>因此我们不难判断，Unity导出的项目中包含了C++相关的代码，而在.mm中OC的self关键字不能用了，此时我们需要这样处理一下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;//getVC是我的类名</div></pre></td></tr></table></figure>
+<p>然后在所有该用self的替换成mySelf即可。</p>
+<p><strong>完整参考代码：</strong></p>
+<p><em>getVC.h</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &lt;VerifyCode/NTESVerifyCodeManager.h&gt; </div><div class="line">@interface getVC : UIViewController&lt;NTESVerifyCodeManagerDelegate&gt; @property(nonatomic,strong)NTESVerifyCodeManager *manager;  </div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>getVC.mm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">#import &quot;GETVC.h&quot;</div><div class="line"></div><div class="line">@interface getVC () </div><div class="line">@end </div><div class="line"></div><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)didReceiveMemoryWarning &#123;</div><div class="line">    [super didReceiveMemoryWarning];</div><div class="line">    // Dispose of any resources that can be recreated.</div><div class="line">&#125;</div><div class="line"> </div><div class="line"> //unity端点击事件调用的方法，在此处接入网易云的验证，使之点击后响应</div><div class="line">extern &quot;C&quot; void unitylogin()&#123;</div><div class="line">    NSLog(@&quot;%s&quot;,&quot;ios--login&quot;);</div><div class="line">    [getVC shareInstance].manager=  [NTESVerifyCodeManager sharedInstance];</div><div class="line">    if (mySelf.manager) &#123;</div><div class="line">        </div><div class="line">        // 如果需要了解组件的执行情况,则实现回调</div><div class="line">        mySelf.manager.delegate = mySelf;</div><div class="line">        // captchaid的值是每个产品从后台生成的,比如 @&quot;a05f036b70ab447b87cc788af9a60974&quot;</div><div class="line">        NSString *captchaid = @&quot;a05f036b70ab447b87cc788af9a60974&quot;;</div><div class="line">        [mySelf.manager configureVerifyCode:captchaid timeout:10.0];</div><div class="line">        </div><div class="line">        // 设置语言</div><div class="line">        mySelf.manager.lang = NTESVerifyCodeLangCN;</div><div class="line">        </div><div class="line">        // 设置透明度</div><div class="line">        mySelf.manager.alpha = 0.7;</div><div class="line">        </div><div class="line">        // 设置frame</div><div class="line">        mySelf.manager.frame = CGRectNull;</div><div class="line">        </div><div class="line">        // 显示验证码</div><div class="line">        [mySelf.manager openVerifyCodeView:nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#pragma mark - NTESVerifyCodeManagerDelegate</div><div class="line">/**</div><div class="line"> * 验证码组件初始化完成</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFinish&#123;</div><div class="line">    NSLog(@&quot;收到初始化完成的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 验证码组件初始化出错</div><div class="line"> *</div><div class="line"> * @param message 错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFailed:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到初始化失败的回调:%@&quot;,message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 完成验证之后的回调</div><div class="line"> *</div><div class="line"> * @param result 验证结果 BOOL:YES/NO</div><div class="line"> * @param validate 二次校验数据，如果验证结果为false，validate返回空</div><div class="line"> * @param message 结果描述信息</div><div class="line"> *</div><div class="line"> */</div><div class="line">- (void)verifyCodeValidateFinish:(BOOL)result validate:(NSString *)validate message:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到验证结果的回调:(%d,%@,%@)&quot;, result, validate, message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 关闭验证码窗口后的回调</div><div class="line"> */</div><div class="line">- (void)verifyCodeCloseWindow&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到关闭验证码视图的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 网络错误</div><div class="line"> *</div><div class="line"> * @param error 网络错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeNetError:(NSError *)error&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到网络错误的回调:%@(%ld)&quot;, [error localizedDescription], (long)error.code);</div><div class="line">&#125; </div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>*以上参考代码基于Unity接入网易云盾iOS原生SDK的功能实现</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-05T13:53:20.363Z" itemprop="dateUpdated">2018-05-05 21:53:20</time>
+</span><br>
+
+
+        
+        转载请保留原文链接：<a href="/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html"target="_blank" rel="external">http://blog.itbobby.top/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html</a>
+        
+    </div>
+    <footer>
+        <a href="http://blog.itbobby.top">
+            <img src="/img/headicon.png" alt="BobbyZhang">
+            BobbyZhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/混合开发/">混合开发</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018-01-31-查看静态链接库-a文件是否支持arm64.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">查看静态链接库.a文件是否支持arm64</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+	<div id="uyan_frame"></div>
+	<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142331"></script>
+	<!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请的java
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/weixin.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>BobbyZhang &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1263617257&web_id=1263617257')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

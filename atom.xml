@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2018-01-31T02:49:59.571Z</updated>
+  <updated>2018-05-05T13:53:20.363Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS&amp;Unity混编解决OC中self关键字不可用的方法</title>
+    <link href="http://blog.itbobby.top/2018-05-04-iOS&amp;Unity%E6%B7%B7%E7%BC%96%E8%A7%A3%E5%86%B3OC%E4%B8%ADself%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95.html"/>
+    <id>http://blog.itbobby.top/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html</id>
+    <published>2018-05-04T15:32:06.000Z</published>
+    <updated>2018-05-05T13:53:20.363Z</updated>
+    
+    <content type="html"><![CDATA[<p>Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：</p>
+<blockquote>
+<p><strong>.m</strong> ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。<br><strong>.mm</strong> ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使用C++类或者特性的时候才用这种扩展名。<br><em>题外科普Xcode项目中其他后缀的文件类型：</em><br><strong>.c</strong>：C语言源文件；<br><strong>.cc/.cpp</strong>：C++源文件；<br><strong>.h</strong>：头文件；<br><strong>.pl</strong>：Perl源文件；<br><strong>.o</strong>：Object文件，即编译后的文件。</p>
+</blockquote>
+<p>因此我们不难判断，Unity导出的项目中包含了C++相关的代码，而在.mm中OC的self关键字不能用了，此时我们需要这样处理一下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;//getVC是我的类名</div></pre></td></tr></table></figure>
+<p>然后在所有该用self的替换成mySelf即可。</p>
+<p><strong>完整参考代码：</strong></p>
+<p><em>getVC.h</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &lt;VerifyCode/NTESVerifyCodeManager.h&gt; </div><div class="line">@interface getVC : UIViewController&lt;NTESVerifyCodeManagerDelegate&gt; @property(nonatomic,strong)NTESVerifyCodeManager *manager;  </div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>getVC.mm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">#import &quot;GETVC.h&quot;</div><div class="line"></div><div class="line">@interface getVC () </div><div class="line">@end </div><div class="line"></div><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)didReceiveMemoryWarning &#123;</div><div class="line">    [super didReceiveMemoryWarning];</div><div class="line">    // Dispose of any resources that can be recreated.</div><div class="line">&#125;</div><div class="line"> </div><div class="line"> //unity端点击事件调用的方法，在此处接入网易云的验证，使之点击后响应</div><div class="line">extern &quot;C&quot; void unitylogin()&#123;</div><div class="line">    NSLog(@&quot;%s&quot;,&quot;ios--login&quot;);</div><div class="line">    [getVC shareInstance].manager=  [NTESVerifyCodeManager sharedInstance];</div><div class="line">    if (mySelf.manager) &#123;</div><div class="line">        </div><div class="line">        // 如果需要了解组件的执行情况,则实现回调</div><div class="line">        mySelf.manager.delegate = mySelf;</div><div class="line">        // captchaid的值是每个产品从后台生成的,比如 @&quot;a05f036b70ab447b87cc788af9a60974&quot;</div><div class="line">        NSString *captchaid = @&quot;a05f036b70ab447b87cc788af9a60974&quot;;</div><div class="line">        [mySelf.manager configureVerifyCode:captchaid timeout:10.0];</div><div class="line">        </div><div class="line">        // 设置语言</div><div class="line">        mySelf.manager.lang = NTESVerifyCodeLangCN;</div><div class="line">        </div><div class="line">        // 设置透明度</div><div class="line">        mySelf.manager.alpha = 0.7;</div><div class="line">        </div><div class="line">        // 设置frame</div><div class="line">        mySelf.manager.frame = CGRectNull;</div><div class="line">        </div><div class="line">        // 显示验证码</div><div class="line">        [mySelf.manager openVerifyCodeView:nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#pragma mark - NTESVerifyCodeManagerDelegate</div><div class="line">/**</div><div class="line"> * 验证码组件初始化完成</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFinish&#123;</div><div class="line">    NSLog(@&quot;收到初始化完成的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 验证码组件初始化出错</div><div class="line"> *</div><div class="line"> * @param message 错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFailed:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到初始化失败的回调:%@&quot;,message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 完成验证之后的回调</div><div class="line"> *</div><div class="line"> * @param result 验证结果 BOOL:YES/NO</div><div class="line"> * @param validate 二次校验数据，如果验证结果为false，validate返回空</div><div class="line"> * @param message 结果描述信息</div><div class="line"> *</div><div class="line"> */</div><div class="line">- (void)verifyCodeValidateFinish:(BOOL)result validate:(NSString *)validate message:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到验证结果的回调:(%d,%@,%@)&quot;, result, validate, message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 关闭验证码窗口后的回调</div><div class="line"> */</div><div class="line">- (void)verifyCodeCloseWindow&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到关闭验证码视图的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 网络错误</div><div class="line"> *</div><div class="line"> * @param error 网络错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeNetError:(NSError *)error&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到网络错误的回调:%@(%ld)&quot;, [error localizedDescription], (long)error.code);</div><div class="line">&#125; </div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>*以上参考代码基于Unity接入网易云盾iOS原生SDK的功能实现</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;.m&lt;/strong&gt; ：源代码文件。这是典型的源代码文件扩展名，可以包
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="Unity" scheme="http://blog.itbobby.top/tags/Unity/"/>
+    
+      <category term="混合开发" scheme="http://blog.itbobby.top/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="iOS" scheme="http://blog.itbobby.top/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>查看静态链接库.a文件是否支持arm64</title>
@@ -1057,41 +1098,6 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
       <category term="Unity" scheme="http://blog.itbobby.top/tags/Unity/"/>
     
       <category term="混合开发" scheme="http://blog.itbobby.top/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UTC转化为本地时间再转化为Unix时间戳</title>
-    <link href="http://blog.itbobby.top/2017-08-14-UTC%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4%E5%86%8D%E8%BD%AC%E5%8C%96%E4%B8%BAUnix%E6%97%B6%E9%97%B4%E6%88%B3.html"/>
-    <id>http://blog.itbobby.top/2017-08-14-UTC转化为本地时间再转化为Unix时间戳.html</id>
-    <published>2017-08-14T15:56:23.000Z</published>
-    <updated>2017-08-31T16:48:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>本文共计258字0张配图，预计阅读耗时2分10秒</code></p>
-<h3 id="UTC转化为本地时间"><a href="#UTC转化为本地时间" class="headerlink" title="UTC转化为本地时间"></a>UTC转化为本地时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* UTC转化为本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTime   UTC数据|024834.94</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTimePatten    UTC数据格式</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> localTimePatten</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">utc2Local</span><span class="params">(String utcTime, String utcTimePatten,</span></span></div><div class="line"><span class="function"><span class="params">String localTimePatten)</span> </span>&#123;</div><div class="line">SimpleDateFormat utcFormater = <span class="keyword">new</span> SimpleDateFormat(utcTimePatten);</div><div class="line">utcFormater.setTimeZone(TimeZone.getTimeZone(<span class="string">"UTC"</span>));</div><div class="line">Date gpsUTCDate = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">gpsUTCDate = utcFormater.parse(utcTime);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">SimpleDateFormat localFormater = <span class="keyword">new</span> SimpleDateFormat(localTimePatten);</div><div class="line">localFormater.setTimeZone(TimeZone.getDefault());</div><div class="line">String localTime = localFormater.format(gpsUTCDate.getTime());</div><div class="line"><span class="keyword">return</span> localTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="本地时间转时间戳"><a href="#本地时间转时间戳" class="headerlink" title="本地时间转时间戳"></a>本地时间转时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 本地时间转时间戳</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> s  由UTC转化来的本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> dot   原UTC数据的小数位</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s,String dot)</span>  </span>&#123;</div><div class="line">String res;</div><div class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);<span class="comment">//设置日期格式</span></div><div class="line">SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</div><div class="line">Date date = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">date = simpleDateFormat.parse(df.format(<span class="keyword">new</span> Date())+<span class="string">" "</span>+s);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line"><span class="keyword">long</span> ts = date.getTime();</div><div class="line">ts+=Double.valueOf(dot)*<span class="number">10</span>;</div><div class="line">res = String.valueOf(ts);</div><div class="line"><span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s=<span class="string">"024834.94"</span>;</div><div class="line">dateToStamp(utc2Local(s,<span class="string">"hhmmss"</span>,<span class="string">"HH:mm:ss"</span>),s.substring(<span class="number">7</span>,<span class="number">9</span>))</div></pre></td></tr></table></figure>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
-<li><p>时间输出为连续递增，以便做滤波操作</p>
-</li>
-<li><p>UTC->本地时间->时间戳 只精确到了s，UTC中的小数位（0-99递增）拼接到了时间戳上满足连续递增</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;本文共计258字0张配图，预计阅读耗时2分10秒&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;UTC转化为本地时间&quot;&gt;&lt;a href=&quot;#UTC转化为本地时间&quot; class=&quot;headerlink&quot; title=&quot;UTC转化为本地时间&quot;&gt;&lt;/a&gt;UTC转化为本地时间&lt;
-    
-    </summary>
-    
-      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="Java" scheme="http://blog.itbobby.top/tags/Java/"/>
-    
-      <category term="外设开发" scheme="http://blog.itbobby.top/tags/%E5%A4%96%E8%AE%BE%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
