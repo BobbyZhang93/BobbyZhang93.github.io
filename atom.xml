@@ -61,7 +61,7 @@
     <link href="http://blog.itbobby.top/2018-01-31-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-a%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81arm64.html"/>
     <id>http://blog.itbobby.top/2018-01-31-查看静态链接库-a文件是否支持arm64.html</id>
     <published>2018-01-31T02:46:59.000Z</published>
-    <updated>2018-01-31T02:49:59.571Z</updated>
+    <updated>2018-05-05T14:00:28.435Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>.a文件是LINUX系统中的静态链接库文件。</p>
@@ -88,7 +88,7 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
       <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="ios" scheme="http://blog.itbobby.top/tags/ios/"/>
+      <category term="iOS" scheme="http://blog.itbobby.top/tags/iOS/"/>
     
   </entry>
   
@@ -967,7 +967,7 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-08-23-unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD.html"/>
     <id>http://blog.itbobby.top/2017-08-23-unity在打包出的ios项目上实现截图并保存相册功能.html</id>
     <published>2017-08-23T14:58:11.000Z</published>
-    <updated>2017-08-31T16:49:03.000Z</updated>
+    <updated>2018-05-05T13:59:58.226Z</updated>
     
     <content type="html"><![CDATA[<p><code>本文共计277字3张配图，预计阅读耗时1分50秒</code></p>
 <h3 id="分为两部分"><a href="#分为两部分" class="headerlink" title="分为两部分"></a>分为两部分</h3><ul>
@@ -1008,7 +1008,7 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     
       <category term="混合开发" scheme="http://blog.itbobby.top/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
     
-      <category term="ios" scheme="http://blog.itbobby.top/tags/ios/"/>
+      <category term="iOS" scheme="http://blog.itbobby.top/tags/iOS/"/>
     
   </entry>
   
