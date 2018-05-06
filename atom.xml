@@ -57,6 +57,53 @@
   </entry>
   
   <entry>
+    <title>iOS添加UDID后本地签名文件更新</title>
+    <link href="http://blog.itbobby.top/2018-04-16-iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0.html"/>
+    <id>http://blog.itbobby.top/2018-04-16-iOS添加UDID后本地签名文件更新.html</id>
+    <published>2018-04-16T06:23:52.000Z</published>
+    <updated>2018-05-06T06:45:22.595Z</updated>
+    
+    <content type="html"><![CDATA[<p>在AppleDeveloper上添加或者删除了设备的UDID之后本地的签名并不会自动更新，我们可以手动更新一下，前往地址“/Users/Your MAC name/Library/MobileDevice/Provisioning Profiles/ ”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img01.png" alt="文件位置" title="">
+                </div>
+                <div class="image-caption">文件位置</div>
+            </figure>
+<p>如图，删掉所有的.mobileprovision文件。<br>然后前往项目中sign处进行更新<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img02.png" alt="更新本地签名01" title="">
+                </div>
+                <div class="image-caption">更新本地签名01</div>
+            </figure></p>
+<p>打开Accounts</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img03.png" alt="更新本地签名02" title="">
+                </div>
+                <div class="image-caption">更新本地签名02</div>
+            </figure>
+<p>完成。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在AppleDeveloper上添加或者删除了设备的UDID之后本地的签名并不会自动更新，我们可以手动更新一下，前往地址“/Users/Your MAC name/Library/MobileDevice/Provisioning Profiles/ ”&lt;/p&gt;
+&lt;figu
+    
+    </summary>
+    
+      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="开发工具" scheme="http://blog.itbobby.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>查看静态链接库.a文件是否支持arm64</title>
     <link href="http://blog.itbobby.top/2018-01-31-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-a%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81arm64.html"/>
     <id>http://blog.itbobby.top/2018-01-31-查看静态链接库-a文件是否支持arm64.html</id>
@@ -1035,69 +1082,6 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     
     
       <category term="Unity" scheme="http://blog.itbobby.top/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android接入Unity</title>
-    <link href="http://blog.itbobby.top/2017-08-19-Android%E6%8E%A5%E5%85%A5Unity.html"/>
-    <id>http://blog.itbobby.top/2017-08-19-Android接入Unity.html</id>
-    <published>2017-08-19T01:25:34.000Z</published>
-    <updated>2017-08-31T16:48:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>本文共计704字6张配图，预计阅读耗时4分30秒</code></p>
-<h3 id="步骤预览（默认已经建好android和unity的项目）"><a href="#步骤预览（默认已经建好android和unity的项目）" class="headerlink" title="步骤预览（默认已经建好android和unity的项目）"></a>步骤预览（默认已经建好android和unity的项目）</h3><ol>
-<li>导入unity中的class.jar在android中为unity写方法并修改代码</li>
-<li>精简安卓代码</li>
-<li>修改主配置文件</li>
-<li>修改gradle配置文件build apk得到aar</li>
-<li>拷贝相关文件到unity项目中</li>
-<li>在unity脚本文件中进行调用</li>
-</ol>
-<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><ol>
-<li><p>拷贝/Applications/Unity/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar至安卓项目的libs，并且添加为依赖（win下路径为C:ProgramFilesUnityEditorDataPlaybackEnginesAndroidPlayerVariationsmonoReleaseclasses.jar）<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img01.png" alt=""><br> 在安卓中为unity写方法<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img02.png" alt=""><br> UnitySendMessage中第一个参数为unity中脚本绑定的物体，第二个参数为unity中接受android传参的方法名，第三个参数为需要传递的数据，三个参数均为String类型；<br> 将activity中的方法全都放在这个Test方法中，顺序执行，由于安卓接入unity后unity只调用这个指定的Test方法，所以在安卓中正常应该写在生命周期中（尤其onCreate中）的方法都要改变结构，以确保unity在调用Test后相关的代码都会执行；<br> 修改当前Activity的继承类为UnityPlayerActivity,并且把类中所有使用到context的地方都用UnityPlayer.currentActivity代替，否则会报方法不能找到的bug，例如:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Toast.makeText(UnityPlayer.currentActivity,<span class="string">"GNSS服务已绑定"</span>,Toast.LENGTHSHORT).show();</div><div class="line">UnityPlayer.currentActivity.bindService(intent, mConnection, BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
-</li>
-<li><p>精简代码，去掉默认的dependencies下的compile ‘com.android.support:appcompat-v7:25.0.0’的引入，删除values下的style.xml文件。包括类中一些不必要的代码，可以在不报错的前提下精简到只剩相关方法</p>
-</li>
-<li>修改主配置文件<br> 将主题更改为android自带的的主题</li>
-<li>将启动页的activity更改成com.unity3d.player.UnityPlayerActivity，将原启动页Activity注册为常规模式，并且都添加上meta-data属性name=unityplayer.UnityActivity   value为true<br> 更改后的主配置文件为:<br> <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img03.png" alt=""></li>
-<li><p>修改gardle配置文件准备导出jar包<br>修改apply plugin: ‘com.android.application’为apply plugin: ‘com.android.library’，然后删除defaultConfig下的applicationId<br>此时有两种方法:</p>
-<ul>
-<li>build->build apk   直接去app–>build–>outputs–>aar目录下找到app-debug.aar文件，解压即可获得所需资源</li>
-<li><p>在gradle中继续添加代码：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">task deleteOldJar(<span class="string">type:</span> Delete) &#123;</div><div class="line">   delete <span class="string">'build/outputs/test.jar'</span></div><div class="line">&#125;</div><div class="line">task exportJar(<span class="string">type:</span> Copy) &#123;</div><div class="line">    from(<span class="string">'build/intermediates/bundles/release/'</span>)</div><div class="line">    into(<span class="string">'build/libs/'</span>)</div><div class="line">    include(<span class="string">'classes.jar'</span>)</div><div class="line">    rename (<span class="string">'classes.jar'</span>, <span class="string">'androidforunity.jar'</span>)</div><div class="line">&#125;</div><div class="line">exportJar.dependsOn(deleteOldJar, build)</div></pre></td></tr></table></figure>
-<p>选择右侧gradle中的exportJar进行导出<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img04.png" alt=""><br>在/Users/xun-mac/AndroidStudioProjects/AndroidforUnity/app/build/intermediates/bundles/release/classes.jar中获取所需资源。</p>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>将步骤4最终打开目录中的这四个文件拷入unity中的Assest–>Plugins–>Android文件夹下，注意：libs下的classes.jar（unity中拷出来的那个包需要删掉），如果没有引用其他的jar，libs也可以直接不拷入<br>   <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img05.png" alt=""></p>
-</li>
-<li><p>拷入之后的unity文件目录为<br>  <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/android%E6%8E%A5%E5%85%A5unity/imgs/img06.png" alt=""></p>
-</li>
-<li><p>在unity中编写脚本，获取从android中传过来的数据<br>  在Start()方法中声明一个AndroidJavaObject的对象，然后调用android中的方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//获取Android的Java接口  </div><div class="line">AndroidJavaObject cls = new AndroidJavaObject(&quot;com.bumie.androidforunity.TestActivity&quot;);</div><div class="line">   cls.Call(&quot;Test&quot;);//这个引号内是调用的Android方法，可以补上第二个参数用以匹配Android端方法的参数</div><div class="line"></div><div class="line">//接下来在getText()中通过参数获取数据</div><div class="line">public void getText(string aa)</div><div class="line">    &#123;</div><div class="line">        Debug.Log (&quot;success,unity&quot;+&quot;/:&quot;+aa);</div><div class="line">        ttt[0].text = aa;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="至此，android接入unity的全部工作都已经搞定了！"><a href="#至此，android接入unity的全部工作都已经搞定了！" class="headerlink" title="至此，android接入unity的全部工作都已经搞定了！"></a>至此，android接入unity的全部工作都已经搞定了！</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;本文共计704字6张配图，预计阅读耗时4分30秒&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;步骤预览（默认已经建好android和unity的项目）&quot;&gt;&lt;a href=&quot;#步骤预览（默认已经建好android和unity的项目）&quot; class=&quot;headerlink
-    
-    </summary>
-    
-      <category term="原创" scheme="http://blog.itbobby.top/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="Android" scheme="http://blog.itbobby.top/tags/Android/"/>
-    
-      <category term="Unity" scheme="http://blog.itbobby.top/tags/Unity/"/>
-    
-      <category term="混合开发" scheme="http://blog.itbobby.top/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
