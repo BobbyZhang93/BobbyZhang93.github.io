@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -28,12 +28,12 @@
 <meta property="og:site_name" content="BobbyZhang的技术小站">
 <meta property="og:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
-<meta property="og:updated_time" content="2017-12-18T15:31:05.320Z">
+<meta property="og:image" content="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
+<meta property="og:updated_time" content="2019-02-17T07:11:45.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="室外定位的数据获取与优化">
 <meta name="twitter:description" content="2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机">
-<meta name="twitter:image" content="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
+<meta name="twitter:image" content="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="BobbyZhang的技术小站" href="/atom.xml">
     
@@ -49,7 +49,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -69,63 +69,63 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/BobbyZhang93" target="_blank" >
+              <a href="https://github.com/BobbyZhang93" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://weibo.com/u/2982094023" target="_blank" >
+              <a href="http://weibo.com/u/2982094023" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 微博
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://juejin.im/" target="_blank" >
+              <a href="https://juejin.im/" target="_blank">
                 <i class="icon icon-lg icon-hand-o-up"></i>
                 掘金
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.jianshu.com/" target="_blank" >
+              <a href="http://www.jianshu.com/" target="_blank">
                 <i class="icon icon-lg icon-hand-o-right"></i>
                 简书
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://www.zhihu.com/explore" target="_blank" >
+              <a href="https://www.zhihu.com/explore" target="_blank">
                 <i class="icon icon-lg icon-hand-o-down"></i>
                 知乎
               </a>
@@ -182,13 +182,12 @@
 
 <div class="container body-wrap">
     
-<article id="post-室外定位的数据获取与优化"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-室外定位的数据获取与优化" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">室外定位的数据获取与优化</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-12-12 20:22:56" datetime="2017-12-12T12:22:56.000Z"  itemprop="datePublished">2017-12-12</time>
+            <time class="post-time" title="2017-12-12 20:22:56" datetime="2017-12-12T12:22:56.000Z" itemprop="datePublished">2017-12-12</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
@@ -196,7 +195,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -206,11 +205,11 @@
             <blockquote>
 <p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，因此我便快速地投入进了针对P3的二次开发工作中。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
 </blockquote>
-<p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
+<p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="noopener">一种高精度定位的方法及设备 </a></p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt="" title="">
+                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -231,12 +230,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-12-18T15:31:05.320Z" itemprop="dateUpdated">2017-12-18 23:31:05</time>
+    最后更新时间：<time datetime="2019-02-17T07:11:45.171Z" itemprop="dateUpdated">2019-02-17 15:11:45</time>
 </span><br>
 
 
         
-        转载请保留原文链接：<a href="/2017-12-12-室外定位的数据获取与优化.html"target="_blank" rel="external">http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</a>
+        转载请保留原文链接：<a href="/2017-12-12-室外定位的数据获取与优化.html" target="_blank" rel="external">http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</a>
         
     </div>
     <footer>
@@ -326,8 +325,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -346,10 +344,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -363,7 +361,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>BobbyZhang &copy; 2017 - 2018</span>
+        <p><span>BobbyZhang &copy; 2017 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>

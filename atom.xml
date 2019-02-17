@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>BobbyZhang的技术小站</title>
+  
   <subtitle>Just do IT！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.itbobby.top/"/>
-  <updated>2018-05-05T13:57:11.835Z</updated>
+  <updated>2018-05-05T13:57:11.836Z</updated>
   <id>http://blog.itbobby.top/</id>
   
   <author>
@@ -20,28 +21,18 @@
     <link href="http://blog.itbobby.top/2018-05-04-iOS&amp;Unity%E6%B7%B7%E7%BC%96%E8%A7%A3%E5%86%B3OC%E4%B8%ADself%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95.html"/>
     <id>http://blog.itbobby.top/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html</id>
     <published>2018-05-04T15:32:06.000Z</published>
-    <updated>2018-05-05T13:57:11.835Z</updated>
+    <updated>2018-05-05T13:57:11.836Z</updated>
     
-    <content type="html"><![CDATA[<p>Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：</p>
-<blockquote>
-<p><strong>.m</strong> ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。<br><strong>.mm</strong> ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使用C++类或者特性的时候才用这种扩展名。<br><em>题外科普Xcode项目中其他后缀的文件类型：</em><br><strong>.c</strong>：C语言源文件；<br><strong>.cc/.cpp</strong>：C++源文件；<br><strong>.h</strong>：头文件；<br><strong>.pl</strong>：Perl源文件；<br><strong>.o</strong>：Object文件，即编译后的文件。</p>
-</blockquote>
-<p>因此我们不难判断，Unity导出的项目中包含了C++相关的代码，而在.mm中OC的self关键字不能用了，此时我们需要这样处理一下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;//getVC是我的类名</div></pre></td></tr></table></figure>
-<p>然后将self替换成mySelf即可。</p>
-<p><strong>完整参考代码：</strong></p>
-<p><em>getVC.h</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &lt;VerifyCode/NTESVerifyCodeManager.h&gt; </div><div class="line">@interface getVC : UIViewController&lt;NTESVerifyCodeManagerDelegate&gt; @property(nonatomic,strong)NTESVerifyCodeManager *manager;  </div><div class="line">@end</div></pre></td></tr></table></figure>
-<p><em>getVC.mm</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">#import &quot;GETVC.h&quot;</div><div class="line"></div><div class="line">@interface getVC () </div><div class="line">@end </div><div class="line"></div><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)didReceiveMemoryWarning &#123;</div><div class="line">    [super didReceiveMemoryWarning];</div><div class="line">    // Dispose of any resources that can be recreated.</div><div class="line">&#125;</div><div class="line"> </div><div class="line"> //unity端点击事件调用的方法，在此处接入网易云的验证，使之点击后响应</div><div class="line">extern &quot;C&quot; void unitylogin()&#123;</div><div class="line">    NSLog(@&quot;%s&quot;,&quot;ios--login&quot;);</div><div class="line">    [getVC shareInstance].manager=  [NTESVerifyCodeManager sharedInstance];</div><div class="line">    if (mySelf.manager) &#123;</div><div class="line">        </div><div class="line">        // 如果需要了解组件的执行情况,则实现回调</div><div class="line">        mySelf.manager.delegate = mySelf;</div><div class="line">        // captchaid的值是每个产品从后台生成的,比如 @&quot;a05f036b70ab447b87cc788af9a60974&quot;</div><div class="line">        NSString *captchaid = @&quot;a05f036b70ab447b87cc788af9a60974&quot;;</div><div class="line">        [mySelf.manager configureVerifyCode:captchaid timeout:10.0];</div><div class="line">        </div><div class="line">        // 设置语言</div><div class="line">        mySelf.manager.lang = NTESVerifyCodeLangCN;</div><div class="line">        </div><div class="line">        // 设置透明度</div><div class="line">        mySelf.manager.alpha = 0.7;</div><div class="line">        </div><div class="line">        // 设置frame</div><div class="line">        mySelf.manager.frame = CGRectNull;</div><div class="line">        </div><div class="line">        // 显示验证码</div><div class="line">        [mySelf.manager openVerifyCodeView:nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#pragma mark - NTESVerifyCodeManagerDelegate</div><div class="line">/**</div><div class="line"> * 验证码组件初始化完成</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFinish&#123;</div><div class="line">    NSLog(@&quot;收到初始化完成的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 验证码组件初始化出错</div><div class="line"> *</div><div class="line"> * @param message 错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFailed:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到初始化失败的回调:%@&quot;,message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 完成验证之后的回调</div><div class="line"> *</div><div class="line"> * @param result 验证结果 BOOL:YES/NO</div><div class="line"> * @param validate 二次校验数据，如果验证结果为false，validate返回空</div><div class="line"> * @param message 结果描述信息</div><div class="line"> *</div><div class="line"> */</div><div class="line">- (void)verifyCodeValidateFinish:(BOOL)result validate:(NSString *)validate message:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到验证结果的回调:(%d,%@,%@)&quot;, result, validate, message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 关闭验证码窗口后的回调</div><div class="line"> */</div><div class="line">- (void)verifyCodeCloseWindow&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到关闭验证码视图的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 网络错误</div><div class="line"> *</div><div class="line"> * @param error 网络错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeNetError:(NSError *)error&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到网络错误的回调:%@(%ld)&quot;, [error localizedDescription], (long)error.code);</div><div class="line">&#125; </div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>*以上参考代码基于Unity接入网易云盾滑动验证iOS原生SDK的功能实现</p>
-]]></content>
+    <content type="html"><![CDATA[<p>Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：</p><blockquote><p><strong>.m</strong> ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。<br><strong>.mm</strong> ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使用C++类或者特性的时候才用这种扩展名。<br><em>题外科普Xcode项目中其他后缀的文件类型：</em><br><strong>.c</strong>：C语言源文件；<br><strong>.cc/.cpp</strong>：C++源文件；<br><strong>.h</strong>：头文件；<br><strong>.pl</strong>：Perl源文件；<br><strong>.o</strong>：Object文件，即编译后的文件。</p></blockquote><p>因此我们不难判断，Unity导出的项目中包含了C++相关的代码，而在.mm中OC的self关键字不能用了，此时我们需要这样处理一下：  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@implementation getVC</span><br><span class="line">static getVC*mySelf =nil;</span><br><span class="line">+ (instancetype)shareInstance&#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        mySelf = [[self alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return mySelf;</span><br><span class="line">&#125;//getVC是我的类名</span><br></pre></td></tr></table></figure><p>然后将self替换成mySelf即可。</p><p><strong>完整参考代码：</strong></p><p><em>getVC.h</em></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#import &lt;VerifyCode/NTESVerifyCodeManager.h&gt; </span><br><span class="line">@interface getVC : UIViewController&lt;NTESVerifyCodeManagerDelegate&gt; @property(nonatomic,strong)NTESVerifyCodeManager *manager;  </span><br><span class="line">@end</span><br></pre></td></tr></table></figure><p><em>getVC.mm</em></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;GETVC.h&quot;</span><br><span class="line"></span><br><span class="line">@interface getVC () </span><br><span class="line">@end </span><br><span class="line"></span><br><span class="line">@implementation getVC</span><br><span class="line">static getVC*mySelf =nil;</span><br><span class="line">+ (instancetype)shareInstance&#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        mySelf = [[self alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return mySelf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // Do any additional setup after loading the view, typically from a nib.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // Dispose of any resources that can be recreated.</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> //unity端点击事件调用的方法，在此处接入网易云的验证，使之点击后响应</span><br><span class="line">extern &quot;C&quot; void unitylogin()&#123;</span><br><span class="line">    NSLog(@&quot;%s&quot;,&quot;ios--login&quot;);</span><br><span class="line">    [getVC shareInstance].manager=  [NTESVerifyCodeManager sharedInstance];</span><br><span class="line">    if (mySelf.manager) &#123;</span><br><span class="line">        </span><br><span class="line">        // 如果需要了解组件的执行情况,则实现回调</span><br><span class="line">        mySelf.manager.delegate = mySelf;</span><br><span class="line">        // captchaid的值是每个产品从后台生成的,比如 @&quot;a05f036b70ab447b87cc788af9a60974&quot;</span><br><span class="line">        NSString *captchaid = @&quot;a05f036b70ab447b87cc788af9a60974&quot;;</span><br><span class="line">        [mySelf.manager configureVerifyCode:captchaid timeout:10.0];</span><br><span class="line">        </span><br><span class="line">        // 设置语言</span><br><span class="line">        mySelf.manager.lang = NTESVerifyCodeLangCN;</span><br><span class="line">        </span><br><span class="line">        // 设置透明度</span><br><span class="line">        mySelf.manager.alpha = 0.7;</span><br><span class="line">        </span><br><span class="line">        // 设置frame</span><br><span class="line">        mySelf.manager.frame = CGRectNull;</span><br><span class="line">        </span><br><span class="line">        // 显示验证码</span><br><span class="line">        [mySelf.manager openVerifyCodeView:nil];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">#pragma mark - NTESVerifyCodeManagerDelegate</span><br><span class="line">/**</span><br><span class="line"> * 验证码组件初始化完成</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeInitFinish&#123;</span><br><span class="line">    NSLog(@&quot;收到初始化完成的回调&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 验证码组件初始化出错</span><br><span class="line"> *</span><br><span class="line"> * @param message 错误信息</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeInitFailed:(NSString *)message&#123;</span><br><span class="line">    NSLog(@&quot;收到初始化失败的回调:%@&quot;,message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 完成验证之后的回调</span><br><span class="line"> *</span><br><span class="line"> * @param result 验证结果 BOOL:YES/NO</span><br><span class="line"> * @param validate 二次校验数据，如果验证结果为false，validate返回空</span><br><span class="line"> * @param message 结果描述信息</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeValidateFinish:(BOOL)result validate:(NSString *)validate message:(NSString *)message&#123;</span><br><span class="line">    NSLog(@&quot;收到验证结果的回调:(%d,%@,%@)&quot;, result, validate, message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 关闭验证码窗口后的回调</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeCloseWindow&#123;</span><br><span class="line">    //用户关闭验证后执行的方法</span><br><span class="line">    NSLog(@&quot;收到关闭验证码视图的回调&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 网络错误</span><br><span class="line"> *</span><br><span class="line"> * @param error 网络错误信息</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeNetError:(NSError *)error&#123;</span><br><span class="line">    //用户关闭验证后执行的方法</span><br><span class="line">    NSLog(@&quot;收到网络错误的回调:%@(%ld)&quot;, [error localizedDescription], (long)error.code);</span><br><span class="line">&#125; </span><br><span class="line">@end</span><br></pre></td></tr></table></figure><p>*以上参考代码基于Unity接入网易云盾滑动验证iOS原生SDK的功能实现</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：&lt;/p&gt;
+      
+      
+        &lt;p&gt;Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;.m&lt;/strong&gt; ：源代码文件。这是典型的源代码文件扩展名，可以包
+      
     
     </summary>
     
@@ -61,38 +52,17 @@
     <link href="http://blog.itbobby.top/2018-04-16-iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0.html"/>
     <id>http://blog.itbobby.top/2018-04-16-iOS添加UDID后本地签名文件更新.html</id>
     <published>2018-04-16T06:23:52.000Z</published>
-    <updated>2018-05-06T06:45:22.595Z</updated>
+    <updated>2019-02-17T07:09:37.817Z</updated>
     
-    <content type="html"><![CDATA[<p>在AppleDeveloper上添加或者删除了设备的UDID之后本地的签名并不会自动更新，我们可以手动更新一下，前往地址“/Users/Your MAC name/Library/MobileDevice/Provisioning Profiles/ ”</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img01.png" alt="文件位置" title="">
-                </div>
-                <div class="image-caption">文件位置</div>
-            </figure>
-<p>如图，删掉所有的.mobileprovision文件。<br>然后前往项目中sign处进行更新<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img02.png" alt="更新本地签名01" title="">
-                </div>
-                <div class="image-caption">更新本地签名01</div>
-            </figure></p>
-<p>打开Accounts</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img03.png" alt="更新本地签名02" title="">
-                </div>
-                <div class="image-caption">更新本地签名02</div>
-            </figure>
-<p>完成。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>在AppleDeveloper上添加或者删除了设备的UDID之后本地的签名并不会自动更新，我们可以手动更新一下，前往地址“/Users/Your MAC name/Library/MobileDevice/Provisioning Profiles/ ”</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img01.png" alt="文件位置" title>                </div>                <div class="image-caption">文件位置</div>            </figure><p>如图，删掉所有的.mobileprovision文件。<br>然后前往项目中sign处进行更新<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img02.png" alt="更新本地签名01" title>                </div>                <div class="image-caption">更新本地签名01</div>            </figure></p><p>打开Accounts</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/iOS%E6%B7%BB%E5%8A%A0UDID%E5%90%8E%E6%9C%AC%E5%9C%B0%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E6%9B%B4%E6%96%B0/imgs/img03.png" alt="更新本地签名02" title>                </div>                <div class="image-caption">更新本地签名02</div>            </figure><p>完成。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;在AppleDeveloper上添加或者删除了设备的UDID之后本地的签名并不会自动更新，我们可以手动更新一下，前往地址“/Users/Your MAC name/Library/MobileDevice/Provisioning Profiles/ ”&lt;/p&gt;
+      
+      
+        &lt;p&gt;在AppleDeveloper上添加或者删除了设备的UDID之后本地的签名并不会自动更新，我们可以手动更新一下，前往地址“/Users/Your MAC name/Library/MobileDevice/Provisioning Profiles/ ”&lt;/p&gt;
 &lt;figu
+      
     
     </summary>
     
@@ -108,27 +78,19 @@
     <link href="http://blog.itbobby.top/2018-01-31-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-a%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81arm64.html"/>
     <id>http://blog.itbobby.top/2018-01-31-查看静态链接库-a文件是否支持arm64.html</id>
     <published>2018-01-31T02:46:59.000Z</published>
-    <updated>2018-05-05T14:00:28.435Z</updated>
+    <updated>2018-05-05T14:00:28.436Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>.a文件是LINUX系统中的静态链接库文件。</p>
-</blockquote>
-<h3 id="进入-a文件所在的路径"><a href="#进入-a文件所在的路径" class="headerlink" title="进入.a文件所在的路径"></a>进入.a文件所在的路径</h3><p><code>bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS</code></p>
-<h3 id="列出文件夹下所有文件，查看-a文件名"><a href="#列出文件夹下所有文件，查看-a文件名" class="headerlink" title="列出文件夹下所有文件，查看.a文件名"></a>列出文件夹下所有文件，查看.a文件名</h3><p><code>bumiemac001deMac:iOS bumiemac001$ ls  
-AVProVideoUnityRegisterRenderingPluginV5.c
-libAVProVideoiOS.a</code></p>
-<h3 id="查看-a文件所支持的架构"><a href="#查看-a文件所支持的架构" class="headerlink" title="查看.a文件所支持的架构"></a>查看.a文件所支持的架构</h3><p><code>bumiemac001deMac:iOS bumiemac001$ sudo lipo -info libAVProVideoiOS.a
-Password:[输入密码]
-Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</code></p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>该包支持armv7 i386 x86_64 arm64</p>
-]]></content>
+    <content type="html"><![CDATA[<blockquote><p>.a文件是LINUX系统中的静态链接库文件。</p></blockquote><h3 id="进入-a文件所在的路径"><a href="#进入-a文件所在的路径" class="headerlink" title="进入.a文件所在的路径"></a>进入.a文件所在的路径</h3><p><code>bumiemac001deMac:~ bumiemac001$ cd /Users/bumiemac001/WorkSpace_XUN/CodingSpace/XcodeProjects/DCloud/Libraries/Plugins/iOS</code></p><h3 id="列出文件夹下所有文件，查看-a文件名"><a href="#列出文件夹下所有文件，查看-a文件名" class="headerlink" title="列出文件夹下所有文件，查看.a文件名"></a>列出文件夹下所有文件，查看.a文件名</h3><p><code>bumiemac001deMac:iOS bumiemac001$ ls  AVProVideoUnityRegisterRenderingPluginV5.clibAVProVideoiOS.a</code></p><h3 id="查看-a文件所支持的架构"><a href="#查看-a文件所支持的架构" class="headerlink" title="查看.a文件所支持的架构"></a>查看.a文件所支持的架构</h3><p><code>bumiemac001deMac:iOS bumiemac001$ sudo lipo -info libAVProVideoiOS.aPassword:[输入密码]Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</code></p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>该包支持armv7 i386 x86_64 arm64</p>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
+      
+      
+        &lt;blockquote&gt;
 &lt;p&gt;.a文件是LINUX系统中的静态链接库文件。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;进入-a文件所在的路径&quot;&gt;&lt;a href=&quot;#进入-a文件所在的路径&quot; class=&quot;headerlink&quot; title=&quot;进入.a文件所在的路径&quot;&gt;
+      
     
     </summary>
     
@@ -144,36 +106,17 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-12-18-Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6.html"/>
     <id>http://blog.itbobby.top/2017-12-18-Tango技术探究.html</id>
     <published>2017-12-18T15:14:06.000Z</published>
-    <updated>2017-12-18T15:37:34.522Z</updated>
+    <updated>2019-02-17T07:08:02.170Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，已经存在了将近三年的Tango注定要成为牺牲品。</p>
-</blockquote>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/imgs/img01.jpeg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>相关新闻：<a href="http://news.91.com/it/s5a35e7109531.html" target="_blank" rel="external">谷歌宣布明年三月关闭Tango</a></p>
-<p>在过去的半年的时间里由于工作际遇和个人兴趣，我进行了不少针对Tango的技术探究和应用设计，主要包含了以下几个方面：  </p>
-<ul>
-<li>Tango区域学习探究  </li>
-<li>Tango运动追踪探究  </li>
-<li>Tango深度感知探究  </li>
-<li>AR展示助手工具制作（已申请<a href="http://www.publics.com.cn/software/2017SR517278/" target="_blank" rel="external">软著</a>）   </li>
-<li>AR施工助手V1.1（V1.0已申请<a href="http://www.publics.com.cn/software/2017SR079968/" target="_blank" rel="external">软著</a>）   </li>
-<li>Unity相机检测插件制作  </li>
-<li>Unity本地ADF加载模块插件制作</li>
-</ul>
-<p>针对于前三点我将主要以翻译Tango API的方式进行讲解，当然同时会加上自己实践中的理解；由于AR展示助手和施工助手涉及公司利益故不过多讲解；两个Unity的插件将会给出详尽的讲解。<br>敬请期待…</p>
-]]></content>
+    <content type="html"><![CDATA[<blockquote><p>在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运行于定制的移动终端上，但是“定制”这个属性也成为其发展的一个桎梏，直至Apple完成ARKit在ios平台的布局实现弯道超车，Google似乎才明白自己在消费领域错过了些什么，于是从Tango蜕变出了ARCore，在与Apple竞争的道路上，已经存在了将近三年的Tango注定要成为牺牲品。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oqiniu.itbobby.top/bobbyzhang/blog/AR_VR/Tango%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%A9%B6/imgs/img01.jpeg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>相关新闻：<a href="http://news.91.com/it/s5a35e7109531.html" target="_blank" rel="noopener">谷歌宣布明年三月关闭Tango</a></p><p>在过去的半年的时间里由于工作际遇和个人兴趣，我进行了不少针对Tango的技术探究和应用设计，主要包含了以下几个方面：  </p><ul><li>Tango区域学习探究  </li><li>Tango运动追踪探究  </li><li>Tango深度感知探究  </li><li>AR展示助手工具制作（已申请<a href="http://www.publics.com.cn/software/2017SR517278/" target="_blank" rel="noopener">软著</a>）   </li><li>AR施工助手V1.1（V1.0已申请<a href="http://www.publics.com.cn/software/2017SR079968/" target="_blank" rel="noopener">软著</a>）   </li><li>Unity相机检测插件制作  </li><li>Unity本地ADF加载模块插件制作</li></ul><p>针对于前三点我将主要以翻译Tango API的方式进行讲解，当然同时会加上自己实践中的理解；由于AR展示助手和施工助手涉及公司利益故不过多讲解；两个Unity的插件将会给出详尽的讲解。<br>敬请期待…</p>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
+      
+      
+        &lt;blockquote&gt;
 &lt;p&gt;在AR领域里，已经深耕多年的Tango和Hololens各有所长但同样出彩，Hololens的头戴属性决定了它是一款未来产品，在Hololens的进化历程中必将会诞生一个新的形态去取代移动手持终端带领人类步入智能可穿戴互联网时代。而Tango则是运
+      
     
     </summary>
     
@@ -191,35 +134,17 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-12-12-%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96.html"/>
     <id>http://blog.itbobby.top/2017-12-12-室外定位的数据获取与优化.html</id>
     <published>2017-12-12T12:22:56.000Z</published>
-    <updated>2017-12-18T15:31:05.320Z</updated>
+    <updated>2019-02-17T07:11:45.171Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，因此我便快速地投入进了针对P3的二次开发工作中。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p>
-</blockquote>
-<p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="external">一种高精度定位的方法及设备 </a></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p><strong>本阶段涉及到的技术点：</strong>  </p>
-<ul>
-<li>Android蓝牙开发  </li>
-<li>Android串口开发  </li>
-<li>高频GNSS数据解析  </li>
-<li>EventBus学习与应用  </li>
-<li>针对定位数据的卡尔曼滤波实现  </li>
-<li>Android制作Unity插件</li>
-</ul>
-<p>接下来我将选取其中几个重要的技术点单独成文进行详尽的介绍。<br>敬请期待…</p>
-]]></content>
+    <content type="html"><![CDATA[<blockquote><p>2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远远不能达到我们对数据刷新频次的要求，于是我们继而对官方宣称量产版频率可达50HZ的大块头P3进行测试，彼时华测P3尚在研发阶段，我们拿到了最初的原型机，但是配套的软件和api并没有开放，因此我便快速地投入进了针对P3的二次开发工作中。这一阶段的工作完成后我们针对定位数据的获取与优化成果申请了专利，现已进入实审阶段。</p></blockquote><p>专利查询链接：<a href="http://www2.soopat.com/Patent/201710611427#this" target="_blank" rel="noopener">一种高精度定位的方法及设备 </a></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E5%AE%A4%E5%A4%96%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E4%B8%8E%E4%BC%98%E5%8C%96/imgs/img01.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p><strong>本阶段涉及到的技术点：</strong>  </p><ul><li>Android蓝牙开发  </li><li>Android串口开发  </li><li>高频GNSS数据解析  </li><li>EventBus学习与应用  </li><li>针对定位数据的卡尔曼滤波实现  </li><li>Android制作Unity插件</li></ul><p>接下来我将选取其中几个重要的技术点单独成文进行详尽的介绍。<br>敬请期待…</p>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
+      
+      
+        &lt;blockquote&gt;
 &lt;p&gt;2017年年初，依照项目负责人最初的设想，我们统一了室外AR效果的呈现采用GPS定位为基础的方案，并且先后使用了华测X360，合众M5，华测P3等多款高精度定位设备作为测试，逐步测试发现X360和M5表现并不稳定，同时频率最高也只能达到20HZ，远
+      
     
     </summary>
     
@@ -237,92 +162,17 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-11-26-ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8.html"/>
     <id>http://blog.itbobby.top/2017-11-26-ARKitRemote工具使用.html</id>
     <published>2017-11-26T15:52:04.000Z</published>
-    <updated>2017-11-26T15:57:39.668Z</updated>
+    <updated>2019-02-17T07:10:23.496Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。<br>ARKit发布已经有一段时间了，在unity的开发插件中为开发者人性化的提供了ARKitRemote这一工具，开发者只需将iphone连接上电脑，即可使用unity调用iphone硬件调试程序并且在Game中预览效果。</p>
-</blockquote>
-<h3 id="下载Unity-ARKit-Plugin"><a href="#下载Unity-ARKit-Plugin" class="headerlink" title="下载Unity ARKit Plugin"></a>下载Unity ARKit Plugin</h3><p>如果不知道自己Asset Store的快捷键也可以在window选项卡中调出面板<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img01.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>搜索Unity ARKit Plugin下载并导入<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img02.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h3 id="安装ARKitRemote工具"><a href="#安装ARKitRemote工具" class="headerlink" title="安装ARKitRemote工具"></a>安装ARKitRemote工具</h3><p>在Assets中找到ARKitRemote这个文件夹，打开场景<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img03.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>导出场景为ios项目，注意需要将模式切换为Debug，同时勾选Development Build<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img04.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>导出的项目使用Xcode打开，配置签名<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img05.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>设置Bitcode为NO<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img06.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>然后build项目到手机上，启动后界面如下，手机已经在等待unity端的链接了<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img07.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h3 id="通过unity进行连接"><a href="#通过unity进行连接" class="headerlink" title="通过unity进行连接"></a>通过unity进行连接</h3><p>从导入的ARKit包中找到ARKitRemoteConnection，并且拖入到场景中，这个对象上挂载的类是进行Remote调试的关键<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img08.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>Run项目，然后在Console中选择你连接的设备，在绿色背景的手机预览界面上会出现一个让你确认连接的button（这里没有截出这个视图），点击即可完成连接<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img09.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>连接成功后，手机端应该呈现的视图成功预览到Game窗口，并且基本没有卡顿<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img10.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li>调试所用的设备必须是A9芯片以上（6s/SE及以后），并且系统已升级至ios11；</li>
-<li>连接过程中可能会出现连接超时，stop程序，退出remote软件重新尝试即可；</li>
-<li>远程调试已知的问题有检测平面不灵敏，如果有朋友能提供解决办法请留言补充，谢谢。</li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<blockquote><p>在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。<br>ARKit发布已经有一段时间了，在unity的开发插件中为开发者人性化的提供了ARKitRemote这一工具，开发者只需将iphone连接上电脑，即可使用unity调用iphone硬件调试程序并且在Game中预览效果。</p></blockquote><h3 id="下载Unity-ARKit-Plugin"><a href="#下载Unity-ARKit-Plugin" class="headerlink" title="下载Unity ARKit Plugin"></a>下载Unity ARKit Plugin</h3><p>如果不知道自己Asset Store的快捷键也可以在window选项卡中调出面板<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img01.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>搜索Unity ARKit Plugin下载并导入<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img02.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><h3 id="安装ARKitRemote工具"><a href="#安装ARKitRemote工具" class="headerlink" title="安装ARKitRemote工具"></a>安装ARKitRemote工具</h3><p>在Assets中找到ARKitRemote这个文件夹，打开场景<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img03.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>导出场景为ios项目，注意需要将模式切换为Debug，同时勾选Development Build<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img04.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>导出的项目使用Xcode打开，配置签名<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img05.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>设置Bitcode为NO<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img06.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>然后build项目到手机上，启动后界面如下，手机已经在等待unity端的链接了<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img07.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><h3 id="通过unity进行连接"><a href="#通过unity进行连接" class="headerlink" title="通过unity进行连接"></a>通过unity进行连接</h3><p>从导入的ARKit包中找到ARKitRemoteConnection，并且拖入到场景中，这个对象上挂载的类是进行Remote调试的关键<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img08.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>Run项目，然后在Console中选择你连接的设备，在绿色背景的手机预览界面上会出现一个让你确认连接的button（这里没有截出这个视图），点击即可完成连接<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img09.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>连接成功后，手机端应该呈现的视图成功预览到Game窗口，并且基本没有卡顿<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/ARKit%E5%BC%80%E5%8F%91%E2%80%94%E2%80%94ARKitRemote%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/imgs/img10.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>调试所用的设备必须是A9芯片以上（6s/SE及以后），并且系统已升级至ios11；</li><li>连接过程中可能会出现连接超时，stop程序，退出remote软件重新尝试即可；</li><li>远程调试已知的问题有检测平面不灵敏，如果有朋友能提供解决办法请留言补充，谢谢。</li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
+      
+      
+        &lt;blockquote&gt;
 &lt;p&gt;在unity上开发AR无疑是一个痛苦的体验，安卓尚可，至少可以在真机上快速的运行起来查看功能和效果，但是ios就很糟糕了，如果要跑起来需要切换平台导出ios项目后用Xcode进行编译，过程繁琐漫长让人望而生畏。&lt;br&gt;ARKit发布已经有一段时间了
+      
     
     </summary>
     
@@ -340,146 +190,19 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-11-15-%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE.html"/>
     <id>http://blog.itbobby.top/2017-11-15-苹果给ARKit开发者的22条建议.html</id>
     <published>2017-11-15T13:52:03.000Z</published>
-    <updated>2017-11-15T14:27:25.109Z</updated>
+    <updated>2019-02-17T07:13:41.767Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>原文链接：<a href="http://vr.99.com/news/10112017/203934054.shtml" target="_blank" rel="external">传送门</a></p>
-</blockquote>
-<p>近日，苹果在其开发者网页为开发者提供了3种关键资源，帮助开发者开发和推广AR应用。这些资源包括AR界面设计，如何友好地让用户知道自己已经进入AR模式；如何录制放置在App Store中的AR应用介绍视频；以及如何利用人脸识别创建动态表情Animoji。  </p>
-<h3 id="AR界面设计"><a href="#AR界面设计" class="headerlink" title="AR界面设计"></a>AR界面设计</h3><p>关于AR的界面设计、操作等，苹果给出了22条注意事项，帮助开发者打造用户体验更好的AR应用。目前国内已经有不少团队利用ARKit开发出了应用，这些注意事项你家app做到了吗？</p>
-<h4 id="全屏显示AR效果"><a href="#全屏显示AR效果" class="headerlink" title="全屏显示AR效果"></a>全屏显示AR效果</h4><p>让真实世界的画面和AR物体尽量占据整个屏幕，避免让操作按键和其他信息切割屏幕，破坏沉浸感。</p>
-<h4 id="让虚拟物体尽可能逼真"><a href="#让虚拟物体尽可能逼真" class="headerlink" title="让虚拟物体尽可能逼真"></a>让虚拟物体尽可能逼真</h4><p>大部分的AR效果采用的是虚拟的卡通角色，但是如果采用现实中存在的物体应该让它们做到与环境融为一体。为此，设计者应该设计有栩栩如生的质地的3D形象、在光照下能产生合理的阴影并且移动相机物体能发生改变。</p>
-<h4 id="考虑物理世界的限制"><a href="#考虑物理世界的限制" class="headerlink" title="考虑物理世界的限制"></a>考虑物理世界的限制</h4><p>用户很可能在一个并不适合AR体验的环境下操作你的AR应用，例如他们可能在一个狭窄的、没有平面的区域。因此，设计者应该考虑不同场景下设计不同的使用方式和功能，并且提前告知用户使用方法。</p>
-<h4 id="考虑用户体验舒适度"><a href="#考虑用户体验舒适度" class="headerlink" title="考虑用户体验舒适度"></a>考虑用户体验舒适度</h4><p>长时间以一个角度或者距离拿住手机是一件并不愉快的事，所以要考虑到用户使用你的手机的方式和时长是否会带来不适。你可以通过减少游戏的级数或者在其中穿插休息时间来缓解用户疲劳。</p>
-<h4 id="渐进引导用户的移动"><a href="#渐进引导用户的移动" class="headerlink" title="渐进引导用户的移动"></a>渐进引导用户的移动</h4><p>如果你的应用是需要用户移动的，不要在一开始就扔个炸弹让用户跳开，应该先让用户适应AR体验，然后再鼓励他们运动。</p>
-<h4 id="留心用户的安全"><a href="#留心用户的安全" class="headerlink" title="留心用户的安全"></a>留心用户的安全</h4><p>在有人或者物体的环境里大幅度的移动有可能造成危险，注意让应用能安全地操作，避免大范围或者突然地移动。</p>
-<h4 id="使用声音或触觉反馈来提升沉浸感"><a href="#使用声音或触觉反馈来提升沉浸感" class="headerlink" title="使用声音或触觉反馈来提升沉浸感"></a>使用声音或触觉反馈来提升沉浸感</h4><p>音效或者震动反馈可以创造一种虚拟物体与真实物体接触或者碰撞的感觉。在沉浸式的游戏中，音效可以让人进入虚拟世界。请参见Audio和Haptic Feedback。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img01.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="将提示融入情境"><a href="#将提示融入情境" class="headerlink" title="将提示融入情境"></a>将提示融入情境</h4><p>例如要在一个物体旁边提供一个三维旋转的标志比提供文字要直观。然而，如果用户对情境提示没有反应，可以再显示文字。避免使用一些技术性术语， 例如：ARKit、环境侦测、追踪等。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img02.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="避免AR体验过程中的中断"><a href="#避免AR体验过程中的中断" class="headerlink" title="避免AR体验过程中的中断"></a>避免AR体验过程中的中断</h4><p>用户每次进入AR时用户都会重新分析环境、检测平面，另外手机和相机的位置可能已经改变了。那么，先前放置的物体会被重新安置——它们或许无法再被放置在现实世界的平面上。避免中断的方法是让人们在不离开AR的情况下去改变物体和放置情况，例如在使用宜家的家装AR放置一把沙发时，可以让用户能选择不同的材质。  </p>
-<h3 id="进入AR体验"><a href="#进入AR体验" class="headerlink" title="进入AR体验"></a>进入AR体验</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img03.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="提示初始化进程并且带动用户参与"><a href="#提示初始化进程并且带动用户参与" class="headerlink" title="提示初始化进程并且带动用户参与"></a>提示初始化进程并且带动用户参与</h4><p>每次用户进入AR，都会有初始化评估环境的过程，这会花费数秒的时间。为了减少用户的困惑以及加速进程，应该明确指示出这一过程并且鼓励用户探索他们的环境，积极寻找一个平面。</p>
-<p>放置虚拟物体</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img04.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img05.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img06.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="帮助用户理解何时定位平面并且安放物体"><a href="#帮助用户理解何时定位平面并且安放物体" class="headerlink" title="帮助用户理解何时定位平面并且安放物体"></a>帮助用户理解何时定位平面并且安放物体</h4><p>虚拟标识是告知用户平面定位模式正在进行的好办法。屏幕中间的梯形标线可以提示用户他们应该寻找一个垂直的宽阔的平面。一旦这个平面被定位了，应该更换标识外形告诉用户现在可以安置物体。设计虚拟标识应该被视为App体验的一部分。</p>
-<h4 id="快速回应安置物体请求"><a href="#快速回应安置物体请求" class="headerlink" title="快速回应安置物体请求"></a>快速回应安置物体请求</h4><p>平面侦测过程中精确度是逐渐提高的，当用户放置物体时应该使用当前已获得的信息立刻回应，然后再优化物体的位置。如果物体超出了侦测到的平面范围，直接将其拉拽回来。不要将其无限靠近侦测到的平面的边缘，因为这个边缘并不是稳定的。</p>
-<h3 id="用户与虚拟物体的交互"><a href="#用户与虚拟物体的交互" class="headerlink" title="用户与虚拟物体的交互"></a>用户与虚拟物体的交互</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img07.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="支持直接操作而不是分离的屏幕操作"><a href="#支持直接操作而不是分离的屏幕操作" class="headerlink" title="支持直接操作而不是分离的屏幕操作"></a>支持直接操作而不是分离的屏幕操作</h4><p>最为直观的方式是让用户直接触碰屏幕上的物体与之互动，而不是让用户去操作一个与与物体分离的控制按钮。但是也要注意，当用户在移动的时候这种直接的操作方式也可能混乱。</p>
-<h4 id="允许用户使用标准的、熟悉的手势来与虚拟物体互动"><a href="#允许用户使用标准的、熟悉的手势来与虚拟物体互动" class="headerlink" title="允许用户使用标准的、熟悉的手势来与虚拟物体互动"></a>允许用户使用标准的、熟悉的手势来与虚拟物体互动</h4><p>例如，考虑以单只手指来拖拽物体、两只手指来旋转物体。两只手指按压和两只手指旋转很容易混淆，应该对软件进行识别度的测试。更多参考资料，见Gestures。</p>
-<h4 id="交互应尽量简单"><a href="#交互应尽量简单" class="headerlink" title="交互应尽量简单"></a>交互应尽量简单</h4><p>目前的触碰手势都是二维的，但是AR体验是建立在三维的真实世界之上的。考虑以下的方式来简化用户与虚拟物体的交互。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img08.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="回应近似范围内的交互"><a href="#回应近似范围内的交互" class="headerlink" title="回应近似范围内的交互"></a>回应近似范围内的交互</h4><p>要让用户准确触碰一个小的虚拟物体会很难，因此可以设计成只要在可交互物体的附近监测到用户的行为那么就预设用户想要移动这个物体。</p>
-<h4 id="考虑是否采用以用户出发的缩放比例"><a href="#考虑是否采用以用户出发的缩放比例" class="headerlink" title="考虑是否采用以用户出发的缩放比例"></a>考虑是否采用以用户出发的缩放比例</h4><p>如果虚拟物体是不具有固定的尺寸大小的玩具或者游戏角色，用户想要看到其放大缩小的效果，那么缩放就是很合适的。但是对于拥有与真实世界对应的尺寸的物体来说，例如家居，缩放就没有意义了。例如，当你放大这个家具时，他并不会看起来离你更近。</p>
-<h4 id="确保虚拟物体的运动是连贯的"><a href="#确保虚拟物体的运动是连贯的" class="headerlink" title="确保虚拟物体的运动是连贯的"></a>确保虚拟物体的运动是连贯的</h4><p>当用户缩放、旋转或者移动物体到新位置时物体不应该突然跳出来。</p>
-<h4 id="探索更多吸引人的交互方式"><a href="#探索更多吸引人的交互方式" class="headerlink" title="探索更多吸引人的交互方式"></a>探索更多吸引人的交互方式</h4><p>手势不应该是与虚拟物体交互的唯一方式。你的应用可以采用其他因素，例如运动或者逼近来让内容有生命力。当用户靠近一个游戏角色时，它可以回头看用户。</p>
-<h3 id="操作问题"><a href="#操作问题" class="headerlink" title="操作问题"></a>操作问题</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img09.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img10.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="允许用户重置"><a href="#允许用户重置" class="headerlink" title="允许用户重置"></a>允许用户重置</h4><p>如果用户对虚拟物体的安放不满意，不要强制用户在当前状况下改进，允许他们重新开始寻找更好的方案。</p>
-<h4 id="如果出现问题，提供合适的解决方案"><a href="#如果出现问题，提供合适的解决方案" class="headerlink" title="如果出现问题，提供合适的解决方案"></a>如果出现问题，提供合适的解决方案</h4><p>许多情况可能导致侦测用户环境失败：亮度不够、平面反光过高、平面没有足够的细节或者相机运动过多。如果应用检测到了这些问题，应该给出解决问题的建议。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img11.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="仅为合适的设备提供AR功能"><a href="#仅为合适的设备提供AR功能" class="headerlink" title="仅为合适的设备提供AR功能"></a>仅为合适的设备提供AR功能</h4><p>如果你的app的主要功能是AR，那么让你的app只能在支持ARKit的设备上安装。如果你的app的AR功能只是附属的——例如家居类的app提供AR的展示——则不要在不能支持ARKit的手机上显示AR功能，避免让用户在进入AR功能时出现错误，开发者可以在UIRequiredDeviceCapabilities部分获得相应指导。</p>
-<h4 id="AR图标"><a href="#AR图标" class="headerlink" title="AR图标"></a>AR图标</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img12.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>苹果提供了AR图标和AR标志，用以区分以ARKit为基础的应用<br>在Resources中可下载。</p>
-<h4 id="录制介绍视频"><a href="#录制介绍视频" class="headerlink" title="录制介绍视频"></a>录制介绍视频</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img13.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>iOS 11上线了录屏功能，支持将AR应用效果录制成视频，可以放在App  Store的App预览中，方便用户在下载前获取应用的关键信息，吸引用户下载。当然录制时需要安排好应用演示的环境，不要有干扰信息。</p>
-<h4 id="人脸识别动态表情"><a href="#人脸识别动态表情" class="headerlink" title="人脸识别动态表情"></a>人脸识别动态表情</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img14.gif" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>iPhone X的原深度摄像头系统可以算是ARKit的一大新武器，这套摄像头系统中的传感器可以投射人眼看不见的光，并读取用户的脸部3D结构，通过苹果神经引擎（A11 Bionic Neural Engine），可以即时处理识别数据，建立人脸数学模型。这一人脸识别功能用在AR上可以支持AR自拍，也可以支持苹果发布会演示的Animoji。</p>
-<p>苹果在现场只演示了最为简单人脸驱动emoji，目前苹果将这套方案开放给开发者，开发者通过原深感摄像头可以利用人脸动作来驱动AR角色，是最简单直接的面部捕捉和实时动画制作。通过PGC相信可以创造很多有趣的内容。</p>
-]]></content>
+    <content type="html"><![CDATA[<blockquote><p>原文链接：<a href="http://vr.99.com/news/10112017/203934054.shtml" target="_blank" rel="noopener">传送门</a></p></blockquote><p>近日，苹果在其开发者网页为开发者提供了3种关键资源，帮助开发者开发和推广AR应用。这些资源包括AR界面设计，如何友好地让用户知道自己已经进入AR模式；如何录制放置在App Store中的AR应用介绍视频；以及如何利用人脸识别创建动态表情Animoji。  </p><h3 id="AR界面设计"><a href="#AR界面设计" class="headerlink" title="AR界面设计"></a>AR界面设计</h3><p>关于AR的界面设计、操作等，苹果给出了22条注意事项，帮助开发者打造用户体验更好的AR应用。目前国内已经有不少团队利用ARKit开发出了应用，这些注意事项你家app做到了吗？</p><h4 id="全屏显示AR效果"><a href="#全屏显示AR效果" class="headerlink" title="全屏显示AR效果"></a>全屏显示AR效果</h4><p>让真实世界的画面和AR物体尽量占据整个屏幕，避免让操作按键和其他信息切割屏幕，破坏沉浸感。</p><h4 id="让虚拟物体尽可能逼真"><a href="#让虚拟物体尽可能逼真" class="headerlink" title="让虚拟物体尽可能逼真"></a>让虚拟物体尽可能逼真</h4><p>大部分的AR效果采用的是虚拟的卡通角色，但是如果采用现实中存在的物体应该让它们做到与环境融为一体。为此，设计者应该设计有栩栩如生的质地的3D形象、在光照下能产生合理的阴影并且移动相机物体能发生改变。</p><h4 id="考虑物理世界的限制"><a href="#考虑物理世界的限制" class="headerlink" title="考虑物理世界的限制"></a>考虑物理世界的限制</h4><p>用户很可能在一个并不适合AR体验的环境下操作你的AR应用，例如他们可能在一个狭窄的、没有平面的区域。因此，设计者应该考虑不同场景下设计不同的使用方式和功能，并且提前告知用户使用方法。</p><h4 id="考虑用户体验舒适度"><a href="#考虑用户体验舒适度" class="headerlink" title="考虑用户体验舒适度"></a>考虑用户体验舒适度</h4><p>长时间以一个角度或者距离拿住手机是一件并不愉快的事，所以要考虑到用户使用你的手机的方式和时长是否会带来不适。你可以通过减少游戏的级数或者在其中穿插休息时间来缓解用户疲劳。</p><h4 id="渐进引导用户的移动"><a href="#渐进引导用户的移动" class="headerlink" title="渐进引导用户的移动"></a>渐进引导用户的移动</h4><p>如果你的应用是需要用户移动的，不要在一开始就扔个炸弹让用户跳开，应该先让用户适应AR体验，然后再鼓励他们运动。</p><h4 id="留心用户的安全"><a href="#留心用户的安全" class="headerlink" title="留心用户的安全"></a>留心用户的安全</h4><p>在有人或者物体的环境里大幅度的移动有可能造成危险，注意让应用能安全地操作，避免大范围或者突然地移动。</p><h4 id="使用声音或触觉反馈来提升沉浸感"><a href="#使用声音或触觉反馈来提升沉浸感" class="headerlink" title="使用声音或触觉反馈来提升沉浸感"></a>使用声音或触觉反馈来提升沉浸感</h4><p>音效或者震动反馈可以创造一种虚拟物体与真实物体接触或者碰撞的感觉。在沉浸式的游戏中，音效可以让人进入虚拟世界。请参见Audio和Haptic Feedback。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img01.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="将提示融入情境"><a href="#将提示融入情境" class="headerlink" title="将提示融入情境"></a>将提示融入情境</h4><p>例如要在一个物体旁边提供一个三维旋转的标志比提供文字要直观。然而，如果用户对情境提示没有反应，可以再显示文字。避免使用一些技术性术语， 例如：ARKit、环境侦测、追踪等。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img02.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="避免AR体验过程中的中断"><a href="#避免AR体验过程中的中断" class="headerlink" title="避免AR体验过程中的中断"></a>避免AR体验过程中的中断</h4><p>用户每次进入AR时用户都会重新分析环境、检测平面，另外手机和相机的位置可能已经改变了。那么，先前放置的物体会被重新安置——它们或许无法再被放置在现实世界的平面上。避免中断的方法是让人们在不离开AR的情况下去改变物体和放置情况，例如在使用宜家的家装AR放置一把沙发时，可以让用户能选择不同的材质。  </p><h3 id="进入AR体验"><a href="#进入AR体验" class="headerlink" title="进入AR体验"></a>进入AR体验</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img03.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="提示初始化进程并且带动用户参与"><a href="#提示初始化进程并且带动用户参与" class="headerlink" title="提示初始化进程并且带动用户参与"></a>提示初始化进程并且带动用户参与</h4><p>每次用户进入AR，都会有初始化评估环境的过程，这会花费数秒的时间。为了减少用户的困惑以及加速进程，应该明确指示出这一过程并且鼓励用户探索他们的环境，积极寻找一个平面。</p><p>放置虚拟物体</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img04.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img05.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img06.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="帮助用户理解何时定位平面并且安放物体"><a href="#帮助用户理解何时定位平面并且安放物体" class="headerlink" title="帮助用户理解何时定位平面并且安放物体"></a>帮助用户理解何时定位平面并且安放物体</h4><p>虚拟标识是告知用户平面定位模式正在进行的好办法。屏幕中间的梯形标线可以提示用户他们应该寻找一个垂直的宽阔的平面。一旦这个平面被定位了，应该更换标识外形告诉用户现在可以安置物体。设计虚拟标识应该被视为App体验的一部分。</p><h4 id="快速回应安置物体请求"><a href="#快速回应安置物体请求" class="headerlink" title="快速回应安置物体请求"></a>快速回应安置物体请求</h4><p>平面侦测过程中精确度是逐渐提高的，当用户放置物体时应该使用当前已获得的信息立刻回应，然后再优化物体的位置。如果物体超出了侦测到的平面范围，直接将其拉拽回来。不要将其无限靠近侦测到的平面的边缘，因为这个边缘并不是稳定的。</p><h3 id="用户与虚拟物体的交互"><a href="#用户与虚拟物体的交互" class="headerlink" title="用户与虚拟物体的交互"></a>用户与虚拟物体的交互</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img07.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="支持直接操作而不是分离的屏幕操作"><a href="#支持直接操作而不是分离的屏幕操作" class="headerlink" title="支持直接操作而不是分离的屏幕操作"></a>支持直接操作而不是分离的屏幕操作</h4><p>最为直观的方式是让用户直接触碰屏幕上的物体与之互动，而不是让用户去操作一个与与物体分离的控制按钮。但是也要注意，当用户在移动的时候这种直接的操作方式也可能混乱。</p><h4 id="允许用户使用标准的、熟悉的手势来与虚拟物体互动"><a href="#允许用户使用标准的、熟悉的手势来与虚拟物体互动" class="headerlink" title="允许用户使用标准的、熟悉的手势来与虚拟物体互动"></a>允许用户使用标准的、熟悉的手势来与虚拟物体互动</h4><p>例如，考虑以单只手指来拖拽物体、两只手指来旋转物体。两只手指按压和两只手指旋转很容易混淆，应该对软件进行识别度的测试。更多参考资料，见Gestures。</p><h4 id="交互应尽量简单"><a href="#交互应尽量简单" class="headerlink" title="交互应尽量简单"></a>交互应尽量简单</h4><p>目前的触碰手势都是二维的，但是AR体验是建立在三维的真实世界之上的。考虑以下的方式来简化用户与虚拟物体的交互。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img08.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="回应近似范围内的交互"><a href="#回应近似范围内的交互" class="headerlink" title="回应近似范围内的交互"></a>回应近似范围内的交互</h4><p>要让用户准确触碰一个小的虚拟物体会很难，因此可以设计成只要在可交互物体的附近监测到用户的行为那么就预设用户想要移动这个物体。</p><h4 id="考虑是否采用以用户出发的缩放比例"><a href="#考虑是否采用以用户出发的缩放比例" class="headerlink" title="考虑是否采用以用户出发的缩放比例"></a>考虑是否采用以用户出发的缩放比例</h4><p>如果虚拟物体是不具有固定的尺寸大小的玩具或者游戏角色，用户想要看到其放大缩小的效果，那么缩放就是很合适的。但是对于拥有与真实世界对应的尺寸的物体来说，例如家居，缩放就没有意义了。例如，当你放大这个家具时，他并不会看起来离你更近。</p><h4 id="确保虚拟物体的运动是连贯的"><a href="#确保虚拟物体的运动是连贯的" class="headerlink" title="确保虚拟物体的运动是连贯的"></a>确保虚拟物体的运动是连贯的</h4><p>当用户缩放、旋转或者移动物体到新位置时物体不应该突然跳出来。</p><h4 id="探索更多吸引人的交互方式"><a href="#探索更多吸引人的交互方式" class="headerlink" title="探索更多吸引人的交互方式"></a>探索更多吸引人的交互方式</h4><p>手势不应该是与虚拟物体交互的唯一方式。你的应用可以采用其他因素，例如运动或者逼近来让内容有生命力。当用户靠近一个游戏角色时，它可以回头看用户。</p><h3 id="操作问题"><a href="#操作问题" class="headerlink" title="操作问题"></a>操作问题</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img09.png" alt title>                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img10.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="允许用户重置"><a href="#允许用户重置" class="headerlink" title="允许用户重置"></a>允许用户重置</h4><p>如果用户对虚拟物体的安放不满意，不要强制用户在当前状况下改进，允许他们重新开始寻找更好的方案。</p><h4 id="如果出现问题，提供合适的解决方案"><a href="#如果出现问题，提供合适的解决方案" class="headerlink" title="如果出现问题，提供合适的解决方案"></a>如果出现问题，提供合适的解决方案</h4><p>许多情况可能导致侦测用户环境失败：亮度不够、平面反光过高、平面没有足够的细节或者相机运动过多。如果应用检测到了这些问题，应该给出解决问题的建议。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img11.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="仅为合适的设备提供AR功能"><a href="#仅为合适的设备提供AR功能" class="headerlink" title="仅为合适的设备提供AR功能"></a>仅为合适的设备提供AR功能</h4><p>如果你的app的主要功能是AR，那么让你的app只能在支持ARKit的设备上安装。如果你的app的AR功能只是附属的——例如家居类的app提供AR的展示——则不要在不能支持ARKit的手机上显示AR功能，避免让用户在进入AR功能时出现错误，开发者可以在UIRequiredDeviceCapabilities部分获得相应指导。</p><h4 id="AR图标"><a href="#AR图标" class="headerlink" title="AR图标"></a>AR图标</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img12.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>苹果提供了AR图标和AR标志，用以区分以ARKit为基础的应用<br>在Resources中可下载。</p><h4 id="录制介绍视频"><a href="#录制介绍视频" class="headerlink" title="录制介绍视频"></a>录制介绍视频</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img13.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>iOS 11上线了录屏功能，支持将AR应用效果录制成视频，可以放在App  Store的App预览中，方便用户在下载前获取应用的关键信息，吸引用户下载。当然录制时需要安排好应用演示的环境，不要有干扰信息。</p><h4 id="人脸识别动态表情"><a href="#人脸识别动态表情" class="headerlink" title="人脸识别动态表情"></a>人脸识别动态表情</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/AR_VR/%E8%8B%B9%E6%9E%9C%E7%BB%99ARKit%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%8422%E6%9D%A1%E5%BB%BA%E8%AE%AE/imgs/img14.gif" alt title>                </div>                <div class="image-caption"></div>            </figure><p>iPhone X的原深度摄像头系统可以算是ARKit的一大新武器，这套摄像头系统中的传感器可以投射人眼看不见的光，并读取用户的脸部3D结构，通过苹果神经引擎（A11 Bionic Neural Engine），可以即时处理识别数据，建立人脸数学模型。这一人脸识别功能用在AR上可以支持AR自拍，也可以支持苹果发布会演示的Animoji。</p><p>苹果在现场只演示了最为简单人脸驱动emoji，目前苹果将这套方案开放给开发者，开发者通过原深感摄像头可以利用人脸动作来驱动AR角色，是最简单直接的面部捕捉和实时动画制作。通过PGC相信可以创造很多有趣的内容。</p>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;http://vr.99.com/news/10112017/203934054.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;http://vr.99.com/news/10112017/203934054.shtml&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;近日
+      
     
     </summary>
     
@@ -497,24 +220,17 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-10-17-%E6%A6%9C%E6%A0%B7%E5%8D%9A%E6%96%87%E2%80%94%E2%80%94%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%8D%9A%E5%AE%A2%E9%9B%86%E6%88%90%E9%98%85%E8%AF%BB%E5%AE%A2%E6%88%B7%E7%AB%AF.html"/>
     <id>http://blog.itbobby.top/2017-10-17-榜样博文——轻量级博客集成阅读客户端.html</id>
     <published>2017-10-17T13:30:58.000Z</published>
-    <updated>2017-10-26T13:40:36.552Z</updated>
+    <updated>2017-10-26T13:40:36.553Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="项目名"><a href="#项目名" class="headerlink" title="项目名"></a>项目名</h3><pre><code>榜样博文
-</code></pre><h3 id="整体风格"><a href="#整体风格" class="headerlink" title="整体风格"></a>整体风格</h3><pre><code>Material Deisgn
-</code></pre><h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><pre><code>https://github.com/BobbyZhang93/BestBlog
-</code></pre><h3 id="1-0版本"><a href="#1-0版本" class="headerlink" title="1.0版本"></a>1.0版本</h3><p>本地工具软件，没有后台；<br>首页为列表，默认设置两三个博客；<br>列表单击进入博客，长按弹出菜单（独首页版设置右滑删除）；<br>菜单除删除还有编辑功能，即添加页面；<br>点击加号，跳转到添加页面，填写链接（有测试按钮，点击测试网页连通性并获取网页title），填写博客名字，是否标新星，点击完成返回列表；<br>博客列表支持导出和导入，导出为.json格式。<br><strong>目标：</strong> 满足日常查看博客所需，上线工具</p>
-<h3 id="2-0版本"><a href="#2-0版本" class="headerlink" title="2.0版本"></a>2.0版本</h3><p>改版：增加左侧边栏；<br>增加用户登录（微信）；<br>增加个人信息（后端云实现），分享到微信QQ等轻度社交化功能，以及同步博客列表。</p>
-<h3 id="3-0版本"><a href="#3-0版本" class="headerlink" title="3.0版本"></a>3.0版本</h3><p>大改版：去侧边栏，增加tab分栏；<br>集成im聊天工具和社区，达到可以站内联络分享的氛围；<br>分享可以是分享专栏或者文章；<br>增加排行榜，根据收藏专栏排名。</p>
-<h3 id="4-0版本"><a href="#4-0版本" class="headerlink" title="4.0版本"></a>4.0版本</h3><p>添加站内提交文章功能，提供网页端编写工具；<br>提供服务器后台，类似于简书。</p>
-<blockquote>
-<p>开发中，敬请期待…</p>
-</blockquote>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="项目名"><a href="#项目名" class="headerlink" title="项目名"></a>项目名</h3><pre><code>榜样博文</code></pre><h3 id="整体风格"><a href="#整体风格" class="headerlink" title="整体风格"></a>整体风格</h3><pre><code>Material Deisgn</code></pre><h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><pre><code>https://github.com/BobbyZhang93/BestBlog</code></pre><h3 id="1-0版本"><a href="#1-0版本" class="headerlink" title="1.0版本"></a>1.0版本</h3><p>本地工具软件，没有后台；<br>首页为列表，默认设置两三个博客；<br>列表单击进入博客，长按弹出菜单（独首页版设置右滑删除）；<br>菜单除删除还有编辑功能，即添加页面；<br>点击加号，跳转到添加页面，填写链接（有测试按钮，点击测试网页连通性并获取网页title），填写博客名字，是否标新星，点击完成返回列表；<br>博客列表支持导出和导入，导出为.json格式。<br><strong>目标：</strong> 满足日常查看博客所需，上线工具</p><h3 id="2-0版本"><a href="#2-0版本" class="headerlink" title="2.0版本"></a>2.0版本</h3><p>改版：增加左侧边栏；<br>增加用户登录（微信）；<br>增加个人信息（后端云实现），分享到微信QQ等轻度社交化功能，以及同步博客列表。</p><h3 id="3-0版本"><a href="#3-0版本" class="headerlink" title="3.0版本"></a>3.0版本</h3><p>大改版：去侧边栏，增加tab分栏；<br>集成im聊天工具和社区，达到可以站内联络分享的氛围；<br>分享可以是分享专栏或者文章；<br>增加排行榜，根据收藏专栏排名。</p><h3 id="4-0版本"><a href="#4-0版本" class="headerlink" title="4.0版本"></a>4.0版本</h3><p>添加站内提交文章功能，提供网页端编写工具；<br>提供服务器后台，类似于简书。</p><blockquote><p>开发中，敬请期待…</p></blockquote>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;项目名&quot;&gt;&lt;a href=&quot;#项目名&quot; class=&quot;headerlink&quot; title=&quot;项目名&quot;&gt;&lt;/a&gt;项目名&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;榜样博文
+      
+      
+        &lt;h3 id=&quot;项目名&quot;&gt;&lt;a href=&quot;#项目名&quot; class=&quot;headerlink&quot; title=&quot;项目名&quot;&gt;&lt;/a&gt;项目名&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;榜样博文
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;整体风格&quot;&gt;&lt;a href=&quot;#整体风格&quot; class=&quot;hea
+      
     
     </summary>
     
@@ -532,49 +248,15 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-10-17-%E5%AE%89%E5%8D%93%E8%AE%BE%E5%A4%87%E4%B8%AD%E4%BC%A0%E6%84%9F%E5%99%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%87%E6%A0%B7%E5%B1%9E%E6%80%A7.html"/>
     <id>http://blog.itbobby.top/2017-10-17-安卓设备中传感器的几个采样属性.html</id>
     <published>2017-10-17T13:08:27.000Z</published>
-    <updated>2017-10-17T13:26:08.333Z</updated>
+    <updated>2017-10-17T13:26:08.334Z</updated>
     
-    <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th>传感器</th>
-<th>采样率</th>
-<th>适用场景 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SENSOR_DELAY_UI</td>
-<td>60000微秒</td>
-<td>若使用传感器更新UI, 建议使用该值。</td>
-</tr>
-<tr>
-<td>SENSOR_DELAY_NORMAL</td>
-<td>200000微秒</td>
-<td>默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。</td>
-</tr>
-<tr>
-<td>SENSOR_DELAY_GAME</td>
-<td>20000微秒</td>
-<td>如果利用传感器开发游戏，建议使用该值。 一般大多数实时行较高的游戏使用该级别。</td>
-</tr>
-<tr>
-<td>SENSOR_DELAY_FASTEST</td>
-<td>0微秒</td>
-<td>最低延迟，一般不是特别灵敏的处理不推荐使用，该模式可能造成手机电力大量消耗，而且由于传递的为大量的原始数据，算法处理不好将会影响游戏逻辑和UI的性能。</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>在实际应用中应该根据功能的需求选择对应的模式；   </li>
-<li>当与传感器相关功能出现卡顿或者跳帧严重时应该优先考虑到是因为采样率不足导致的，从而调整模式进行问题排查；</li>
-<li>在保证传感器采样率的前提下也可以采用常用的滤波方式，比如卡尔曼或者低通滤波对数据进行平滑处理。</li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<table><thead><tr><th>传感器</th><th>采样率</th><th>适用场景 </th></tr></thead><tbody><tr><td>SENSOR_DELAY_UI</td><td>60000微秒</td><td>若使用传感器更新UI, 建议使用该值。</td></tr><tr><td>SENSOR_DELAY_NORMAL</td><td>200000微秒</td><td>默认的获取传感器数据的速度。标准延迟，对于一般的益智类游戏或者EASY界别的游戏可以使用，但过低的采样率可能对一些赛车类游戏有跳帧的现象。</td></tr><tr><td>SENSOR_DELAY_GAME</td><td>20000微秒</td><td>如果利用传感器开发游戏，建议使用该值。 一般大多数实时行较高的游戏使用该级别。</td></tr><tr><td>SENSOR_DELAY_FASTEST</td><td>0微秒</td><td>最低延迟，一般不是特别灵敏的处理不推荐使用，该模式可能造成手机电力大量消耗，而且由于传递的为大量的原始数据，算法处理不好将会影响游戏逻辑和UI的性能。</td></tr></tbody></table><ul><li>在实际应用中应该根据功能的需求选择对应的模式；   </li><li>当与传感器相关功能出现卡顿或者跳帧严重时应该优先考虑到是因为采样率不足导致的，从而调整模式进行问题排查；</li><li>在保证传感器采样率的前提下也可以采用常用的滤波方式，比如卡尔曼或者低通滤波对数据进行平滑处理。</li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;table&gt;
+      
+      
+        &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;传感器&lt;/th&gt;
@@ -587,6 +269,7 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
 &lt;td&gt;SENSOR_DELAY_UI&lt;/td&gt;
 &lt;td&gt;60000微秒&lt;/td&gt;
 &lt;td&gt;若使用传
+      
     
     </summary>
     
@@ -604,24 +287,14 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <published>2017-09-30T14:16:50.000Z</published>
     <updated>2017-09-30T15:01:14.267Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Java-API-Motion-Tracking-Tutorial"><a href="#Java-API-Motion-Tracking-Tutorial" class="headerlink" title="Java API Motion Tracking Tutorial"></a>Java API Motion Tracking Tutorial</h3><p><em>This page describes how the Java API handles motion tracking.</em><br><strong>本文演示如何通过 Java 来使用运动追踪技术。</strong></p>
-<h4 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h4><p><em>The normal motion tracking system lifecycle consists of three states: TangoPoseData.POSE_INITIALIZING, TangoPoseData.POSE_VALID, and TangoPoseData.POSE_INVALID. In the POSE_INITIALIZING state, the system is not yet ready and pose data is not available. In the POSE_VALID state, the system is functioning normally. In the POSE_INVALID state, the system believes its estimate was invalid and needs to be reinitialized. A fourth state, POSE_UNKNOWN, is used for all other cases.</em><br><strong>运动追踪系统一般情况下包含三个状态：TangoPoseData.POSE_INITIALIZING, TangoPoseData.POSE_VALID 以及 TangoPoseData.POSE_INVALID。POSE_INITIALIZING 表示系统还未就绪，无 pose 数据可用。POSE_VALID 表示系统运转正常。POSE_INVALID 表示系统异常，需要重新初始化。还有一个状态，POSE_UNKNOWN，表示出上述状态之外的其他状态。</strong></p>
-<p><em>Should the pose data become POSE_INVALID, the motion tracking system can be reinitialized in two ways. If config_enable_auto_recovery was set to true, the system will immediately enter the POSE_INITIALIZING state. It will use the last valid pose as the starting point after recovery. If TangoConfig.KEY_BOOLEAN_AUTORECOVERY was set to false, the system will essentially pause and always return poses as POSE_INVALID until Tango.resetMotionTracking() is called. Unlike auto recovery, this will also reset the starting point after recovery back to the origin.</em><br><strong>如果 pose 数据变成 POSE_INVALID 状态，运动追踪系统可以通过两种方法来重新初始化。如果系统配置项 config_enable_auto_recovery = true，系统将立即进入 POSE_INITIALIZING 状态。恢复之后，系统使用最近一次 POSE_VALID 状态的 pose 作为追踪的起始点。如果 TangoConfig.KEY_BOOLEAN_AUTORECOVERY = false，系统将停止工作，并始终返回 POSE_INVALID 状态的 pose 数据，直到 Tango.resetMotionTracking() 方法被调用。与自动恢复不同的是，系统恢复后该方法将重置起始点为故障前的原始点。</strong></p>
-<p><em>The lifecycle state is recorded in the TangoPoseData object’s statusCode.<br>For more information, although the page is based around the C API, please see our Device Pose concepts page.</em><br><strong>生命周期的状态记录在TangoPoseData对象的状态代码中，更多信息请参考设备 Pose 原理页面。</strong></p>
-<h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><p>In order to use motion tracking, your TangoConfig must have KEY_BOOLEAN_MOTIONTRACKING set to true. If you are using the default TangoConfig as your starting point, it is already set to true.</p>
-<p>You also have the option to set KEY_BOOLEAN_AUTORECOVERY. In the default TangoConfig, this is set to true. See the Lifecycle section for the behavior of this parameter.</p>
-<h4 id="Getting-pose-data"><a href="#Getting-pose-data" class="headerlink" title="Getting pose data"></a>Getting pose data</h4><p>There are two coordinate frame pair options for basic motion tracking: device with respect to start of service, and device with respect to the previous device pose. With start of service, the device’s pose is relative to the position where the motion tracking system initialized. You can receive pose data in both the callback and polling forms. With previous device pose, the device’s pose is relative to its last position. Pose data is only available as a callback.</p>
-<h4 id="Callback-based"><a href="#Callback-based" class="headerlink" title="Callback-based"></a>Callback-based</h4><p>If you are using the callback-based approach, you must define the coordinate frame pairs you are interested in and construct your onPoseAvailable() callback.</p>
-<p>You also have to implement onXyzIjAvailable and onTangoEvent, because the Tango.OnTangoUpdateListener interface requires an implementation for all three of those methods.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">private void setTangoListeners() &#123;</div><div class="line">    final ArrayList&lt;TangoCoordinateFramePair&gt; framePairs = new ArrayList&lt;TangoCoordinateFramePair&gt;();</div><div class="line">    framePairs.add(new TangoCoordinateFramePair(</div><div class="line">        TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE,</div><div class="line">        TangoPoseData.COORDINATE_FRAME_DEVICE));</div><div class="line"></div><div class="line">    // Listen for new Tango data</div><div class="line">    mTango.connectListener(framePairs, new OnTangoUpdateListener() &#123;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onPoseAvailable(final TangoPoseData pose) &#123;</div><div class="line">            // Process pose data from device with respect to start of service</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onXyzIjAvailable(TangoXyzIjData arg0) &#123;</div><div class="line">            // We need this callback even if we don&apos;t use it</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onTangoEvent(final TangoEvent event) &#123;</div><div class="line">            // This callback also has to be here</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="Polling-based"><a href="#Polling-based" class="headerlink" title="Polling-based"></a>Polling-based</h4><p>In the polling-based approach, you must first specify the coordinate frame pair you are interested in. For simple motion tracking, this will always be TangoPoseData.COORDINATE_FRAME_DEVICE with respect to TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE.</p>
-<p>// Define what motion is requested.<br>TangoCoordinateFramePair frames_of_reference;<br>frames_of_reference.baseFrame = TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE;<br>frames_of_reference.targetFrame = TangoPoseData.COORDINATE_FRAME_DEVICE;<br>Then call `Tango.getPoseAtTime() as desired. In the example below, the timestamp is set to 0.0 to get the latest pose. If you specify a specific timestamp, the system will return an interpolated pose at that exact time. Timestamps are relative to the device boot.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">new Thread(new Runnable() &#123;</div><div class="line">    final int pollingUpdatePeriodMilliseconds = 66;</div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        while (true) &#123;</div><div class="line">            try &#123;</div><div class="line">                 Thread.sleep(pollingUpdatePeriodMilliseconds);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                 e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            try &#123;</div><div class="line">                final TangoPoseData queryPoseStartDevice =</div><div class="line">                    mTango.getPoseAtTime(0.0, frames_of_reference);</div><div class="line">            &#125; catch (TangoErrorException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;).start();</div></pre></td></tr></table></figure>
-<p>未完待续…</p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="Java-API-Motion-Tracking-Tutorial"><a href="#Java-API-Motion-Tracking-Tutorial" class="headerlink" title="Java API Motion Tracking Tutorial"></a>Java API Motion Tracking Tutorial</h3><p><em>This page describes how the Java API handles motion tracking.</em><br><strong>本文演示如何通过 Java 来使用运动追踪技术。</strong></p><h4 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h4><p><em>The normal motion tracking system lifecycle consists of three states: TangoPoseData.POSE_INITIALIZING, TangoPoseData.POSE_VALID, and TangoPoseData.POSE_INVALID. In the POSE_INITIALIZING state, the system is not yet ready and pose data is not available. In the POSE_VALID state, the system is functioning normally. In the POSE_INVALID state, the system believes its estimate was invalid and needs to be reinitialized. A fourth state, POSE_UNKNOWN, is used for all other cases.</em><br><strong>运动追踪系统一般情况下包含三个状态：TangoPoseData.POSE_INITIALIZING, TangoPoseData.POSE_VALID 以及 TangoPoseData.POSE_INVALID。POSE_INITIALIZING 表示系统还未就绪，无 pose 数据可用。POSE_VALID 表示系统运转正常。POSE_INVALID 表示系统异常，需要重新初始化。还有一个状态，POSE_UNKNOWN，表示出上述状态之外的其他状态。</strong></p><p><em>Should the pose data become POSE_INVALID, the motion tracking system can be reinitialized in two ways. If config_enable_auto_recovery was set to true, the system will immediately enter the POSE_INITIALIZING state. It will use the last valid pose as the starting point after recovery. If TangoConfig.KEY_BOOLEAN_AUTORECOVERY was set to false, the system will essentially pause and always return poses as POSE_INVALID until Tango.resetMotionTracking() is called. Unlike auto recovery, this will also reset the starting point after recovery back to the origin.</em><br><strong>如果 pose 数据变成 POSE_INVALID 状态，运动追踪系统可以通过两种方法来重新初始化。如果系统配置项 config_enable_auto_recovery = true，系统将立即进入 POSE_INITIALIZING 状态。恢复之后，系统使用最近一次 POSE_VALID 状态的 pose 作为追踪的起始点。如果 TangoConfig.KEY_BOOLEAN_AUTORECOVERY = false，系统将停止工作，并始终返回 POSE_INVALID 状态的 pose 数据，直到 Tango.resetMotionTracking() 方法被调用。与自动恢复不同的是，系统恢复后该方法将重置起始点为故障前的原始点。</strong></p><p><em>The lifecycle state is recorded in the TangoPoseData object’s statusCode.<br>For more information, although the page is based around the C API, please see our Device Pose concepts page.</em><br><strong>生命周期的状态记录在TangoPoseData对象的状态代码中，更多信息请参考设备 Pose 原理页面。</strong></p><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><p>In order to use motion tracking, your TangoConfig must have KEY_BOOLEAN_MOTIONTRACKING set to true. If you are using the default TangoConfig as your starting point, it is already set to true.</p><p>You also have the option to set KEY_BOOLEAN_AUTORECOVERY. In the default TangoConfig, this is set to true. See the Lifecycle section for the behavior of this parameter.</p><h4 id="Getting-pose-data"><a href="#Getting-pose-data" class="headerlink" title="Getting pose data"></a>Getting pose data</h4><p>There are two coordinate frame pair options for basic motion tracking: device with respect to start of service, and device with respect to the previous device pose. With start of service, the device’s pose is relative to the position where the motion tracking system initialized. You can receive pose data in both the callback and polling forms. With previous device pose, the device’s pose is relative to its last position. Pose data is only available as a callback.</p><h4 id="Callback-based"><a href="#Callback-based" class="headerlink" title="Callback-based"></a>Callback-based</h4><p>If you are using the callback-based approach, you must define the coordinate frame pairs you are interested in and construct your onPoseAvailable() callback.</p><p>You also have to implement onXyzIjAvailable and onTangoEvent, because the Tango.OnTangoUpdateListener interface requires an implementation for all three of those methods.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">private void setTangoListeners() &#123;</span><br><span class="line">    final ArrayList&lt;TangoCoordinateFramePair&gt; framePairs = new ArrayList&lt;TangoCoordinateFramePair&gt;();</span><br><span class="line">    framePairs.add(new TangoCoordinateFramePair(</span><br><span class="line">        TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE,</span><br><span class="line">        TangoPoseData.COORDINATE_FRAME_DEVICE));</span><br><span class="line"></span><br><span class="line">    // Listen for new Tango data</span><br><span class="line">    mTango.connectListener(framePairs, new OnTangoUpdateListener() &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onPoseAvailable(final TangoPoseData pose) &#123;</span><br><span class="line">            // Process pose data from device with respect to start of service</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onXyzIjAvailable(TangoXyzIjData arg0) &#123;</span><br><span class="line">            // We need this callback even if we don&apos;t use it</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onTangoEvent(final TangoEvent event) &#123;</span><br><span class="line">            // This callback also has to be here</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h4 id="Polling-based"><a href="#Polling-based" class="headerlink" title="Polling-based"></a>Polling-based</h4><p>In the polling-based approach, you must first specify the coordinate frame pair you are interested in. For simple motion tracking, this will always be TangoPoseData.COORDINATE_FRAME_DEVICE with respect to TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE.</p><p>// Define what motion is requested.<br>TangoCoordinateFramePair frames_of_reference;<br>frames_of_reference.baseFrame = TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE;<br>frames_of_reference.targetFrame = TangoPoseData.COORDINATE_FRAME_DEVICE;<br>Then call `Tango.getPoseAtTime() as desired. In the example below, the timestamp is set to 0.0 to get the latest pose. If you specify a specific timestamp, the system will return an interpolated pose at that exact time. Timestamps are relative to the device boot.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">new Thread(new Runnable() &#123;</span><br><span class="line">    final int pollingUpdatePeriodMilliseconds = 66;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                 Thread.sleep(pollingUpdatePeriodMilliseconds);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                 e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            try &#123;</span><br><span class="line">                final TangoPoseData queryPoseStartDevice =</span><br><span class="line">                    mTango.getPoseAtTime(0.0, frames_of_reference);</span><br><span class="line">            &#125; catch (TangoErrorException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure><p>未完待续…</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Java-API-Motion-Tracking-Tutorial&quot;&gt;&lt;a href=&quot;#Java-API-Motion-Tracking-Tutorial&quot; class=&quot;headerlink&quot; title=&quot;Java API Motion Tracking T
+      
+      
+        &lt;h3 id=&quot;Java-API-Motion-Tracking-Tutorial&quot;&gt;&lt;a href=&quot;#Java-API-Motion-Tracking-Tutorial&quot; class=&quot;headerlink&quot; title=&quot;Java API Motion Tracking T
+      
     
     </summary>
     
@@ -639,48 +312,19 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-09-30-%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C.html"/>
     <id>http://blog.itbobby.top/2017-09-30-使用m-console在PC端web页面console上打印移动端log结果.html</id>
     <published>2017-09-30T14:14:16.000Z</published>
-    <updated>2017-09-30T14:46:09.387Z</updated>
+    <updated>2019-02-17T07:12:05.004Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>当移动端web开发涉及到传感器时，只能使用真机调试，那么你一定需要这款远程调试工具</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用npm进行安装，命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g m-console</div></pre></td></tr></table></figure></p>
-<ul>
-<li>如果还不清楚npm的用法，请参照：<a href="http://www.runoob.com/nodejs/nodejs-npm.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-npm.html</a>  </li>
-<li>如果还未安装请移步：<a href="https://nodejs.org/en/#download" target="_blank" rel="external">https://nodejs.org/en/#download</a></li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="控制台输入命令启动服务"><a href="#控制台输入命令启动服务" class="headerlink" title="控制台输入命令启动服务"></a>控制台输入命令启动服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mcon server</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/web/%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C/imgs/img01.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h4 id="根据提示将代码插入项目"><a href="#根据提示将代码插入项目" class="headerlink" title="根据提示将代码插入项目"></a>根据提示将代码插入项目</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/web/%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C/imgs/img02.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>同时写一个log进行测试</p>
-<h4 id="刷新移动端页面查看结果"><a href="#刷新移动端页面查看结果" class="headerlink" title="刷新移动端页面查看结果"></a>刷新移动端页面查看结果</h4><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/web/%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C/imgs/img03.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>此处我刷新了两次，console控制条已经输出了两条信息。</p>
-]]></content>
+    <content type="html"><![CDATA[<blockquote><p>当移动端web开发涉及到传感器时，只能使用真机调试，那么你一定需要这款远程调试工具</p></blockquote><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用npm进行安装，命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g m-console</span><br></pre></td></tr></table></figure></p><ul><li>如果还不清楚npm的用法，请参照：<a href="http://www.runoob.com/nodejs/nodejs-npm.html" target="_blank" rel="noopener">http://www.runoob.com/nodejs/nodejs-npm.html</a>  </li><li>如果还未安装请移步：<a href="https://nodejs.org/en/#download" target="_blank" rel="noopener">https://nodejs.org/en/#download</a></li></ul><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="控制台输入命令启动服务"><a href="#控制台输入命令启动服务" class="headerlink" title="控制台输入命令启动服务"></a>控制台输入命令启动服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mcon server</span><br></pre></td></tr></table></figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/bolg/web/%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C/imgs/img01.png" alt title>                </div>                <div class="image-caption"></div>            </figure><h4 id="根据提示将代码插入项目"><a href="#根据提示将代码插入项目" class="headerlink" title="根据提示将代码插入项目"></a>根据提示将代码插入项目</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/bolg/web/%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C/imgs/img02.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>同时写一个log进行测试</p><h4 id="刷新移动端页面查看结果"><a href="#刷新移动端页面查看结果" class="headerlink" title="刷新移动端页面查看结果"></a>刷新移动端页面查看结果</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/bolg/web/%E4%BD%BF%E7%94%A8m-console%E5%9C%A8PC%E7%AB%AFweb%E9%A1%B5%E9%9D%A2console%E4%B8%8A%E6%89%93%E5%8D%B0%E7%A7%BB%E5%8A%A8%E7%AB%AFlog%E7%BB%93%E6%9E%9C/imgs/img03.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>此处我刷新了两次，console控制条已经输出了两条信息。</p>]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
+      
+      
+        &lt;blockquote&gt;
 &lt;p&gt;当移动端web开发涉及到传感器时，只能使用真机调试，那么你一定需要这款远程调试工具&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/
+      
     
     </summary>
     
@@ -696,68 +340,16 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-09-30-NDK%E5%B0%8F%E8%AF%95.html"/>
     <id>http://blog.itbobby.top/2017-09-30-NDK小试.html</id>
     <published>2017-09-30T14:06:52.000Z</published>
-    <updated>2017-09-30T14:13:36.303Z</updated>
+    <updated>2019-02-17T07:08:54.459Z</updated>
     
-    <content type="html"><![CDATA[<p>NDK下载地址 <a href="https://developer.android.google.cn/ndk/downloads/index.html" target="_blank" rel="external">https://developer.android.google.cn/ndk/downloads/index.html</a></p>
-<p>下载好NDK之后解压放到电脑的某路径下，在项目的SDK Location中指定NDK的路径<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img01.png" alt=""></p>
-<p>点击ok，local.properties中已经自动生成一条NDK的路径配置信息，如果你知道路径也可以直接在这里填写（红色的框错了实为上一行配置）<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img02.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>在gradle.properties中填写android.useDeprecatedNdk=true避免因NDK版本过低不能编译jni的问题<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img03.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>build.gradle中配置.so文件的名字和对应的平台  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ndk&#123;  </div><div class="line">    moduleName &quot;gogogojni&quot;   //生成的so名字</div><div class="line">    abiFilters &quot;armeabi&quot;, &quot;armeabi-v7a&quot;, &quot;x86&quot;  //输出指定三种abi体系结构下的so库。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img04.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>在控制台输入如下命令，此时java文件夹下已经生成了名为com_bumie_ndk_go_MainActivity.h的头文件<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img05.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>找到src/main/jni路线新建一个c的代码，名字要和build.gradle中保持一致<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img06.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>在c文件中编写代码，输出一个文本，方法名和参数要和头文件中保持一致，同时在java主文件中去调用c中的方法并显示在文本上，调用方法如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static &#123;</div><div class="line">    System.loadLibrary(&quot;gogogojni&quot;);</div><div class="line">&#125; </div><div class="line">public  native String getStringNative();</div></pre></td></tr></table></figure>
-<p>好了，大功告成！<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img07.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>运行成功后我们发现项目中已经生成了.so文件<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img08.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-]]></content>
+    <content type="html"><![CDATA[<p>NDK下载地址 <a href="https://developer.android.google.cn/ndk/downloads/index.html" target="_blank" rel="noopener">https://developer.android.google.cn/ndk/downloads/index.html</a></p><p>下载好NDK之后解压放到电脑的某路径下，在项目的SDK Location中指定NDK的路径<br><img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img01.png" alt></p><p>点击ok，local.properties中已经自动生成一条NDK的路径配置信息，如果你知道路径也可以直接在这里填写（红色的框错了实为上一行配置）<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img02.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>在gradle.properties中填写android.useDeprecatedNdk=true避免因NDK版本过低不能编译jni的问题<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img03.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>build.gradle中配置.so文件的名字和对应的平台  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ndk&#123;  </span><br><span class="line">    moduleName &quot;gogogojni&quot;   //生成的so名字</span><br><span class="line">    abiFilters &quot;armeabi&quot;, &quot;armeabi-v7a&quot;, &quot;x86&quot;  //输出指定三种abi体系结构下的so库。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img04.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>在控制台输入如下命令，此时java文件夹下已经生成了名为com_bumie_ndk_go_MainActivity.h的头文件<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img05.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>找到src/main/jni路线新建一个c的代码，名字要和build.gradle中保持一致<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img06.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>在c文件中编写代码，输出一个文本，方法名和参数要和头文件中保持一致，同时在java主文件中去调用c中的方法并显示在文本上，调用方法如下：  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static &#123;</span><br><span class="line">    System.loadLibrary(&quot;gogogojni&quot;);</span><br><span class="line">&#125;</span><br><span class="line">public  native String getStringNative();</span><br></pre></td></tr></table></figure><p>好了，大功告成！<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img07.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p><p>运行成功后我们发现项目中已经生成了.so文件<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/NDK%E5%B0%8F%E8%AF%95/imgs/img08.png" alt title>                </div>                <div class="image-caption"></div>            </figure></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;NDK下载地址 &lt;a href=&quot;https://developer.android.google.cn/ndk/downloads/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.android.g
+      
+      
+        &lt;p&gt;NDK下载地址 &lt;a href=&quot;https://developer.android.google.cn/ndk/downloads/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://developer.android.g
+      
     
     </summary>
     
@@ -775,36 +367,15 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <published>2017-09-26T15:07:35.000Z</published>
     <updated>2017-09-28T15:00:31.414Z</updated>
     
-    <content type="html"><![CDATA[<p>很喜欢的一首外国小诗，每次读来都会再一次坚定自己的内心！<br>不去盲目对比不去盲目追赶，坚持做好当下即可。<br>不负朝夕，成功，或早或晚！</p>
-<p><strong>纽约时间比加州时间早三个小时，</strong><br><em>New York is 3 hours ahead of California,</em></p>
-<p><strong>但加州时间并没有变慢。</strong><br><em>but it does not make California slow.</em></p>
-<p><strong>有人22岁就毕业了，</strong><br><em>Someone graduated at the age of 22,</em></p>
-<p><strong>但等了五年才找到好的工作！</strong><br><em>but waited 5 years before securing a good job!</em></p>
-<p><strong>有人25岁就当上CEO，</strong><br><em>Someone became a CEO at 25,</em></p>
-<p><strong>却在50岁去世。</strong><br><em>and died at 50.</em></p>
-<p><strong>也有人迟到50岁才当上CEO，</strong><br><em>While another became a CEO at 50,</em></p>
-<p><strong>然后活到90岁。</strong><br><em>and lived to 90 years.</em></p>
-<p><strong>有人依然单身，</strong><br><em>Someone is still single,</em></p>
-<p><strong>同时也有人已婚。</strong><br><em>while someone else got married.</em></p>
-<p><strong>奥巴马55岁就退休，</strong><br><em>Obama retires at 55,</em></p>
-<p><strong>川普70岁才开始当总统。</strong><br><em>but Trump starts at 70.</em></p>
-<p><strong>世上每个人本来就有自己的发展时区。</strong><br><em>Absolutely everyone in this world works based on their Time Zone.</em></p>
-<p><strong>身边有些人看似走在你前面，</strong><br><em>People around you might seem to go ahead of you,</em></p>
-<p><strong>也有人看似走在你后面。</strong><br><em>some might seem to be behind you.</em></p>
-<p><strong>但其实每个人在自己的时区有自己的步程。</strong><br><em>But everyone is running their own RACE, in their own TIME.</em></p>
-<p><strong>不用嫉妒或嘲笑他们。</strong><br><em>Don’t envy them or mock them.</em></p>
-<p><strong>他们都在自己的时区里，你也是</strong><br><em>They are in their TIME ZONE, and you are in yours!</em></p>
-<p><strong>生命就是等待正确的行动时机。</strong><br><em>Life is about waiting for the right moment to act.</em></p>
-<p><strong>所以，放轻松。</strong><br><em>So, RELAX.</em></p>
-<p><strong>你没有落后。</strong><br><em>You’re not LATE.</em></p>
-<p><strong>你没有领先。</strong><br><em>You’re not EARLY.</em></p>
-<p><strong>在命运为你安排的属于自己的时区里，一切都准时。</strong><br><em>You are very much ON TIME, and in your TIME ZONE Destiny set up for you.</em></p>
-]]></content>
+    <content type="html"><![CDATA[<p>很喜欢的一首外国小诗，每次读来都会再一次坚定自己的内心！<br>不去盲目对比不去盲目追赶，坚持做好当下即可。<br>不负朝夕，成功，或早或晚！</p><p><strong>纽约时间比加州时间早三个小时，</strong><br><em>New York is 3 hours ahead of California,</em></p><p><strong>但加州时间并没有变慢。</strong><br><em>but it does not make California slow.</em></p><p><strong>有人22岁就毕业了，</strong><br><em>Someone graduated at the age of 22,</em></p><p><strong>但等了五年才找到好的工作！</strong><br><em>but waited 5 years before securing a good job!</em></p><p><strong>有人25岁就当上CEO，</strong><br><em>Someone became a CEO at 25,</em></p><p><strong>却在50岁去世。</strong><br><em>and died at 50.</em></p><p><strong>也有人迟到50岁才当上CEO，</strong><br><em>While another became a CEO at 50,</em></p><p><strong>然后活到90岁。</strong><br><em>and lived to 90 years.</em></p><p><strong>有人依然单身，</strong><br><em>Someone is still single,</em></p><p><strong>同时也有人已婚。</strong><br><em>while someone else got married.</em></p><p><strong>奥巴马55岁就退休，</strong><br><em>Obama retires at 55,</em></p><p><strong>川普70岁才开始当总统。</strong><br><em>but Trump starts at 70.</em></p><p><strong>世上每个人本来就有自己的发展时区。</strong><br><em>Absolutely everyone in this world works based on their Time Zone.</em></p><p><strong>身边有些人看似走在你前面，</strong><br><em>People around you might seem to go ahead of you,</em></p><p><strong>也有人看似走在你后面。</strong><br><em>some might seem to be behind you.</em></p><p><strong>但其实每个人在自己的时区有自己的步程。</strong><br><em>But everyone is running their own RACE, in their own TIME.</em></p><p><strong>不用嫉妒或嘲笑他们。</strong><br><em>Don’t envy them or mock them.</em></p><p><strong>他们都在自己的时区里，你也是</strong><br><em>They are in their TIME ZONE, and you are in yours!</em></p><p><strong>生命就是等待正确的行动时机。</strong><br><em>Life is about waiting for the right moment to act.</em></p><p><strong>所以，放轻松。</strong><br><em>So, RELAX.</em></p><p><strong>你没有落后。</strong><br><em>You’re not LATE.</em></p><p><strong>你没有领先。</strong><br><em>You’re not EARLY.</em></p><p><strong>在命运为你安排的属于自己的时区里，一切都准时。</strong><br><em>You are very much ON TIME, and in your TIME ZONE Destiny set up for you.</em></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;很喜欢的一首外国小诗，每次读来都会再一次坚定自己的内心！&lt;br&gt;不去盲目对比不去盲目追赶，坚持做好当下即可。&lt;br&gt;不负朝夕，成功，或早或晚！&lt;/p&gt;
+      
+      
+        &lt;p&gt;很喜欢的一首外国小诗，每次读来都会再一次坚定自己的内心！&lt;br&gt;不去盲目对比不去盲目追赶，坚持做好当下即可。&lt;br&gt;不负朝夕，成功，或早或晚！&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;纽约时间比加州时间早三个小时，&lt;/strong&gt;&lt;br&gt;&lt;em&gt;New York is 3 hour
+      
     
     </summary>
     
@@ -820,43 +391,16 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-09-20-Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8.html"/>
     <id>http://blog.itbobby.top/2017-09-20-Mac自带Apache服务器的使用.html</id>
     <published>2017-09-20T14:15:50.000Z</published>
-    <updated>2017-09-20T14:42:08.000Z</updated>
+    <updated>2019-02-17T07:09:18.391Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="打开终端，开启Apache"><a href="#打开终端，开启Apache" class="headerlink" title="打开终端，开启Apache"></a>打开终端，开启Apache</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//开启</div><div class="line">apache:  sudo apachectl start</div><div class="line">//重启</div><div class="line">apache:  sudo apachectl restart</div><div class="line">//关闭</div><div class="line">apache:  sudo apachectl stop</div></pre></td></tr></table></figure>
-<p>回车会提示输入密码，也就是你电脑的密码。<br>打开浏览器输入<a href="http://127.0.0.1/测试一下，成功如下图：" target="_blank" rel="external">http://127.0.0.1/测试一下，成功如下图：</a><br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img01.png" alt=""></p>
-<h3 id="前往Apache服务器的文件路径"><a href="#前往Apache服务器的文件路径" class="headerlink" title="前往Apache服务器的文件路径"></a>前往Apache服务器的文件路径</h3><p> 点击Finder,然后Command+Shift+G，输入[/Library/WebServer/Documents]即可进入：<br> <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img02.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br> 在步骤1中只输入一个[<a href="http://127.0.0.1]默认打开的是index.html.en" target="_blank" rel="external">http://127.0.0.1]默认打开的是index.html.en</a> </p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul>
-<li>创建一个文件，如test.html</li>
-<li>接下来用浏览器访问 <a href="http://127.0.0.1/test.html" target="_blank" rel="external">http://127.0.0.1/test.html</a></li>
-<li>IP(127.0.0.1)也可以换成你电脑的IP地址，这样在同一局域网的设备也可以访问服务器的内容</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>使用过后，记得关闭服务器，要不然会一直消耗电脑内存</p>
-<h3 id="无权限访问页面的问题"><a href="#无权限访问页面的问题" class="headerlink" title="无权限访问页面的问题"></a>无权限访问页面的问题</h3><p><strong>错误信息：</strong>  </p>
-<blockquote>
-<p>apache You don’t have permission to access XXX on this server</p>
-</blockquote>
-<p>网上关于该问题基本都是修改Apache配置文件的做法，不排除可能是因为配置文件造成的错误，但是本条也可以作为解决问题的一种尝试办法.</p>
-<p><strong>背景：</strong><br>为方便测试，将krpano项目部署到了macos上的Apache上，该项目中除了krpano生成的主页面还有后来添加的首页，当我启动apache服务并且打开首页时没有问题，但是当跳转到krpano页面时出现了无权限访问问题</p>
-<p>通过更改apache配置文件尝试无效后，我查看了服务器中文件的权限<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img03.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>1 处页面是刚刚提到的可以打开的首页，可以看到权限没有问题，但是 2 处krpano的主页面就没有可读权限了<br>回退到上级文件夹使用[sudo chmod -R 775]将整个文件夹设置为任何人可读权限，再次查看文件夹下权限都已开放。</p>
-<p>题外话:  <strong>775权限含义</strong><br>7 拥有者有 读取，写入，执行权限<br>7 组用户有 读取，写入，执行权限<br>5 其他用户有 读取，执行权限(4+1 = 5) </p>
-<p>重启apache，再次跳转到krpano页面时顺利打开!</p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="打开终端，开启Apache"><a href="#打开终端，开启Apache" class="headerlink" title="打开终端，开启Apache"></a>打开终端，开启Apache</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//开启</span><br><span class="line">apache:  sudo apachectl start</span><br><span class="line">//重启</span><br><span class="line">apache:  sudo apachectl restart</span><br><span class="line">//关闭</span><br><span class="line">apache:  sudo apachectl stop</span><br></pre></td></tr></table></figure><p>回车会提示输入密码，也就是你电脑的密码。<br>打开浏览器输入<a href="http://127.0.0.1/测试一下，成功如下图：" target="_blank" rel="noopener">http://127.0.0.1/测试一下，成功如下图：</a><br><img src="http://qiniu.itbobby.top/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img01.png" alt></p><h3 id="前往Apache服务器的文件路径"><a href="#前往Apache服务器的文件路径" class="headerlink" title="前往Apache服务器的文件路径"></a>前往Apache服务器的文件路径</h3><p> 点击Finder,然后Command+Shift+G，输入[/Library/WebServer/Documents]即可进入：<br> <figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img02.png" alt title>                </div>                <div class="image-caption"></div>            </figure><br> 在步骤1中只输入一个[<a href="http://127.0.0.1]默认打开的是index.html.en" target="_blank" rel="noopener">http://127.0.0.1]默认打开的是index.html.en</a></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ul><li>创建一个文件，如test.html</li><li>接下来用浏览器访问 <a href="http://127.0.0.1/test.html" target="_blank" rel="noopener">http://127.0.0.1/test.html</a></li><li>IP(127.0.0.1)也可以换成你电脑的IP地址，这样在同一局域网的设备也可以访问服务器的内容</li></ul><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>使用过后，记得关闭服务器，要不然会一直消耗电脑内存</p><h3 id="无权限访问页面的问题"><a href="#无权限访问页面的问题" class="headerlink" title="无权限访问页面的问题"></a>无权限访问页面的问题</h3><p><strong>错误信息：</strong>  </p><blockquote><p>apache You don’t have permission to access XXX on this server</p></blockquote><p>网上关于该问题基本都是修改Apache配置文件的做法，不排除可能是因为配置文件造成的错误，但是本条也可以作为解决问题的一种尝试办法.</p><p><strong>背景：</strong><br>为方便测试，将krpano项目部署到了macos上的Apache上，该项目中除了krpano生成的主页面还有后来添加的首页，当我启动apache服务并且打开首页时没有问题，但是当跳转到krpano页面时出现了无权限访问问题</p><p>通过更改apache配置文件尝试无效后，我查看了服务器中文件的权限<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://qiniu.itbobby.top/bobbyzhang/blog/tools/Mac%E8%87%AA%E5%B8%A6Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/imgs/img03.png" alt title>                </div>                <div class="image-caption"></div>            </figure><br>1 处页面是刚刚提到的可以打开的首页，可以看到权限没有问题，但是 2 处krpano的主页面就没有可读权限了<br>回退到上级文件夹使用[sudo chmod -R 775]将整个文件夹设置为任何人可读权限，再次查看文件夹下权限都已开放。</p><p>题外话:  <strong>775权限含义</strong><br>7 拥有者有 读取，写入，执行权限<br>7 组用户有 读取，写入，执行权限<br>5 其他用户有 读取，执行权限(4+1 = 5)</p><p>重启apache，再次跳转到krpano页面时顺利打开!</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;打开终端，开启Apache&quot;&gt;&lt;a href=&quot;#打开终端，开启Apache&quot; class=&quot;headerlink&quot; title=&quot;打开终端，开启Apache&quot;&gt;&lt;/a&gt;打开终端，开启Apache&lt;/h3&gt;&lt;figure class=&quot;highlight plai
+      
+      
+        &lt;h3 id=&quot;打开终端，开启Apache&quot;&gt;&lt;a href=&quot;#打开终端，开启Apache&quot; class=&quot;headerlink&quot; title=&quot;打开终端，开启Apache&quot;&gt;&lt;/a&gt;打开终端，开启Apache&lt;/h3&gt;&lt;figure class=&quot;highlight plai
+      
     
     </summary>
     
@@ -872,24 +416,16 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-09-09-%E5%AE%89%E5%8D%93%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E9%A1%B5logo%E9%9A%8F%E9%94%AE%E7%9B%98%E6%94%B6%E6%94%BE%E5%8A%A8%E6%80%81%E4%BC%B8%E7%BC%A9%EF%BC%88%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E9%81%AE%E6%8C%A1%E6%8E%A7%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89.html"/>
     <id>http://blog.itbobby.top/2017-09-09-安卓实现登陆页logo随键盘收放动态伸缩（完美解决键盘弹出遮挡控件的问题）.html</id>
     <published>2017-09-09T06:27:29.000Z</published>
-    <updated>2017-09-09T13:24:45.000Z</updated>
+    <updated>2019-02-17T07:14:23.268Z</updated>
     
-    <content type="html"><![CDATA[<p>在项目中，很多时候Ui会把登录页的输入框上设计一个比较大的logo，以凸现品牌，但是这样会造成键盘弹出时遮挡了输入框，为了避免这样的情况出现影响体验，我针对logo做出一个可动态伸缩的效果，预览如下：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E5%AE%89%E5%8D%93%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E9%A1%B5logo%E9%9A%8F%E9%94%AE%E7%9B%98%E6%94%B6%E6%94%BE%E5%8A%A8%E6%80%81%E4%BC%B8%E7%BC%A9/imgs/img01.gif" alt=""></p>
-<h3 id="核心实现代码"><a href="#核心实现代码" class="headerlink" title="核心实现代码"></a>核心实现代码</h3><ul>
-<li>详细的说明已经放到注释中了，如果有不明白的地方欢迎留言</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ViewInject</span>(R.id.ll_login_root)</div><div class="line">   LinearLayout activityRootView;<span class="comment">//需要操作的布局</span></div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> screenHeight = <span class="number">0</span>;<span class="comment">//屏幕高度</span></div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> keyHeight = <span class="number">0</span>; <span class="comment">//软件盘弹起后所占高度</span></div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState); </div><div class="line">       screenHeight = <span class="keyword">this</span>.getWindowManager().getDefaultDisplay().getHeight(); <span class="comment">//获取屏幕高度</span></div><div class="line">       keyHeight = screenHeight / <span class="number">3</span>;<span class="comment">//弹起高度为屏幕高度的1/3</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onResume();</div><div class="line">       activityRootView.addOnLayoutChangeListener(<span class="keyword">this</span>);<span class="comment">//给需要操作的布局设置监听</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLayoutChange</span><span class="params">(View v, <span class="keyword">int</span> left, <span class="keyword">int</span> top, <span class="keyword">int</span> right,</span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> bottom, <span class="keyword">int</span> oldLeft, <span class="keyword">int</span> oldTop, <span class="keyword">int</span> oldRight, <span class="keyword">int</span> oldBottom)</span> </span>&#123;</div><div class="line">      <span class="comment">/* old是改变前的左上右下坐标点值，没有old的是改变后的左上右下坐标点值</span></div><div class="line"><span class="comment">       现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起*/</span></div><div class="line">       <span class="keyword">if</span> (oldBottom != <span class="number">0</span> &amp;&amp; bottom != <span class="number">0</span> &amp;&amp; (oldBottom - bottom &gt; keyHeight)) &#123;</div><div class="line">           ViewGroup.LayoutParams params = iv_login_logo.getLayoutParams();<span class="comment">//获取布局，设置键盘弹起后logo的宽高</span></div><div class="line">           params.height = <span class="number">300</span>;</div><div class="line">           params.width = <span class="number">300</span>;</div><div class="line">           iv_login_logo.setLayoutParams(params);</div><div class="line">           LinearLayout.LayoutParams lp = <span class="keyword">new</span> LinearLayout.LayoutParams(ll_login_logobg.getLayoutParams());</div><div class="line">           lp.setMargins(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>, <span class="number">50</span>);<span class="comment">//设置包含logo的布局的位置</span></div><div class="line">           ll_login_logobg.setLayoutParams(lp);</div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (oldBottom != <span class="number">0</span> &amp;&amp; bottom != <span class="number">0</span> &amp;&amp; (bottom - oldBottom &gt; keyHeight)) &#123;<span class="comment">//键盘收回后，logo恢复原来大小，位置同样回到初始位置</span></div><div class="line">           ViewGroup.LayoutParams params = iv_login_logo.getLayoutParams();</div><div class="line">           params.height = <span class="number">480</span>;</div><div class="line">           params.width = <span class="number">480</span>;</div><div class="line">           iv_login_logo.setLayoutParams(params);</div><div class="line">           LinearLayout.LayoutParams lp = <span class="keyword">new</span> LinearLayout.LayoutParams(ll_login_logobg.getLayoutParams());</div><div class="line">           lp.setMargins(<span class="number">0</span>, <span class="number">270</span>, <span class="number">0</span>, <span class="number">150</span>);</div><div class="line">           ll_login_logobg.setLayoutParams(lp);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
-<li>logo的imageview外表要套一层布局，依靠这层布局我们对logo进行操作  </li>
-<li>不要忘了在主配置文件给登陆页设置软键盘模式  </li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:windowSoftInputMode="stateHidden|stateUnchanged|adjustResize"</div></pre></td></tr></table></figure>
-<h3 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h3><p><a href="https://github.com/BobbyZhang93/DynamiclogoDemo" target="_blank" rel="external">Github-DynamiclogoDemo</a></p>
-]]></content>
+    <content type="html"><![CDATA[<p>在项目中，很多时候Ui会把登录页的输入框上设计一个比较大的logo，以凸现品牌，但是这样会造成键盘弹出时遮挡了输入框，为了避免这样的情况出现影响体验，我针对logo做出一个可动态伸缩的效果，预览如下：<br><img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/%E5%AE%89%E5%8D%93%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E9%A1%B5logo%E9%9A%8F%E9%94%AE%E7%9B%98%E6%94%B6%E6%94%BE%E5%8A%A8%E6%80%81%E4%BC%B8%E7%BC%A9/imgs/img01.gif" alt></p><h3 id="核心实现代码"><a href="#核心实现代码" class="headerlink" title="核心实现代码"></a>核心实现代码</h3><ul><li>详细的说明已经放到注释中了，如果有不明白的地方欢迎留言</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ViewInject</span>(R.id.ll_login_root)</span><br><span class="line">   LinearLayout activityRootView;<span class="comment">//需要操作的布局</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> screenHeight = <span class="number">0</span>;<span class="comment">//屏幕高度</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> keyHeight = <span class="number">0</span>; <span class="comment">//软件盘弹起后所占高度</span></span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       screenHeight = <span class="keyword">this</span>.getWindowManager().getDefaultDisplay().getHeight(); <span class="comment">//获取屏幕高度</span></span><br><span class="line">       keyHeight = screenHeight / <span class="number">3</span>;<span class="comment">//弹起高度为屏幕高度的1/3</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onResume();</span><br><span class="line">       activityRootView.addOnLayoutChangeListener(<span class="keyword">this</span>);<span class="comment">//给需要操作的布局设置监听</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLayoutChange</span><span class="params">(View v, <span class="keyword">int</span> left, <span class="keyword">int</span> top, <span class="keyword">int</span> right,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> bottom, <span class="keyword">int</span> oldLeft, <span class="keyword">int</span> oldTop, <span class="keyword">int</span> oldRight, <span class="keyword">int</span> oldBottom)</span> </span>&#123;</span><br><span class="line">      <span class="comment">/* old是改变前的左上右下坐标点值，没有old的是改变后的左上右下坐标点值</span></span><br><span class="line"><span class="comment">       现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起*/</span></span><br><span class="line">       <span class="keyword">if</span> (oldBottom != <span class="number">0</span> &amp;&amp; bottom != <span class="number">0</span> &amp;&amp; (oldBottom - bottom &gt; keyHeight)) &#123;</span><br><span class="line">           ViewGroup.LayoutParams params = iv_login_logo.getLayoutParams();<span class="comment">//获取布局，设置键盘弹起后logo的宽高</span></span><br><span class="line">           params.height = <span class="number">300</span>;</span><br><span class="line">           params.width = <span class="number">300</span>;</span><br><span class="line">           iv_login_logo.setLayoutParams(params);</span><br><span class="line">           LinearLayout.LayoutParams lp = <span class="keyword">new</span> LinearLayout.LayoutParams(ll_login_logobg.getLayoutParams());</span><br><span class="line">           lp.setMargins(<span class="number">0</span>, <span class="number">90</span>, <span class="number">0</span>, <span class="number">50</span>);<span class="comment">//设置包含logo的布局的位置</span></span><br><span class="line">           ll_login_logobg.setLayoutParams(lp);</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (oldBottom != <span class="number">0</span> &amp;&amp; bottom != <span class="number">0</span> &amp;&amp; (bottom - oldBottom &gt; keyHeight)) &#123;<span class="comment">//键盘收回后，logo恢复原来大小，位置同样回到初始位置</span></span><br><span class="line">           ViewGroup.LayoutParams params = iv_login_logo.getLayoutParams();</span><br><span class="line">           params.height = <span class="number">480</span>;</span><br><span class="line">           params.width = <span class="number">480</span>;</span><br><span class="line">           iv_login_logo.setLayoutParams(params);</span><br><span class="line">           LinearLayout.LayoutParams lp = <span class="keyword">new</span> LinearLayout.LayoutParams(ll_login_logobg.getLayoutParams());</span><br><span class="line">           lp.setMargins(<span class="number">0</span>, <span class="number">270</span>, <span class="number">0</span>, <span class="number">150</span>);</span><br><span class="line">           ll_login_logobg.setLayoutParams(lp);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul><li>logo的imageview外表要套一层布局，依靠这层布局我们对logo进行操作  </li><li>不要忘了在主配置文件给登陆页设置软键盘模式  </li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:windowSoftInputMode="stateHidden|stateUnchanged|adjustResize"</span><br></pre></td></tr></table></figure><h3 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h3><p><a href="https://github.com/BobbyZhang93/DynamiclogoDemo" target="_blank" rel="noopener">Github-DynamiclogoDemo</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;在项目中，很多时候Ui会把登录页的输入框上设计一个比较大的logo，以凸现品牌，但是这样会造成键盘弹出时遮挡了输入框，为了避免这样的情况出现影响体验，我针对logo做出一个可动态伸缩的效果，预览如下：&lt;br&gt;&lt;img src=&quot;http://ouol195k9.bkt.cl
+      
+      
+        &lt;p&gt;在项目中，很多时候Ui会把登录页的输入框上设计一个比较大的logo，以凸现品牌，但是这样会造成键盘弹出时遮挡了输入框，为了避免这样的情况出现影响体验，我针对logo做出一个可动态伸缩的效果，预览如下：&lt;br&gt;&lt;img src=&quot;http://qiniu.itbobby.to
+      
     
     </summary>
     
@@ -907,20 +443,15 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <published>2017-09-02T15:54:09.000Z</published>
     <updated>2017-09-02T15:58:48.000Z</updated>
     
-    <content type="html"><![CDATA[<p><code>本文共计260字0张配图，预计阅读耗时2分30秒</code></p>
-<p>原文链接：<a href="http://lijunjie.iteye.com/blog/1181923" target="_blank" rel="external">http://lijunjie.iteye.com/blog/1181923</a></p>
-<p><strong>WebSettings.CacheMode共有5个选项</strong> </p>
-<h3 id="LOAD-DEFAULT"><a href="#LOAD-DEFAULT" class="headerlink" title="LOAD_DEFAULT"></a>LOAD_DEFAULT</h3><p>默认加载方式，使用这种方式，会实现快速前进后退，在同一个标签打开几个网页后，关闭网络时，可以通过前进后退来切换已经访问过的数据，同时新建网页需要网络 </p>
-<h3 id="LOAD-NO-CACHE-LOAD-NORMAL"><a href="#LOAD-NO-CACHE-LOAD-NORMAL" class="headerlink" title="LOAD_NO_CACHE/LOAD_NORMAL"></a>LOAD_NO_CACHE/LOAD_NORMAL</h3><p>这两种方式相同，不使用缓存，如果没有网络，即使以前打开过此网页也不会使用以前的网页。 </p>
-<h3 id="LOAD-CACHE-ELSE-NETWORK"><a href="#LOAD-CACHE-ELSE-NETWORK" class="headerlink" title="LOAD_CACHE_ELSE_NETWORK"></a>LOAD_CACHE_ELSE_NETWORK</h3><p>这个方式不论如何都会从缓存中加载，除非缓存中的网页过期，出现的问题就是打开动态网页时，不能时时更新，会出现上次打开过的状态，除非清除缓存。 </p>
-<h3 id="LOAD-CACHE-ONLY"><a href="#LOAD-CACHE-ONLY" class="headerlink" title="LOAD_CACHE_ONLY"></a>LOAD_CACHE_ONLY</h3><p>这个方式只是会使用缓存中的数据，不会使用网络。 </p>
-<p><strong>tips</strong>：影响缓存模式的两个http头是If-None-Match和If-Modified-Since，遇到这两个http头，浏览器会把缓存模式改为LOAD_NO_CACHE方式。</p>
-]]></content>
+    <content type="html"><![CDATA[<p><code>本文共计260字0张配图，预计阅读耗时2分30秒</code></p><p>原文链接：<a href="http://lijunjie.iteye.com/blog/1181923" target="_blank" rel="noopener">http://lijunjie.iteye.com/blog/1181923</a></p><p><strong>WebSettings.CacheMode共有5个选项</strong> </p><h3 id="LOAD-DEFAULT"><a href="#LOAD-DEFAULT" class="headerlink" title="LOAD_DEFAULT"></a>LOAD_DEFAULT</h3><p>默认加载方式，使用这种方式，会实现快速前进后退，在同一个标签打开几个网页后，关闭网络时，可以通过前进后退来切换已经访问过的数据，同时新建网页需要网络 </p><h3 id="LOAD-NO-CACHE-LOAD-NORMAL"><a href="#LOAD-NO-CACHE-LOAD-NORMAL" class="headerlink" title="LOAD_NO_CACHE/LOAD_NORMAL"></a>LOAD_NO_CACHE/LOAD_NORMAL</h3><p>这两种方式相同，不使用缓存，如果没有网络，即使以前打开过此网页也不会使用以前的网页。 </p><h3 id="LOAD-CACHE-ELSE-NETWORK"><a href="#LOAD-CACHE-ELSE-NETWORK" class="headerlink" title="LOAD_CACHE_ELSE_NETWORK"></a>LOAD_CACHE_ELSE_NETWORK</h3><p>这个方式不论如何都会从缓存中加载，除非缓存中的网页过期，出现的问题就是打开动态网页时，不能时时更新，会出现上次打开过的状态，除非清除缓存。 </p><h3 id="LOAD-CACHE-ONLY"><a href="#LOAD-CACHE-ONLY" class="headerlink" title="LOAD_CACHE_ONLY"></a>LOAD_CACHE_ONLY</h3><p>这个方式只是会使用缓存中的数据，不会使用网络。 </p><p><strong>tips</strong>：影响缓存模式的两个http头是If-None-Match和If-Modified-Since，遇到这两个http头，浏览器会把缓存模式改为LOAD_NO_CACHE方式。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;本文共计260字0张配图，预计阅读耗时2分30秒&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;原文链接：&lt;a href=&quot;http://lijunjie.iteye.com/blog/1181923&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://
+      
+      
+        &lt;p&gt;&lt;code&gt;本文共计260字0张配图，预计阅读耗时2分30秒&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;http://lijunjie.iteye.com/blog/1181923&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://
+      
     
     </summary>
     
@@ -936,19 +467,18 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-08-28-%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1.html"/>
     <id>http://blog.itbobby.top/2017-08-28-通过jks签名文件获取sha1.html</id>
     <published>2017-08-28T14:36:30.000Z</published>
-    <updated>2017-08-31T16:49:24.000Z</updated>
+    <updated>2019-02-17T07:10:51.340Z</updated>
     
-    <content type="html"><![CDATA[<p><code>本文共计54字2张配图，预计阅读耗时1分00秒</code></p>
-<p>进入jks存放文件夹<br>运行终端</p>
-<h3 id="查看sha1"><a href="#查看sha1" class="headerlink" title="查看sha1"></a>查看sha1</h3><p>keytool -list -keystore xxx.jks<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img01.png" alt=""></p>
-<h3 id="查看详细信息"><a href="#查看详细信息" class="headerlink" title="查看详细信息"></a>查看详细信息</h3><p>keytool -list -v -keystore xxx.jks<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img02.png" alt=""></p>
-]]></content>
+    <content type="html"><![CDATA[<p><code>本文共计54字2张配图，预计阅读耗时1分00秒</code></p><p>进入jks存放文件夹<br>运行终端</p><h3 id="查看sha1"><a href="#查看sha1" class="headerlink" title="查看sha1"></a>查看sha1</h3><p>keytool -list -keystore xxx.jks<br><img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img01.png" alt></p><h3 id="查看详细信息"><a href="#查看详细信息" class="headerlink" title="查看详细信息"></a>查看详细信息</h3><p>keytool -list -v -keystore xxx.jks<br><img src="http://qiniu.itbobby.top/bobbyzhang/blog/android/%E9%80%9A%E8%BF%87jks%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96sha1/imgs/img02.png" alt></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;本文共计54字2张配图，预计阅读耗时1分00秒&lt;/code&gt;&lt;/p&gt;
+      
+      
+        &lt;p&gt;&lt;code&gt;本文共计54字2张配图，预计阅读耗时1分00秒&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;进入jks存放文件夹&lt;br&gt;运行终端&lt;/p&gt;
 &lt;h3 id=&quot;查看sha1&quot;&gt;&lt;a href=&quot;#查看sha1&quot; class=&quot;headerlink&quot; title=&quot;查看sha1&quot;&gt;&lt;/
+      
     
     </summary>
     
@@ -964,41 +494,18 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-08-24-%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.html"/>
     <id>http://blog.itbobby.top/2017-08-24-实现扫码从服务器下载Android和ios安装包的简明教程.html</id>
     <published>2017-08-24T13:11:18.000Z</published>
-    <updated>2017-08-31T16:49:15.000Z</updated>
+    <updated>2019-02-17T07:12:38.661Z</updated>
     
-    <content type="html"><![CDATA[<p><code>本文共计412字6张配图，预计阅读耗时3分20秒</code></p>
-<h3 id="步骤总览"><a href="#步骤总览" class="headerlink" title="步骤总览"></a>步骤总览</h3><ol>
-<li>上传安装包到服务器某文件夹；</li>
-<li>配置MIME类型；</li>
-<li>将安装包链接生成二维码。</li>
-</ol>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可；</li>
-<li>ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。</li>
-</ul>
-<h3 id="基础工作"><a href="#基础工作" class="headerlink" title="基础工作"></a>基础工作</h3><p>使用ftp工具连接虚拟云主机，可以选用Yummy FTP Pro<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img01.png" alt=""><br>配置服务器ip，用户名，密码后登入，然后在根目录下新建一个名为app的文件夹用来存放安装包，结构如图：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img02.png" alt=""></p>
-<h3 id="Android安装包"><a href="#Android安装包" class="headerlink" title="Android安装包"></a>Android安装包</h3><ol>
-<li>通过ftp工具上传该安装包到服务器app文件夹中；</li>
-<li>配置MIME类型一项如下:<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img03.png" alt=""></li>
-<li>安装包的下载链接即为<a href="https://你的域名/app/XXX.apk，将该链接在二维码生成网站上生成二维码即可；" target="_blank" rel="external">https://你的域名/app/XXX.apk，将该链接在二维码生成网站上生成二维码即可；</a></li>
-<li>使用浏览器的扫码功能，扫描二维码打开网页即可开启下载（微信扫描后需要跳转到浏览器打开）。</li>
-</ol>
-<h3 id="ios安装包"><a href="#ios安装包" class="headerlink" title="ios安装包"></a>ios安装包</h3><ol>
-<li>上传安装包到服务器根目录下的app文件夹；</li>
-<li>将导出安装包时同时导出的.plist文件打开，配置如图:<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img04.png" alt=""><br>在服务器根目录新建名为ios的文件夹，将.plist文件上传到该文件夹下，结构如图：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img05.png" alt=""></li>
-<li>新建一个.html页面，内容如下：<br> <a href="itms-services:///?action=download-manifest&url=https://bumie.org/ios/manifest.plist" target="_blank" rel="external">Click to Download</a><br> 上传该.html文件到服务器根目录；</li>
-<li>配置MIME类型两项如下：<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img06.png" alt=""></li>
-<li>将3步骤中.html页面的访问链接生成二维码；</li>
-<li>扫描后将先打开包含“Click to Download”字样超链的网页，点击文字开始下载。</li>
-</ol>
-<p><em>注意：</em>步骤2/3中出现的url必须是安全的<em>https</em>形式，如果网站未配置ssl证书将不能实现ios安装包的下载。</p>
-<h3 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h3>]]></content>
+    <content type="html"><![CDATA[<p><code>本文共计412字6张配图，预计阅读耗时3分20秒</code></p><h3 id="步骤总览"><a href="#步骤总览" class="headerlink" title="步骤总览"></a>步骤总览</h3><ol><li>上传安装包到服务器某文件夹；</li><li>配置MIME类型；</li><li>将安装包链接生成二维码。</li></ol><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul><li>以下内容基于阿里云云虚拟主机做简明讲解（默认已经配置好云主机并且可以正常访问），如果是云服务器产品同样按照以上三个步骤操作即可；</li><li>ios安装包相比于android安装包的配置步骤会更加繁琐，具体步骤和操作细节详见下文。</li></ul><h3 id="基础工作"><a href="#基础工作" class="headerlink" title="基础工作"></a>基础工作</h3><p>使用ftp工具连接虚拟云主机，可以选用Yummy FTP Pro<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img01.png" alt><br>配置服务器ip，用户名，密码后登入，然后在根目录下新建一个名为app的文件夹用来存放安装包，结构如图：<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img02.png" alt></p><h3 id="Android安装包"><a href="#Android安装包" class="headerlink" title="Android安装包"></a>Android安装包</h3><ol><li>通过ftp工具上传该安装包到服务器app文件夹中；</li><li>配置MIME类型一项如下:<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img03.png" alt></li><li>安装包的下载链接即为https://你的域名/app/XXX.apk，将该链接在二维码生成网站上生成二维码即可；</li><li>使用浏览器的扫码功能，扫描二维码打开网页即可开启下载（微信扫描后需要跳转到浏览器打开）。</li></ol><h3 id="ios安装包"><a href="#ios安装包" class="headerlink" title="ios安装包"></a>ios安装包</h3><ol><li>上传安装包到服务器根目录下的app文件夹；</li><li>将导出安装包时同时导出的.plist文件打开，配置如图:<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img04.png" alt><br>在服务器根目录新建名为ios的文件夹，将.plist文件上传到该文件夹下，结构如图：<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img05.png" alt></li><li>新建一个.html页面，内容如下：<br> <a href="itms-services:///?action=download-manifest&url=https://bumie.org/ios/manifest.plist" target="_blank" rel="noopener">Click to Download</a><br> 上传该.html文件到服务器根目录；</li><li>配置MIME类型两项如下：<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/server/%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8B%E8%BD%BDAndroid%E5%92%8Cios%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/imgs/img06.png" alt></li><li>将3步骤中.html页面的访问链接生成二维码；</li><li>扫描后将先打开包含“Click to Download”字样超链的网页，点击文字开始下载。</li></ol><p><em>注意：</em>步骤2/3中出现的url必须是安全的<em>https</em>形式，如果网站未配置ssl证书将不能实现ios安装包的下载。</p><h3 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h3>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;本文共计412字6张配图，预计阅读耗时3分20秒&lt;/code&gt;&lt;/p&gt;
+      
+      
+        &lt;p&gt;&lt;code&gt;本文共计412字6张配图，预计阅读耗时3分20秒&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;步骤总览&quot;&gt;&lt;a href=&quot;#步骤总览&quot; class=&quot;headerlink&quot; title=&quot;步骤总览&quot;&gt;&lt;/a&gt;步骤总览&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;上传安装包到服务器某文
+      
     
     </summary>
     
@@ -1014,37 +521,18 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-08-23-unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD.html"/>
     <id>http://blog.itbobby.top/2017-08-23-unity在打包出的ios项目上实现截图并保存相册功能.html</id>
     <published>2017-08-23T14:58:11.000Z</published>
-    <updated>2018-05-05T13:59:58.226Z</updated>
+    <updated>2019-02-17T07:07:37.092Z</updated>
     
-    <content type="html"><![CDATA[<p><code>本文共计277字3张配图，预计阅读耗时1分50秒</code></p>
-<h3 id="分为两部分"><a href="#分为两部分" class="headerlink" title="分为两部分"></a>分为两部分</h3><ul>
-<li>unity点击按钮调用系统截图和ios中的保存方法</li>
-<li>ios执行保存操作</li>
-</ul>
-<h3 id="unity中按钮绑定的代码如下"><a href="#unity中按钮绑定的代码如下" class="headerlink" title="unity中按钮绑定的代码如下"></a>unity中按钮绑定的代码如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">using UnityEngine;</div><div class="line">using System.Runtime.InteropServices;</div><div class="line"></div><div class="line">public class SavePhoto : MonoBehaviour</div><div class="line">&#123;</div><div class="line">[DllImport(&quot;__Internal&quot;)]</div><div class="line">private static extern void _SavePhoto(string readAddr); </div><div class="line"></div><div class="line">public void Jietu()</div><div class="line">&#123; </div><div class="line">var cptrAddr = &quot;testpic&quot;; //捕捉地址  </div><div class="line">var readAddr = Application.persistentDataPath + &quot;/&quot; + cptrAddr;//读取地址，这两个地址在iOS里不一样  </div><div class="line"></div><div class="line">Application.CaptureScreenshot(cptrAddr); </div><div class="line">Debug.Log(&quot;截图&quot;);</div><div class="line"></div><div class="line">_SavePhoto(readAddr);</div><div class="line">Debug.Log(&quot;保存&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件"><a href="#导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件" class="headerlink" title="导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件"></a>导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件</h3><p><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png" alt="image"></p>
-<ul>
-<li><p>PhotoManager.h</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface PhotoManager : NSObject</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo;</div><div class="line">@end</div></pre></td></tr></table></figure>
-</li>
-<li><p>PhotoManager.m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#import &quot;PhotoManager.h&quot;</div><div class="line">@implementation PhotoManager</div><div class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</div><div class="line">contextInfo: ( void *) contextInfo</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;保存结束&quot;);</div><div class="line">if (error != nil) &#123;</div><div class="line">NSLog(@&quot;有错误&quot;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">void _SavePhoto(char *readAddr)</div><div class="line">&#123;</div><div class="line">NSString *strReadAddr = [NSString stringWithUTF8String:readAddr];</div><div class="line">UIImage *img = [UIImage imageWithContentsOfFile:strReadAddr];</div><div class="line">NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;w:%f, h:%f&quot;, img.size.width, img.size.height]);</div><div class="line">PhotoManager *instance = [PhotoManager alloc];</div><div class="line">UIImageWriteToSavedPhotosAlbum(img, instance,</div><div class="line">@selector(imageSaved:didFinishSavingWithError:contextInfo:), nil);</div><div class="line">&#125;  </div><div class="line">@end</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="配置应用权限"><a href="#配置应用权限" class="headerlink" title="配置应用权限"></a>配置应用权限</h3><p>在上图2处添加ios访问相册的权限</p>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><ul>
-<li><p>初次运行请求权限截图<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png" alt="image"></p>
-</li>
-<li><p>保存的截图文件<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/IMG_0009.PNG" alt="image"></p>
-</li>
-</ul>
-]]></content>
+    <content type="html"><![CDATA[<p><code>本文共计277字3张配图，预计阅读耗时1分50秒</code></p><h3 id="分为两部分"><a href="#分为两部分" class="headerlink" title="分为两部分"></a>分为两部分</h3><ul><li>unity点击按钮调用系统截图和ios中的保存方法</li><li>ios执行保存操作</li></ul><h3 id="unity中按钮绑定的代码如下"><a href="#unity中按钮绑定的代码如下" class="headerlink" title="unity中按钮绑定的代码如下"></a>unity中按钮绑定的代码如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line"></span><br><span class="line">public class SavePhoto : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">[DllImport(&quot;__Internal&quot;)]</span><br><span class="line">private static extern void _SavePhoto(string readAddr);</span><br><span class="line"></span><br><span class="line">public void Jietu()</span><br><span class="line">&#123;</span><br><span class="line">var cptrAddr = &quot;testpic&quot;; //捕捉地址  </span><br><span class="line">var readAddr = Application.persistentDataPath + &quot;/&quot; + cptrAddr;//读取地址，这两个地址在iOS里不一样  </span><br><span class="line"></span><br><span class="line">Application.CaptureScreenshot(cptrAddr);</span><br><span class="line">Debug.Log(&quot;截图&quot;);</span><br><span class="line"></span><br><span class="line">_SavePhoto(readAddr);</span><br><span class="line">Debug.Log(&quot;保存&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件"><a href="#导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件" class="headerlink" title="导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件"></a>导出为xcode项目后打开，在Classes文件夹下添加图中1处两个文件</h3><p><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img01.png" alt="image"></p><ul><li><p>PhotoManager.h</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface PhotoManager : NSObject</span><br><span class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</span><br><span class="line">contextInfo: ( void *) contextInfo;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></li><li><p>PhotoManager.m</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;PhotoManager.h&quot;</span><br><span class="line">@implementation PhotoManager</span><br><span class="line">- ( void ) imageSaved: ( UIImage *) image didFinishSavingWithError:( NSError *)error</span><br><span class="line">contextInfo: ( void *) contextInfo</span><br><span class="line">&#123;</span><br><span class="line">NSLog(@&quot;保存结束&quot;);</span><br><span class="line">if (error != nil) &#123;</span><br><span class="line">NSLog(@&quot;有错误&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">void _SavePhoto(char *readAddr)</span><br><span class="line">&#123;</span><br><span class="line">NSString *strReadAddr = [NSString stringWithUTF8String:readAddr];</span><br><span class="line">UIImage *img = [UIImage imageWithContentsOfFile:strReadAddr];</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;w:%f, h:%f&quot;, img.size.width, img.size.height]);</span><br><span class="line">PhotoManager *instance = [PhotoManager alloc];</span><br><span class="line">UIImageWriteToSavedPhotosAlbum(img, instance,</span><br><span class="line">@selector(imageSaved:didFinishSavingWithError:contextInfo:), nil);</span><br><span class="line">&#125;  </span><br><span class="line">@end</span><br></pre></td></tr></table></figure></li></ul><h3 id="配置应用权限"><a href="#配置应用权限" class="headerlink" title="配置应用权限"></a>配置应用权限</h3><p>在上图2处添加ios访问相册的权限</p><h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><ul><li><p>初次运行请求权限截图<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/img03.png" alt="image"></p></li><li><p>保存的截图文件<br><img src="http://qiniu.itbobby.top/bobbyzhang/bolg/unity/unity%E5%9C%A8%E6%89%93%E5%8C%85%E5%87%BA%E7%9A%84ios%E9%A1%B9%E7%9B%AE%E4%B8%8A%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E5%B9%B6%E4%BF%9D%E5%AD%98%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/imgs/IMG_0009.PNG" alt="image"></p></li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;本文共计277字3张配图，预计阅读耗时1分50秒&lt;/code&gt;&lt;/p&gt;
+      
+      
+        &lt;p&gt;&lt;code&gt;本文共计277字3张配图，预计阅读耗时1分50秒&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;分为两部分&quot;&gt;&lt;a href=&quot;#分为两部分&quot; class=&quot;headerlink&quot; title=&quot;分为两部分&quot;&gt;&lt;/a&gt;分为两部分&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;unity点击
+      
     
     </summary>
     
@@ -1064,17 +552,17 @@ Architectures in the fat file: libAVProVideoiOS.a are: armv7 i386 x86_64 arm64</
     <link href="http://blog.itbobby.top/2017-08-19-Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%EF%BC%8C%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate.html"/>
     <id>http://blog.itbobby.top/2017-08-19-Unity添加按返回键关闭应用功能，顺带介绍FixedUpdate.html</id>
     <published>2017-08-19T15:56:49.000Z</published>
-    <updated>2017-08-31T16:48:53.000Z</updated>
+    <updated>2019-02-17T07:07:50.465Z</updated>
     
-    <content type="html"><![CDATA[<p><code>本文共计210字1张配图，预计阅读耗时1分40秒</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void FixedUpdate()</div><div class="line">&#123;</div><div class="line">    //点击手机返回键关闭应用程序</div><div class="line">    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))</div><div class="line">    &#123;</div><div class="line">        Application.Quit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="顺便看看Update-和FixedUpdate-的区别"><a href="#顺便看看Update-和FixedUpdate-的区别" class="headerlink" title="顺便看看Update()和FixedUpdate()的区别"></a>顺便看看Update()和FixedUpdate()的区别</h3><p>从字面上理解，它们都是在更新时会被调用，并且会循环的调用。<br>但是Update会在每次渲染新的一帧时，被调用。<br>而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时慢，帧率会变化，update被调用的时间间隔就发生变化。<br>但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间隔怎么设置呢？<br>Edit->Project Setting->time下面的Fixed timestep<br><img src="http://ouol195k9.bkt.clouddn.com/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png" alt=""></p>
-]]></content>
+    <content type="html"><![CDATA[<p><code>本文共计210字1张配图，预计阅读耗时1分40秒</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void FixedUpdate()</span><br><span class="line">&#123;</span><br><span class="line">    //点击手机返回键关闭应用程序</span><br><span class="line">    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))</span><br><span class="line">    &#123;</span><br><span class="line">        Application.Quit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="顺便看看Update-和FixedUpdate-的区别"><a href="#顺便看看Update-和FixedUpdate-的区别" class="headerlink" title="顺便看看Update()和FixedUpdate()的区别"></a>顺便看看Update()和FixedUpdate()的区别</h3><p>从字面上理解，它们都是在更新时会被调用，并且会循环的调用。<br>但是Update会在每次渲染新的一帧时，被调用。<br>而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时慢，帧率会变化，update被调用的时间间隔就发生变化。<br>但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间隔怎么设置呢？<br>Edit->Project Setting->time下面的Fixed timestep<br><img src="http://qiniu.itbobby.top/bobbyzhang/blog/unity/Unity%E6%B7%BB%E5%8A%A0%E6%8C%89%E8%BF%94%E5%9B%9E%E9%94%AE%E5%85%B3%E9%97%AD%E5%BA%94%E7%94%A8%E5%8A%9F%E8%83%BD%E9%A1%BA%E5%B8%A6%E4%BB%8B%E7%BB%8DFixedUpdate/imgs/fixedupdate.png" alt></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;本文共计210字1张配图，预计阅读耗时1分40秒&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;di
+      
+      
+        &lt;p&gt;&lt;code&gt;本文共计210字1张配图，预计阅读耗时1分40秒&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;
+      
     
     </summary>
     

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -47,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -67,63 +67,63 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/BobbyZhang93" target="_blank" >
+              <a href="https://github.com/BobbyZhang93" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://weibo.com/u/2982094023" target="_blank" >
+              <a href="http://weibo.com/u/2982094023" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 微博
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://juejin.im/" target="_blank" >
+              <a href="https://juejin.im/" target="_blank">
                 <i class="icon icon-lg icon-hand-o-up"></i>
                 掘金
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.jianshu.com/" target="_blank" >
+              <a href="http://www.jianshu.com/" target="_blank">
                 <i class="icon icon-lg icon-hand-o-right"></i>
                 简书
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://www.zhihu.com/explore" target="_blank" >
+              <a href="https://www.zhihu.com/explore" target="_blank">
                 <i class="icon icon-lg icon-hand-o-down"></i>
                 知乎
               </a>
@@ -187,13 +187,12 @@
         </nav>
     </aside>
     
-<article id="post-UTC转化为本地时间再转化为Unix时间戳"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-UTC转化为本地时间再转化为Unix时间戳" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">UTC转化为本地时间再转化为Unix时间戳</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-08-14 23:56:23" datetime="2017-08-14T15:56:23.000Z"  itemprop="datePublished">2017-08-14</time>
+            <time class="post-time" title="2017-08-14 23:56:23" datetime="2017-08-14T15:56:23.000Z" itemprop="datePublished">2017-08-14</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
@@ -201,7 +200,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -209,9 +208,9 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p><code>本文共计258字0张配图，预计阅读耗时2分10秒</code></p>
-<h3 id="UTC转化为本地时间"><a href="#UTC转化为本地时间" class="headerlink" title="UTC转化为本地时间"></a>UTC转化为本地时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* UTC转化为本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTime   UTC数据|024834.94</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> utcTimePatten    UTC数据格式</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> localTimePatten</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">utc2Local</span><span class="params">(String utcTime, String utcTimePatten,</span></span></div><div class="line"><span class="function"><span class="params">String localTimePatten)</span> </span>&#123;</div><div class="line">SimpleDateFormat utcFormater = <span class="keyword">new</span> SimpleDateFormat(utcTimePatten);</div><div class="line">utcFormater.setTimeZone(TimeZone.getTimeZone(<span class="string">"UTC"</span>));</div><div class="line">Date gpsUTCDate = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">gpsUTCDate = utcFormater.parse(utcTime);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line">SimpleDateFormat localFormater = <span class="keyword">new</span> SimpleDateFormat(localTimePatten);</div><div class="line">localFormater.setTimeZone(TimeZone.getDefault());</div><div class="line">String localTime = localFormater.format(gpsUTCDate.getTime());</div><div class="line"><span class="keyword">return</span> localTime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="本地时间转时间戳"><a href="#本地时间转时间戳" class="headerlink" title="本地时间转时间戳"></a>本地时间转时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* 本地时间转时间戳</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> s  由UTC转化来的本地时间</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> dot   原UTC数据的小数位</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s,String dot)</span>  </span>&#123;</div><div class="line">String res;</div><div class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);<span class="comment">//设置日期格式</span></div><div class="line">SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</div><div class="line">Date date = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">date = simpleDateFormat.parse(df.format(<span class="keyword">new</span> Date())+<span class="string">" "</span>+s);</div><div class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">e.printStackTrace();</div><div class="line">&#125;</div><div class="line"><span class="keyword">long</span> ts = date.getTime();</div><div class="line">ts+=Double.valueOf(dot)*<span class="number">10</span>;</div><div class="line">res = String.valueOf(ts);</div><div class="line"><span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s=<span class="string">"024834.94"</span>;</div><div class="line">dateToStamp(utc2Local(s,<span class="string">"hhmmss"</span>,<span class="string">"HH:mm:ss"</span>),s.substring(<span class="number">7</span>,<span class="number">9</span>))</div></pre></td></tr></table></figure>
+<h3 id="UTC转化为本地时间"><a href="#UTC转化为本地时间" class="headerlink" title="UTC转化为本地时间"></a>UTC转化为本地时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* UTC转化为本地时间</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> utcTime   UTC数据|024834.94</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> utcTimePatten    UTC数据格式</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> localTimePatten</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">utc2Local</span><span class="params">(String utcTime, String utcTimePatten,</span></span></span><br><span class="line"><span class="function"><span class="params">String localTimePatten)</span> </span>&#123;</span><br><span class="line">SimpleDateFormat utcFormater = <span class="keyword">new</span> SimpleDateFormat(utcTimePatten);</span><br><span class="line">utcFormater.setTimeZone(TimeZone.getTimeZone(<span class="string">"UTC"</span>));</span><br><span class="line">Date gpsUTCDate = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">gpsUTCDate = utcFormater.parse(utcTime);</span><br><span class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">SimpleDateFormat localFormater = <span class="keyword">new</span> SimpleDateFormat(localTimePatten);</span><br><span class="line">localFormater.setTimeZone(TimeZone.getDefault());</span><br><span class="line">String localTime = localFormater.format(gpsUTCDate.getTime());</span><br><span class="line"><span class="keyword">return</span> localTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="本地时间转时间戳"><a href="#本地时间转时间戳" class="headerlink" title="本地时间转时间戳"></a>本地时间转时间戳</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 本地时间转时间戳</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> s  由UTC转化来的本地时间</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> dot   原UTC数据的小数位</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s,String dot)</span>  </span>&#123;</span><br><span class="line">String res;</span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);<span class="comment">//设置日期格式</span></span><br><span class="line">SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">Date date = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">date = simpleDateFormat.parse(df.format(<span class="keyword">new</span> Date())+<span class="string">" "</span>+s);</span><br><span class="line">&#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">ts+=Double.valueOf(dot)*<span class="number">10</span>;</span><br><span class="line">res = String.valueOf(ts);</span><br><span class="line"><span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="string">"024834.94"</span>;</span><br><span class="line">dateToStamp(utc2Local(s,<span class="string">"hhmmss"</span>,<span class="string">"HH:mm:ss"</span>),s.substring(<span class="number">7</span>,<span class="number">9</span>))</span><br></pre></td></tr></table></figure>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
 <li><p>时间输出为连续递增，以便做滤波操作</p>
 </li>
@@ -230,7 +229,7 @@
 
 
         
-        转载请保留原文链接：<a href="/2017-08-14-UTC转化为本地时间再转化为Unix时间戳.html"target="_blank" rel="external">http://blog.itbobby.top/2017-08-14-UTC转化为本地时间再转化为Unix时间戳.html</a>
+        转载请保留原文链接：<a href="/2017-08-14-UTC转化为本地时间再转化为Unix时间戳.html" target="_blank" rel="external">http://blog.itbobby.top/2017-08-14-UTC转化为本地时间再转化为Unix时间戳.html</a>
         
     </div>
     <footer>
@@ -320,8 +319,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -340,10 +338,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -357,7 +355,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>BobbyZhang &copy; 2017 - 2018</span>
+        <p><span>BobbyZhang &copy; 2017 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>

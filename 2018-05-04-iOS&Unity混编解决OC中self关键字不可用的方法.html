@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="BobbyZhang的技术小站">
 <meta property="og:description" content="Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：  .m ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。.mm ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-05T13:57:11.835Z">
+<meta property="og:updated_time" content="2018-05-05T13:57:11.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS&amp;Unity混编解决OC中self关键字不可用的方法">
 <meta name="twitter:description" content="Unity开发的项目有些功能需要在Xcode中继续进行原生开发，但是我们发现项目中出现了很多不同于.m源文件的.mm文件，这两类文件的区别如下：  .m ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。.mm ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使">
@@ -47,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -67,63 +67,63 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/BobbyZhang93" target="_blank" >
+              <a href="https://github.com/BobbyZhang93" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://weibo.com/u/2982094023" target="_blank" >
+              <a href="http://weibo.com/u/2982094023" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 微博
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://juejin.im/" target="_blank" >
+              <a href="https://juejin.im/" target="_blank">
                 <i class="icon icon-lg icon-hand-o-up"></i>
                 掘金
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.jianshu.com/" target="_blank" >
+              <a href="http://www.jianshu.com/" target="_blank">
                 <i class="icon icon-lg icon-hand-o-right"></i>
                 简书
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://www.zhihu.com/explore" target="_blank" >
+              <a href="https://www.zhihu.com/explore" target="_blank">
                 <i class="icon icon-lg icon-hand-o-down"></i>
                 知乎
               </a>
@@ -180,13 +180,12 @@
 
 <div class="container body-wrap">
     
-<article id="post-iOS&amp;Unity混编解决OC中self关键字不可用的方法"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-iOS&amp;Unity混编解决OC中self关键字不可用的方法" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">iOS&Unity混编解决OC中self关键字不可用的方法</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-05-04 23:32:06" datetime="2018-05-04T15:32:06.000Z"  itemprop="datePublished">2018-05-04</time>
+            <time class="post-time" title="2018-05-04 23:32:06" datetime="2018-05-04T15:32:06.000Z" itemprop="datePublished">2018-05-04</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
@@ -194,7 +193,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -206,13 +205,13 @@
 <p><strong>.m</strong> ：源代码文件。这是典型的源代码文件扩展名，可以包含Objective-C和C代码。<br><strong>.mm</strong> ：源代码文件。带有这种扩展名的源代码文件，除了可以包含Objective-C和C代码以外还可以包含C++代码。仅在你的Objective-C代码中确实需要使用C++类或者特性的时候才用这种扩展名。<br><em>题外科普Xcode项目中其他后缀的文件类型：</em><br><strong>.c</strong>：C语言源文件；<br><strong>.cc/.cpp</strong>：C++源文件；<br><strong>.h</strong>：头文件；<br><strong>.pl</strong>：Perl源文件；<br><strong>.o</strong>：Object文件，即编译后的文件。</p>
 </blockquote>
 <p>因此我们不难判断，Unity导出的项目中包含了C++相关的代码，而在.mm中OC的self关键字不能用了，此时我们需要这样处理一下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;//getVC是我的类名</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@implementation getVC</span><br><span class="line">static getVC*mySelf =nil;</span><br><span class="line">+ (instancetype)shareInstance&#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        mySelf = [[self alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return mySelf;</span><br><span class="line">&#125;//getVC是我的类名</span><br></pre></td></tr></table></figure>
 <p>然后将self替换成mySelf即可。</p>
 <p><strong>完整参考代码：</strong></p>
 <p><em>getVC.h</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &lt;VerifyCode/NTESVerifyCodeManager.h&gt; </div><div class="line">@interface getVC : UIViewController&lt;NTESVerifyCodeManagerDelegate&gt; @property(nonatomic,strong)NTESVerifyCodeManager *manager;  </div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#import &lt;VerifyCode/NTESVerifyCodeManager.h&gt; </span><br><span class="line">@interface getVC : UIViewController&lt;NTESVerifyCodeManagerDelegate&gt; @property(nonatomic,strong)NTESVerifyCodeManager *manager;  </span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 <p><em>getVC.mm</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">#import &quot;GETVC.h&quot;</div><div class="line"></div><div class="line">@interface getVC () </div><div class="line">@end </div><div class="line"></div><div class="line">@implementation getVC</div><div class="line">static getVC*mySelf =nil;</div><div class="line">+ (instancetype)shareInstance&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        mySelf = [[self alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return mySelf;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)didReceiveMemoryWarning &#123;</div><div class="line">    [super didReceiveMemoryWarning];</div><div class="line">    // Dispose of any resources that can be recreated.</div><div class="line">&#125;</div><div class="line"> </div><div class="line"> //unity端点击事件调用的方法，在此处接入网易云的验证，使之点击后响应</div><div class="line">extern &quot;C&quot; void unitylogin()&#123;</div><div class="line">    NSLog(@&quot;%s&quot;,&quot;ios--login&quot;);</div><div class="line">    [getVC shareInstance].manager=  [NTESVerifyCodeManager sharedInstance];</div><div class="line">    if (mySelf.manager) &#123;</div><div class="line">        </div><div class="line">        // 如果需要了解组件的执行情况,则实现回调</div><div class="line">        mySelf.manager.delegate = mySelf;</div><div class="line">        // captchaid的值是每个产品从后台生成的,比如 @&quot;a05f036b70ab447b87cc788af9a60974&quot;</div><div class="line">        NSString *captchaid = @&quot;a05f036b70ab447b87cc788af9a60974&quot;;</div><div class="line">        [mySelf.manager configureVerifyCode:captchaid timeout:10.0];</div><div class="line">        </div><div class="line">        // 设置语言</div><div class="line">        mySelf.manager.lang = NTESVerifyCodeLangCN;</div><div class="line">        </div><div class="line">        // 设置透明度</div><div class="line">        mySelf.manager.alpha = 0.7;</div><div class="line">        </div><div class="line">        // 设置frame</div><div class="line">        mySelf.manager.frame = CGRectNull;</div><div class="line">        </div><div class="line">        // 显示验证码</div><div class="line">        [mySelf.manager openVerifyCodeView:nil];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#pragma mark - NTESVerifyCodeManagerDelegate</div><div class="line">/**</div><div class="line"> * 验证码组件初始化完成</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFinish&#123;</div><div class="line">    NSLog(@&quot;收到初始化完成的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 验证码组件初始化出错</div><div class="line"> *</div><div class="line"> * @param message 错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeInitFailed:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到初始化失败的回调:%@&quot;,message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 完成验证之后的回调</div><div class="line"> *</div><div class="line"> * @param result 验证结果 BOOL:YES/NO</div><div class="line"> * @param validate 二次校验数据，如果验证结果为false，validate返回空</div><div class="line"> * @param message 结果描述信息</div><div class="line"> *</div><div class="line"> */</div><div class="line">- (void)verifyCodeValidateFinish:(BOOL)result validate:(NSString *)validate message:(NSString *)message&#123;</div><div class="line">    NSLog(@&quot;收到验证结果的回调:(%d,%@,%@)&quot;, result, validate, message);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 关闭验证码窗口后的回调</div><div class="line"> */</div><div class="line">- (void)verifyCodeCloseWindow&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到关闭验证码视图的回调&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 网络错误</div><div class="line"> *</div><div class="line"> * @param error 网络错误信息</div><div class="line"> */</div><div class="line">- (void)verifyCodeNetError:(NSError *)error&#123;</div><div class="line">    //用户关闭验证后执行的方法</div><div class="line">    NSLog(@&quot;收到网络错误的回调:%@(%ld)&quot;, [error localizedDescription], (long)error.code);</div><div class="line">&#125; </div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;GETVC.h&quot;</span><br><span class="line"></span><br><span class="line">@interface getVC () </span><br><span class="line">@end </span><br><span class="line"></span><br><span class="line">@implementation getVC</span><br><span class="line">static getVC*mySelf =nil;</span><br><span class="line">+ (instancetype)shareInstance&#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        mySelf = [[self alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return mySelf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // Do any additional setup after loading the view, typically from a nib.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // Dispose of any resources that can be recreated.</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> //unity端点击事件调用的方法，在此处接入网易云的验证，使之点击后响应</span><br><span class="line">extern &quot;C&quot; void unitylogin()&#123;</span><br><span class="line">    NSLog(@&quot;%s&quot;,&quot;ios--login&quot;);</span><br><span class="line">    [getVC shareInstance].manager=  [NTESVerifyCodeManager sharedInstance];</span><br><span class="line">    if (mySelf.manager) &#123;</span><br><span class="line">        </span><br><span class="line">        // 如果需要了解组件的执行情况,则实现回调</span><br><span class="line">        mySelf.manager.delegate = mySelf;</span><br><span class="line">        // captchaid的值是每个产品从后台生成的,比如 @&quot;a05f036b70ab447b87cc788af9a60974&quot;</span><br><span class="line">        NSString *captchaid = @&quot;a05f036b70ab447b87cc788af9a60974&quot;;</span><br><span class="line">        [mySelf.manager configureVerifyCode:captchaid timeout:10.0];</span><br><span class="line">        </span><br><span class="line">        // 设置语言</span><br><span class="line">        mySelf.manager.lang = NTESVerifyCodeLangCN;</span><br><span class="line">        </span><br><span class="line">        // 设置透明度</span><br><span class="line">        mySelf.manager.alpha = 0.7;</span><br><span class="line">        </span><br><span class="line">        // 设置frame</span><br><span class="line">        mySelf.manager.frame = CGRectNull;</span><br><span class="line">        </span><br><span class="line">        // 显示验证码</span><br><span class="line">        [mySelf.manager openVerifyCodeView:nil];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">#pragma mark - NTESVerifyCodeManagerDelegate</span><br><span class="line">/**</span><br><span class="line"> * 验证码组件初始化完成</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeInitFinish&#123;</span><br><span class="line">    NSLog(@&quot;收到初始化完成的回调&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 验证码组件初始化出错</span><br><span class="line"> *</span><br><span class="line"> * @param message 错误信息</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeInitFailed:(NSString *)message&#123;</span><br><span class="line">    NSLog(@&quot;收到初始化失败的回调:%@&quot;,message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 完成验证之后的回调</span><br><span class="line"> *</span><br><span class="line"> * @param result 验证结果 BOOL:YES/NO</span><br><span class="line"> * @param validate 二次校验数据，如果验证结果为false，validate返回空</span><br><span class="line"> * @param message 结果描述信息</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeValidateFinish:(BOOL)result validate:(NSString *)validate message:(NSString *)message&#123;</span><br><span class="line">    NSLog(@&quot;收到验证结果的回调:(%d,%@,%@)&quot;, result, validate, message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 关闭验证码窗口后的回调</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeCloseWindow&#123;</span><br><span class="line">    //用户关闭验证后执行的方法</span><br><span class="line">    NSLog(@&quot;收到关闭验证码视图的回调&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 网络错误</span><br><span class="line"> *</span><br><span class="line"> * @param error 网络错误信息</span><br><span class="line"> */</span><br><span class="line">- (void)verifyCodeNetError:(NSError *)error&#123;</span><br><span class="line">    //用户关闭验证后执行的方法</span><br><span class="line">    NSLog(@&quot;收到网络错误的回调:%@(%ld)&quot;, [error localizedDescription], (long)error.code);</span><br><span class="line">&#125; </span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 <p>*以上参考代码基于Unity接入网易云盾滑动验证iOS原生SDK的功能实现</p>
 
         </div>
@@ -221,12 +220,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-05-05T13:57:11.835Z" itemprop="dateUpdated">2018-05-05 21:57:11</time>
+    最后更新时间：<time datetime="2018-05-05T13:57:11.836Z" itemprop="dateUpdated">2018-05-05 21:57:11</time>
 </span><br>
 
 
         
-        转载请保留原文链接：<a href="/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html"target="_blank" rel="external">http://blog.itbobby.top/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html</a>
+        转载请保留原文链接：<a href="/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html" target="_blank" rel="external">http://blog.itbobby.top/2018-05-04-iOS&amp;Unity混编解决OC中self关键字不可用的方法.html</a>
         
     </div>
     <footer>
@@ -309,8 +308,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/weixin.png" data-alipay="/img/zhifubao.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -329,10 +327,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -346,7 +344,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>BobbyZhang &copy; 2017 - 2018</span>
+        <p><span>BobbyZhang &copy; 2017 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
